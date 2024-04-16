@@ -27,6 +27,9 @@ public class LoginDashboard extends javax.swing.JFrame {
     
     static String status;
     static String type;
+    static String fname;
+    static String lname;
+    static String name;
      
     public static boolean loginAcc(String username, String password){
         dbConnector connector = new dbConnector();
@@ -36,6 +39,10 @@ public class LoginDashboard extends javax.swing.JFrame {
            if(resultSet.next()){
                status = resultSet.getString("acc_status");
                type = resultSet.getString("acc_type");
+               fname = resultSet.getString("user_fname");
+               lname = resultSet.getString("user_lname");
+               name = resultSet.getString("user_name");
+              
              return true;  
            }else{
                return false;
@@ -176,10 +183,12 @@ public class LoginDashboard extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Login Successfully!");
         if(type.equals("Admin")){
          AdminDashboard ads = new AdminDashboard();
+         ads.Adname.setText(""+name);
         ads.setVisible(true);
         this.dispose();
         }else if(type.equals("User")){
         UserDashBoard usd = new UserDashBoard();
+        usd.Usname.setText(""+name);
         usd.setVisible(true);
         this.dispose();   
         }else{
