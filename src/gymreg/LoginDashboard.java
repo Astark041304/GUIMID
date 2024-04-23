@@ -6,8 +6,11 @@
 package gymreg;
 
 import Admin.AdminDashboard;
-import Admin.UserDashBoard;
+import Config.Passwordhasher;
+import Config.Session;
 import Config.dbConnector;
+import User.UserDashboard;
+import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -33,23 +36,46 @@ public class LoginDashboard extends javax.swing.JFrame {
      
     public static boolean loginAcc(String username, String password){
         dbConnector connector = new dbConnector();
+        
         try{
-            String query = "SELECT * FROM tbl_user  WHERE user_name = '" + username + "' AND user_pass = '" + password + "'";
+            
+           String query = "SELECT * FROM tbl_user WHERE user_name = '" + username + "' AND user_pass = '" + password + "'";
             ResultSet resultSet = connector.getData(query);
            if(resultSet.next()){
+               
+               String hashedPass = resultSet.getString("user_pass");
+               String rehashedPass = Passwordhasher.hashPassword("password");
+               
+               System.out.println(""+hashedPass);
+               System.out.println(""+rehashedPass);
+               
+                if(hashedPass.equals(rehashedPass)){    
                status = resultSet.getString("acc_status");
                type = resultSet.getString("acc_type");
                fname = resultSet.getString("user_fname");
                lname = resultSet.getString("user_lname");
                name = resultSet.getString("user_name");
-              
-             return true;  
+               
+                Session sess = Session.getInstance();
+                sess.setUid(resultSet.getInt("user_id"));
+                sess.setFname(resultSet.getString("user_fname"));
+                sess.setLname(resultSet.getString("user_lname"));
+                sess.setEmail(resultSet.getString("user_email"));
+                sess.setUsername(resultSet.getString("user_name"));
+                sess.setType(resultSet.getString("acc_type"));
+                sess.setStatus(resultSet.getString("acc_status"));
+                 return true;
+                 
+                
+                
+                }else{
+                    return false;
+                }
            }else{
                return false;
            }
             
-            
-        }catch (SQLException ex) {
+        }catch (SQLException | NoSuchAlgorithmException ex) {
             return false;
         }
 
@@ -71,13 +97,13 @@ public class LoginDashboard extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        Login = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(204, 102, 255));
+        jPanel1.setBackground(new java.awt.Color(0, 204, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
@@ -99,7 +125,7 @@ public class LoginDashboard extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, -1, -1));
 
-        jPanel2.setBackground(new java.awt.Color(153, 102, 255));
+        jPanel2.setBackground(new java.awt.Color(0, 153, 102));
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jLabel3.setText("Login Form");
@@ -123,14 +149,14 @@ public class LoginDashboard extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 70));
 
-        jButton2.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        jButton2.setText("Login");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Login.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        Login.setText("Login");
+        Login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                LoginActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, -1, -1));
+        jPanel1.add(Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, -1, -1));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -145,7 +171,7 @@ public class LoginDashboard extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, -1, -1));
 
-        jPanel4.setBackground(new java.awt.Color(153, 51, 255));
+        jPanel4.setBackground(new java.awt.Color(0, 153, 153));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -155,10 +181,10 @@ public class LoginDashboard extends javax.swing.JFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 430, Short.MAX_VALUE)
+            .addGap(0, 480, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 140, 430));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 140, 480));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -170,39 +196,44 @@ public class LoginDashboard extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if(loginAcc(user.getText(), pass.getText())){
-        if(!status.equals("Active")){
-            JOptionPane.showMessageDialog(null, "Account is In-Active, Contact the Admin!");
-        }else{
-        JOptionPane.showMessageDialog(null, "Login Successfully!");
-        if(type.equals("Admin")){
-         AdminDashboard ads = new AdminDashboard();
-         ads.Adname.setText(""+name);
-        ads.setVisible(true);
-        this.dispose();
-        }else if(type.equals("User")){
-        UserDashBoard usd = new UserDashBoard();
-        usd.Usname.setText(""+name);
-        usd.setVisible(true);
-        this.dispose();   
-        }else{
-        JOptionPane.showMessageDialog(null, "No account type found, Contact the Admin!");
-        
-        }
+    private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
+
+            if(loginAcc(user.getText(), pass.getText())){
+                if(!status.equals("Active")){
+                    JOptionPane.showMessageDialog(null, "Account is In-Active, Contact the Admin!");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Login Successfully!");
+                    if(type.equals("Admin")){
+                        AdminDashboard ads = new AdminDashboard();
+                        ads.Adname.setText(""+name);
+                        ads.setVisible(true);
+                        this.dispose();
+                    }else if(type.equals("User")){
+                        UserDashboard usd = new UserDashboard();
+                        usd.Usname.setText(""+name);
+                        usd.setVisible(true);
+                        this.dispose();
+                    }else{
+                        JOptionPane.showMessageDialog(null, "No account type found, Contact the Admin!");
+                        
+                    }
+                    
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Invalid Account!");
+            }
        
-        }
-        }else{
-        JOptionPane.showMessageDialog(null, "Invalid Account!");
-        }
-    }//GEN-LAST:event_jButton2ActionPerformed
+        
+    }//GEN-LAST:event_LoginActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
      JOptionPane.showMessageDialog(null,"Exit Success!");
@@ -246,8 +277,8 @@ public class LoginDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Login;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
