@@ -30,55 +30,45 @@ public class LoginDashboard extends javax.swing.JFrame {
     
     static String status;
     static String type;
-    static String fname;
-    static String lname;
-    static String name;
+    
+   
      
     public static boolean loginAcc(String username, String password){
+        
         dbConnector connector = new dbConnector();
         
         try{
-            
-           String query = "SELECT * FROM tbl_user WHERE user_name = '" + username + "' AND user_pass = '" + password + "'";
+            String query = "SELECT * FROM tbl_user  WHERE user_name = '"+username+"'";
             ResultSet resultSet = connector.getData(query);
            if(resultSet.next()){
-               
                String hashedPass = resultSet.getString("user_pass");
-               String rehashedPass = Passwordhasher.hashPassword("password");
+               String rehashedPass = Passwordhasher.hashPassword(password);
                
                System.out.println(""+hashedPass);
                System.out.println(""+rehashedPass);
                
-                if(hashedPass.equals(rehashedPass)){    
-               status = resultSet.getString("acc_status");
-               type = resultSet.getString("acc_type");
-               fname = resultSet.getString("user_fname");
-               lname = resultSet.getString("user_lname");
-               name = resultSet.getString("user_name");
-               
-                Session sess = Session.getInstance();
-                sess.setUid(resultSet.getInt("user_id"));
-                sess.setFname(resultSet.getString("user_fname"));
-                sess.setLname(resultSet.getString("user_lname"));
-                sess.setEmail(resultSet.getString("user_email"));
-                sess.setUsername(resultSet.getString("user_name"));
-                sess.setType(resultSet.getString("acc_type"));
-                sess.setStatus(resultSet.getString("acc_status"));
-                 return true;
-                 
-                
-                
-                }else{
-                    return false;
-                }
-           }else{
-               return false;
-           }
-            
-        }catch (SQLException | NoSuchAlgorithmException ex) {
+               if(hashedPass.equals(rehashedPass)){
+                 status = resultSet.getString("acc_status");
+                 type = resultSet.getString("acc_type");
+                 Session sess = Session.getInstance();
+                 sess.setUid(resultSet.getInt("user_id"));
+                 sess.setFname(resultSet.getString("user_fname"));
+                 sess.setLname(resultSet.getString("user_lname"));
+                 sess.setEmail(resultSet.getString("user_email"));
+                 sess.setUsername(resultSet.getString("user_name"));
+                 sess.setType(resultSet.getString("acc_type"));
+                 sess.setStatus(resultSet.getString("acc_status"));
+                 return true;  
+                 }else{
+                   return false;
+               }
+          
+            }else{
+            return false;
+             }
+           }catch (SQLException | NoSuchAlgorithmException ex) {
             return false;
         }
-
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -100,6 +90,7 @@ public class LoginDashboard extends javax.swing.JFrame {
         Login = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -186,6 +177,17 @@ public class LoginDashboard extends javax.swing.JFrame {
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 140, 480));
 
+        jLabel4.setBackground(new java.awt.Color(153, 153, 255));
+        jLabel4.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(153, 0, 255));
+        jLabel4.setText("No account? Click for registratation");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -211,20 +213,18 @@ public class LoginDashboard extends javax.swing.JFrame {
                 if(!status.equals("Active")){
                     JOptionPane.showMessageDialog(null, "Account is In-Active, Contact the Admin!");
                 }else{
+                     if(type.equals("Admin")){
                     JOptionPane.showMessageDialog(null, "Login Successfully!");
-                    if(type.equals("Admin")){
                         AdminDashboard ads = new AdminDashboard();
-                        ads.Adname.setText(""+name);
                         ads.setVisible(true);
                         this.dispose();
                     }else if(type.equals("User")){
+                        JOptionPane.showMessageDialog(null, "Login Successfully!");
                         UserDashboard usd = new UserDashboard();
-                        usd.Usname.setText(""+name);
                         usd.setVisible(true);
                         this.dispose();
                     }else{
                         JOptionPane.showMessageDialog(null, "No account type found, Contact the Admin!");
-                        
                     }
                     
                 }
@@ -240,6 +240,12 @@ public class LoginDashboard extends javax.swing.JFrame {
      setVisible(false);
      this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+       RegDashboard rd = new RegDashboard();
+       rd.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_jLabel4MouseClicked
     
     /**
      * @param args the command line arguments
@@ -282,6 +288,7 @@ public class LoginDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

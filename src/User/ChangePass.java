@@ -6,19 +6,25 @@
 package User;
 
 
+import Config.Passwordhasher;
 import Config.Session;
+import Config.dbConnector;
+import gymreg.LoginDashboard;
+import java.security.NoSuchAlgorithmException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author John William
  */
-public class AccountDetails extends javax.swing.JFrame {
+public class ChangePass extends javax.swing.JFrame {
 
     /**
      * Creates new form AdminDashboard
      */
-    public AccountDetails() {
+    public ChangePass() {
         initComponents();
     }
 
@@ -42,17 +48,14 @@ public class AccountDetails extends javax.swing.JFrame {
         acc_fn = new javax.swing.JLabel();
         acc_ln = new javax.swing.JLabel();
         acc_ln1 = new javax.swing.JLabel();
-        acc_ln2 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        ut1 = new javax.swing.JComboBox<>();
-        em = new javax.swing.JPasswordField();
-        jLabel5 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        cp = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
-        fn = new javax.swing.JTextField();
+        oldp = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        ln = new javax.swing.JTextField();
+        newp = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        usn = new javax.swing.JTextField();
 
         jLabel1.setText("jLabel1");
 
@@ -122,33 +125,20 @@ public class AccountDetails extends javax.swing.JFrame {
         acc_ln1.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         acc_ln1.setText("USER");
 
-        acc_ln2.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
-        acc_ln2.setText("Change Pass");
-        acc_ln2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                acc_ln2MouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(49, 49, 49)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(acc_ln, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(acc_fn, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(acc_ln, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(acc_fn, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(acc_ln1))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(acc_ln2)))
-                .addContainerGap(39, Short.MAX_VALUE))
+                        .addGap(8, 8, 8)
+                        .addComponent(acc_ln1)))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,40 +151,43 @@ public class AccountDetails extends javax.swing.JFrame {
                 .addComponent(acc_ln)
                 .addGap(39, 39, 39)
                 .addComponent(acc_ln1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(acc_ln2)
-                .addContainerGap(236, Short.MAX_VALUE))
+                .addContainerGap(268, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 170, 470));
 
-        jLabel8.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        jLabel8.setText("Account Type:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, 90, -1));
+        jButton1.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        jButton1.setText("Back");
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 80, -1));
 
-        ut1.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        ut1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Admin" }));
-        jPanel1.add(ut1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, 170, -1));
-        jPanel1.add(em, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, 170, -1));
-
-        jLabel5.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        jLabel5.setText("Username:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, 70, -1));
+        jButton2.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
+        jButton2.setText("Save");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 270, -1, -1));
+        jPanel1.add(cp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, 170, -1));
 
         jLabel4.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        jLabel4.setText("Email:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 40, -1));
-        jPanel1.add(fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 170, -1));
+        jLabel4.setText("Confirm Password:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 100, -1));
+        jPanel1.add(oldp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 170, -1));
 
         jLabel11.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        jLabel11.setText("Last name:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 60, -1));
-        jPanel1.add(ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, 170, -1));
+        jLabel11.setText("New Password:");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(228, 200, -1, -1));
+        jPanel1.add(newp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, 170, -1));
 
         jLabel12.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        jLabel12.setText("First name:");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 60, -1));
-        jPanel1.add(usn, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 170, -1));
+        jLabel12.setText("Old Password:");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(234, 170, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -204,7 +197,9 @@ public class AccountDetails extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -221,19 +216,49 @@ public class AccountDetails extends javax.swing.JFrame {
     Session sess = Session.getInstance();
         
         uid.setText("USER ID:"+sess.getUid());
-        fn.setText(""+sess.getFname());
-        ln.setText(""+sess.getLname());
-        em.setText(""+sess.getEmail());
-         usn.setText(""+sess.getUsername());
+        oldp.setText(""+sess.getFname());
+        newp.setText(""+sess.getLname());
+        cp.setText(""+sess.getEmail());
+//         usn.setText(""+sess.getUsername());
            
       
     }//GEN-LAST:event_formWindowActivated
 
-    private void acc_ln2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acc_ln2MouseClicked
-      ChangePass cp = new ChangePass();
-      cp.setVisible(true);
-       this.dispose();      
-    }//GEN-LAST:event_acc_ln2MouseClicked
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+  try{
+       dbConnector dbc = new dbConnector();
+        Session sess = Session.getInstance();
+       
+       String query = "SELECT * FROM tbl_user WHERE user_id = '"+sess.getUid()+"'";
+       ResultSet rs = dbc.getData(query);
+       if(rs.next()){
+           String oldpass = rs.getString("user_pass");
+           String oldhash = Passwordhasher.hashPassword(oldp.getText());
+           
+           if(oldpass.equals(oldhash)){
+            String npass = Passwordhasher.hashPassword(newp.getText());    
+           dbc.updateData("UPDATE tbl_user SET user_pass = '"+npass+"'");
+            String conpass = Passwordhasher.hashPassword(cp.getText());    
+           dbc.updateData("UPDATE tbl_user SET  user_pass = '"+conpass+"'");
+       
+           JOptionPane.showMessageDialog(null, "SUCCESSFULLY UPDATE");
+           LoginDashboard lf = new LoginDashboard();
+           lf.setVisible(true);
+           this.dispose();
+       
+           }else{
+               JOptionPane.showMessageDialog(null, "OLD PASSWORD IS INCORRECT");
+           }
+       }
+        }catch(SQLException | NoSuchAlgorithmException ex){
+            System.out.println(""+ex);
+        }     
+    }//GEN-LAST:event_jButton2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -252,14 +277,18 @@ public class AccountDetails extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AccountDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChangePass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AccountDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChangePass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AccountDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChangePass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AccountDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChangePass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -268,7 +297,7 @@ public class AccountDetails extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AccountDetails().setVisible(true);
+                new ChangePass().setVisible(true);
             }
         });
     }
@@ -277,9 +306,9 @@ public class AccountDetails extends javax.swing.JFrame {
     public javax.swing.JLabel acc_fn;
     public javax.swing.JLabel acc_ln;
     public javax.swing.JLabel acc_ln1;
-    public javax.swing.JLabel acc_ln2;
-    private javax.swing.JPasswordField em;
-    private javax.swing.JTextField fn;
+    private javax.swing.JPasswordField cp;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -287,14 +316,11 @@ public class AccountDetails extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField ln;
+    private javax.swing.JTextField newp;
+    private javax.swing.JTextField oldp;
     public javax.swing.JLabel uid;
-    private javax.swing.JTextField usn;
-    private javax.swing.JComboBox<String> ut1;
     // End of variables declaration//GEN-END:variables
 }
