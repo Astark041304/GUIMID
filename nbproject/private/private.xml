@@ -5,11 +5,15 @@
         <group>
             <file>file:/C:/Users/John%20William/GUIMID/src/Admin/AdminDashboard.java</file>
             <file>file:/C:/Users/John%20William/GUIMID/src/gymreg/LoginDashboard.java</file>
-            <file>file:/C:/Users/John%20William/GUIMID/src/Admin/UserDashBoard.java</file>
+            <file>file:/C:/Users/John%20William/GUIMID/src/gymreg/RegDashboard.java</file>
             <file>file:/C:/Users/John%20William/GUIMID/src/Admin/createUserForm.java</file>
-            <file>file:/C:/Users/John%20William/GUIMID/src/Admin/UsersForm1.java</file>
+            <file>file:/C:/Users/John%20William/GUIMID/src/Config/Session.java</file>
+            <file>file:/C:/Users/John%20William/GUIMID/src/User/UserDashboard.java</file>
             <file>file:/C:/Users/John%20William/GUIMID/src/gymreg/GymReg.java</file>
             <file>file:/C:/Users/John%20William/GUIMID/src/Config/dbConnector.java</file>
+            <file>file:/C:/Users/John%20William/GUIMID/src/User/AccountDetails.java</file>
+            <file>file:/C:/Users/John%20William/GUIMID/src/Admin/AdminForm.java</file>
+            <file>file:/C:/Users/John%20William/GUIMID/src/User/ChangePass.java</file>
         </group>
     </open-files>
 </project-private>

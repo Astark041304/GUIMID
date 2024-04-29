@@ -158,7 +158,7 @@ public class ChangePass extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jButton1.setText("Back");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 80, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, 80, -1));
 
         jButton2.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
         jButton2.setText("Save");
