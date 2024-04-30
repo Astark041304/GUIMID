@@ -118,6 +118,7 @@ public class createUserForm extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         Back = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         uid = new javax.swing.JTextField();
         ln = new javax.swing.JTextField();
         em = new javax.swing.JTextField();
@@ -127,7 +128,6 @@ public class createUserForm extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         us = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
         fn = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         cancel = new javax.swing.JButton();
@@ -139,6 +139,7 @@ public class createUserForm extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         Editbg = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
+        uid1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -151,23 +152,23 @@ public class createUserForm extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel1.setText("First name:");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, -1));
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel2.setText("Last name:");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, -1, -1));
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 60, -1));
 
         jLabel4.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel4.setText("Email:");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 202, -1, -1));
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel5.setText("Username:");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 233, -1, -1));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel6.setText("Password:");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 264, -1, -1));
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, -1, -1));
 
         Back.setFont(new java.awt.Font("Yu Gothic Medium", 1, 24)); // NOI18N
         Back.setText("Back");
@@ -178,33 +179,33 @@ public class createUserForm extends javax.swing.JFrame {
         });
         jPanel3.add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        jLabel3.setText("User Id:");
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, 10));
+
         uid.setEnabled(false);
-        jPanel3.add(uid, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 187, -1));
-        jPanel3.add(ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 187, -1));
-        jPanel3.add(em, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 187, -1));
-        jPanel3.add(usern, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 187, -1));
-        jPanel3.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(139, 261, 187, -1));
+        jPanel3.add(uid, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 200, 30));
+        jPanel3.add(ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 200, 30));
+        jPanel3.add(em, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 200, 30));
+        jPanel3.add(usern, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 200, 30));
+        jPanel3.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 200, 30));
 
         at.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         at.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Admin" }));
-        jPanel3.add(at, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 187, -1));
+        jPanel3.add(at, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 187, -1));
 
         jLabel8.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel8.setText("Account Type:");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, -1, -1));
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, -1, 20));
 
         jLabel11.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel11.setText("User Status:");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 321, -1, -1));
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, -1, -1));
 
         us.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         us.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Pending" }));
         jPanel3.add(us, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, 187, -1));
-
-        jLabel3.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        jLabel3.setText("User Id:");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, -1));
-        jPanel3.add(fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 187, -1));
+        jPanel3.add(fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 200, 30));
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(204, 204, 255)));
 
@@ -349,6 +350,9 @@ public class createUserForm extends javax.swing.JFrame {
         );
 
         jPanel3.add(Editbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, 60));
+
+        uid1.setEnabled(false);
+        jPanel3.add(uid1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 200, 30));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 410, 480));
 
@@ -525,6 +529,7 @@ public class createUserForm extends javax.swing.JFrame {
     public javax.swing.JTextField pass;
     private javax.swing.JButton refresh;
     public javax.swing.JTextField uid;
+    public javax.swing.JTextField uid1;
     public javax.swing.JButton update;
     public javax.swing.JComboBox<String> us;
     public javax.swing.JTextField usern;
