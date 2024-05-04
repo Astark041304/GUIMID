@@ -204,7 +204,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             .addGap(0, 106, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, 570, 110));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, 570, 110));
 
         jPanel8.setBackground(new java.awt.Color(130, 202, 255));
         jPanel8.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(204, 255, 255), new java.awt.Color(204, 204, 255)));

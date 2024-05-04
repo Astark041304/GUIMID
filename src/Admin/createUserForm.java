@@ -32,7 +32,7 @@ public class createUserForm extends javax.swing.JFrame {
         dbConnector dbc = new dbConnector();
         
         try{
-            String query = "SELECT * FROM tbl_user  WHERE user_name = '" +usern.getText()+ "' OR user_email = '" +em.getText()+ "'";
+            String query = "SELECT * FROM tbl_user  WHERE user_name = '" + usern.getText()+ "' OR user_email = '" +em.getText()+ "'";
             ResultSet resultSet = dbc.getData(query);
             
             if(resultSet.next()){
