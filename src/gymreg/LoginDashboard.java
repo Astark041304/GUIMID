@@ -9,7 +9,7 @@ import Admin.AdminDashboard;
 import Config.Passwordhasher;
 import Config.Session;
 import Config.dbConnector;
-import User.UserDashboard;
+import DessertMenu.UserDashboard;
 import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -110,10 +110,10 @@ public class LoginDashboard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(206, 198, 224));
+        jPanel1.setBackground(new java.awt.Color(31, 27, 27));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel5.setBackground(new java.awt.Color(244, 246, 247));
+        jPanel5.setBackground(new java.awt.Color(94, 160, 194));
         jPanel5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel5.add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 171, -1));
@@ -184,8 +184,6 @@ public class LoginDashboard extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Yu Gothic Medium", 3, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
         jLabel8.setText("Restaruant Menu and  Order Tracker");
-
-        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\John William\\Downloads\\icons8-restaurant-65.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

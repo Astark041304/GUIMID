@@ -291,8 +291,8 @@ public class createUserForm extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(add)
-                    .addComponent(clear))
+                    .addComponent(clear)
+                    .addComponent(add))
                 .addGap(50, 50, 50)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(update)
@@ -330,7 +330,6 @@ public class createUserForm extends javax.swing.JFrame {
 
         jLabel7.setBackground(new java.awt.Color(215, 220, 224));
         jLabel7.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\John William\\Downloads\\icons8-edit-40.png")); // NOI18N
         jLabel7.setText("Editing");
 
         javax.swing.GroupLayout EditbgLayout = new javax.swing.GroupLayout(Editbg);

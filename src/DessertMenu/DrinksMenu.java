@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package User;
+package DessertMenu;
 
 
 import Config.Session;
@@ -14,12 +14,12 @@ import javax.swing.JOptionPane;
  *
  * @author John William
  */
-public class UserDashboard extends javax.swing.JFrame {
+public class DrinksMenu extends javax.swing.JFrame {
 
     /**
      * Creates new form AdminDashboard
      */
-    public UserDashboard() {
+    public DrinksMenu() {
         initComponents();
     }
 
@@ -34,6 +34,7 @@ public class UserDashboard extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         panel1 = new java.awt.Panel();
+        jMenu1 = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -48,6 +49,7 @@ public class UserDashboard extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
 
         jLabel1.setText("jLabel1");
 
@@ -62,6 +64,8 @@ public class UserDashboard extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
+        jMenu1.setText("jMenu1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
@@ -69,10 +73,10 @@ public class UserDashboard extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(206, 198, 224));
+        jPanel1.setBackground(new java.awt.Color(31, 27, 27));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(244, 246, 247));
+        jPanel2.setBackground(new java.awt.Color(94, 160, 194));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-user-65.png"))); // NOI18N
@@ -87,8 +91,9 @@ public class UserDashboard extends javax.swing.JFrame {
         jPanel2.add(Lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 53, 65, -1));
 
         uid.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
+        uid.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         uid.setText("Id");
-        jPanel2.add(uid, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 40, -1));
+        jPanel2.add(uid, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 40, -1));
 
         jSeparator1.setBackground(new java.awt.Color(130, 202, 255));
         jSeparator1.setForeground(new java.awt.Color(204, 204, 255));
@@ -113,8 +118,9 @@ public class UserDashboard extends javax.swing.JFrame {
         jPanel2.add(Em, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 150, -1));
 
         Id.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
+        Id.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Id.setText("Uid:");
-        jPanel2.add(Id, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 40, -1));
+        jPanel2.add(Id, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 40, -1));
 
         jLabel11.setFont(new java.awt.Font("Yu Gothic Medium", 3, 12)); // NOI18N
         jLabel11.setText("User Info");
@@ -122,28 +128,17 @@ public class UserDashboard extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 580));
 
-        jPanel3.setBackground(new java.awt.Color(244, 246, 247));
+        jPanel3.setBackground(new java.awt.Color(94, 160, 194));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic Medium", 1, 11)); // NOI18N
-        jLabel3.setText("Food Menu");
+        jLabel3.setText("Drinks Menu");
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabel3)
-                .addGap(163, 163, 163))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel3)
-                .addGap(371, 371, 371))
-        );
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 190, -1, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 430, 390));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 550, 520));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -202,21 +197,27 @@ public class UserDashboard extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UserDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DrinksMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UserDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DrinksMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UserDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DrinksMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UserDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DrinksMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UserDashboard().setVisible(true);
+                new DrinksMenu().setVisible(true);
             }
         });
     }
@@ -231,9 +232,11 @@ public class UserDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private java.awt.Panel panel1;
