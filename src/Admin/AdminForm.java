@@ -101,7 +101,7 @@ public class AdminForm extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(15, 8, 38));
+        jPanel1.setBackground(new java.awt.Color(31, 27, 27));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Userstable.setAutoCreateRowSorter(true);
@@ -213,7 +213,7 @@ public class AdminForm extends javax.swing.JFrame {
 
         jPanel1.add(p_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 450, 140, -1));
 
-        jPanel6.setBackground(new java.awt.Color(215, 220, 224));
+        jPanel6.setBackground(new java.awt.Color(94, 160, 194));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-user-65.png"))); // NOI18N

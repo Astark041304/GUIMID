@@ -77,7 +77,7 @@ public class StaffDashboard extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(15, 8, 38));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(215, 220, 224));
+        jPanel2.setBackground(new java.awt.Color(94, 160, 194));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-user-65.png"))); // NOI18N
@@ -125,7 +125,7 @@ public class StaffDashboard extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 580));
 
-        jPanel3.setBackground(new java.awt.Color(215, 220, 224));
+        jPanel3.setBackground(new java.awt.Color(94, 160, 194));
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic Medium", 1, 11)); // NOI18N
         jLabel3.setText("Staff Tab");

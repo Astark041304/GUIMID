@@ -6,6 +6,7 @@
 package Admin;
 
 import Config.dbConnector;
+import gymreg.LoginDashboard;
 import static gymreg.RegDashboard.email;
 import static gymreg.RegDashboard.usname;
 import java.sql.ResultSet;
@@ -143,7 +144,7 @@ public class createUserForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(15, 8, 38));
+        jPanel1.setBackground(new java.awt.Color(31, 27, 27));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(94, 160, 194));
@@ -421,28 +422,34 @@ public class createUserForm extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteActionPerformed
 
     private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
-         if(uid.getText().isEmpty() || fn.getText().isEmpty() || ln.getText().isEmpty() || em.getText().isEmpty() || usern.getText().isEmpty() || pass.getText().isEmpty()){
-         JOptionPane.showMessageDialog(null, "All fields are required!");   
-        }else if(pass.getText().length()<8){
-         JOptionPane.showMessageDialog(null, "Password character should be 8 above");
-         pass.setText("");
+         if(fn.getText().isEmpty()|| ln.getText().isEmpty() || em.getText().isEmpty()
+                || usern.getText().isEmpty()|| pass.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "All fields are required!");
+        }else if(pass.getText().length() < 8){
+            JOptionPane.showMessageDialog(null, "Characters password is 8 above!");
+            pass.setText("");
         }else if(duplicateCheck()){
-        System.out.println("Duplicate Exist");
+            System.out.println("Duplicate Exist!");
+            
         }else{
-        dbConnector dbc = new dbConnector();
+            
+             dbConnector dbc = new dbConnector();
+       
+      if (dbc.insertData("INSERT INTO tbl_user (user_fname, user_lname, user_email, user_name, user_pass, acc_type, acc_status) VALUES('"
+     + fn.getText() + "','"+ln.getText()+"','"+ em.getText() + "','" 
+     + usern.getText() + "','" + pass.getText() + "','" + at.getSelectedItem() + "','"+us.getSelectedItem()+"')")){
+          
         
-        if(dbc.insertData("INSERT INTO tbl_user(user_fname, user_lname, user_email, user_name, user_pass, acc_type, acc_status)"
-                + "VALUES('"+fn.getText()+"', '"+ln.getText()+"', '"+em.getText()+"', '"+usern.getText()+"', '"+pass.getText()+"', '"+at.getSelectedItem()+"', 'Pending')"))
-               {
-          JOptionPane.showMessageDialog(null, "Registration Success !"); 
-          AdminForm adf = new AdminForm();
-          adf.setVisible(true);
+          JOptionPane.showMessageDialog(null, "Inserted Successfully!");
+          LoginDashboard lgd = new LoginDashboard();
+          lgd.setVisible(true);
           this.dispose();
-        }else{
-          JOptionPane.showMessageDialog(null, "Connection Error!"); 
-           }
-      
-    }                                        
+          
+      }else{
+          JOptionPane.showMessageDialog(null, "Connection Error!");
+      }
+            
+        }                    
            
     }//GEN-LAST:event_addMouseClicked
 
