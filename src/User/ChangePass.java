@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DessertMenu;
+package User;
 
 
 import Config.Passwordhasher;
@@ -70,10 +70,10 @@ public class ChangePass extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(15, 8, 38));
+        jPanel1.setBackground(new java.awt.Color(31, 27, 27));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(215, 220, 224));
+        jPanel2.setBackground(new java.awt.Color(94, 160, 194));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-user-65.png"))); // NOI18N
 
@@ -150,7 +150,7 @@ public class ChangePass extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic Medium", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Account Information");
+        jLabel3.setText("Password Settings");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 190, -1));
 
         jPanel3.setBackground(new java.awt.Color(130, 202, 255));
@@ -237,7 +237,7 @@ public class ChangePass extends javax.swing.JFrame {
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 290, 40));
 
-        jPanel6.setBackground(new java.awt.Color(51, 141, 163));
+        jPanel6.setBackground(new java.awt.Color(15, 8, 38));
 
         jPanel7.setBackground(new java.awt.Color(25, 59, 124));
         jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 142, 160)));

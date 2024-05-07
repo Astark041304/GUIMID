@@ -146,7 +146,7 @@ public class createUserForm extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(15, 8, 38));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel3.setBackground(new java.awt.Color(215, 220, 224));
+        jPanel3.setBackground(new java.awt.Color(94, 160, 194));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(204, 255, 255), new java.awt.Color(204, 204, 255)));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -421,7 +421,7 @@ public class createUserForm extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteActionPerformed
 
     private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
-         if(uid.getText() .isEmpty() ||fn.getText().isEmpty()||ln.getText().isEmpty()||em.getText().isEmpty()||usern.getText().isEmpty()||pass.getText().isEmpty()){
+         if(uid.getText().isEmpty() || fn.getText().isEmpty() || ln.getText().isEmpty() || em.getText().isEmpty() || usern.getText().isEmpty() || pass.getText().isEmpty()){
          JOptionPane.showMessageDialog(null, "All fields are required!");   
         }else if(pass.getText().length()<8){
          JOptionPane.showMessageDialog(null, "Password character should be 8 above");

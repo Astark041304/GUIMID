@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DessertMenu;
+package User;
 
 
 import Config.Session;
@@ -13,12 +13,12 @@ import javax.swing.JOptionPane;
  *
  * @author John William
  */
-public class AccountDetails extends javax.swing.JFrame {
+public class AccountSettings extends javax.swing.JFrame {
 
     /**
      * Creates new form AdminDashboard
      */
-    public AccountDetails() {
+    public AccountSettings() {
         initComponents();
     }
 
@@ -38,13 +38,11 @@ public class AccountDetails extends javax.swing.JFrame {
         acc_fn = new javax.swing.JLabel();
         acc_ln = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jPanel3 = new javax.swing.JPanel();
-        acc_ln2 = new javax.swing.JLabel();
-        acc_ln1 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        Em = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
         jLabel8 = new javax.swing.JLabel();
         ut1 = new javax.swing.JComboBox<>();
-        em = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         fn = new javax.swing.JTextField();
@@ -56,6 +54,9 @@ public class AccountDetails extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         uid = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        em = new javax.swing.JTextField();
+        jPanel4 = new javax.swing.JPanel();
+        acc_ln2 = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
@@ -66,65 +67,26 @@ public class AccountDetails extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(15, 8, 38));
+        jPanel1.setBackground(new java.awt.Color(31, 27, 27));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(215, 220, 224));
+        jPanel2.setBackground(new java.awt.Color(94, 160, 194));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-user-65.png"))); // NOI18N
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
         acc_fn.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
-        acc_fn.setText("acc_fn");
-        jPanel2.add(acc_fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 87, 65, -1));
+        acc_fn.setText("user_fn");
+        jPanel2.add(acc_fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 87, 80, -1));
 
         acc_ln.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
-        acc_ln.setText("acc_ln");
+        acc_ln.setText("user_ln");
         jPanel2.add(acc_ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 127, 65, -1));
 
         jSeparator1.setBackground(new java.awt.Color(130, 202, 255));
         jSeparator1.setForeground(new java.awt.Color(204, 204, 255));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 180, -1));
-
-        jPanel3.setBackground(new java.awt.Color(201, 185, 185));
-
-        acc_ln2.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
-        acc_ln2.setText("Change Pass");
-        acc_ln2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                acc_ln2MouseClicked(evt);
-            }
-        });
-
-        acc_ln1.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
-        acc_ln1.setText("USER");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(acc_ln1))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(acc_ln2)))
-                .addContainerGap(45, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(acc_ln1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(acc_ln2)
-                .addContainerGap(33, Short.MAX_VALUE))
-        );
-
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 180, 110));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 180, -1));
 
         jButton3.setBackground(new java.awt.Color(130, 202, 255));
         jButton3.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
@@ -135,6 +97,14 @@ public class AccountDetails extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 510, -1, -1));
+
+        Em.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
+        Em.setText("Email");
+        jPanel2.add(Em, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 150, -1));
+
+        jSeparator2.setBackground(new java.awt.Color(130, 202, 255));
+        jSeparator2.setForeground(new java.awt.Color(204, 204, 255));
+        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 180, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 550));
 
@@ -147,7 +117,6 @@ public class AccountDetails extends javax.swing.JFrame {
         ut1.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         ut1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Admin" }));
         jPanel1.add(ut1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, 170, -1));
-        jPanel1.add(em, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, 170, -1));
 
         jLabel5.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -172,7 +141,7 @@ public class AccountDetails extends javax.swing.JFrame {
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 60, -1));
         jPanel1.add(usn, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 170, -1));
 
-        jPanel6.setBackground(new java.awt.Color(51, 141, 163));
+        jPanel6.setBackground(new java.awt.Color(15, 8, 38));
 
         jPanel7.setBackground(new java.awt.Color(25, 59, 124));
         jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 142, 160)));
@@ -199,7 +168,7 @@ public class AccountDetails extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic Medium", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Account Information");
+        jLabel3.setText("Account Settings");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -223,6 +192,34 @@ public class AccountDetails extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 570, 50));
+        jPanel1.add(em, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, 170, -1));
+
+        acc_ln2.setFont(new java.awt.Font("Yu Gothic Medium", 1, 18)); // NOI18N
+        acc_ln2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        acc_ln2.setText("Change Pass");
+        acc_ln2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                acc_ln2MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(12, Short.MAX_VALUE)
+                .addComponent(acc_ln2)
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(acc_ln2))
+        );
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 320, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -251,17 +248,17 @@ public class AccountDetails extends javax.swing.JFrame {
       
     }//GEN-LAST:event_formWindowActivated
 
-    private void acc_ln2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acc_ln2MouseClicked
-      ChangePass cp = new ChangePass();
-      cp.setVisible(true);
-       this.dispose();      
-    }//GEN-LAST:event_acc_ln2MouseClicked
-
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         JOptionPane.showMessageDialog(null,"Logout Success!");
         setVisible(false);
         this.dispose();
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void acc_ln2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acc_ln2MouseClicked
+        ChangePass cp = new ChangePass();
+        cp.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_acc_ln2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -280,14 +277,18 @@ public class AccountDetails extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AccountDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AccountSettings.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AccountDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AccountSettings.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AccountDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AccountSettings.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AccountDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AccountSettings.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -296,17 +297,17 @@ public class AccountDetails extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AccountDetails().setVisible(true);
+                new AccountSettings().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JLabel Em;
     public javax.swing.JLabel acc_fn;
     public javax.swing.JLabel acc_ln;
-    public javax.swing.JLabel acc_ln1;
-    public javax.swing.JLabel acc_ln2;
-    private javax.swing.JPasswordField em;
+    private javax.swing.JLabel acc_ln2;
+    private javax.swing.JTextField em;
     private javax.swing.JTextField fn;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
@@ -319,10 +320,11 @@ public class AccountDetails extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField ln;
     public javax.swing.JLabel uid;
     private javax.swing.JTextField usn;

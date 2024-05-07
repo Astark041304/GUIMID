@@ -9,7 +9,8 @@ import Admin.AdminDashboard;
 import Config.Passwordhasher;
 import Config.Session;
 import Config.dbConnector;
-import DessertMenu.UserDashboard;
+import Staff.StaffDashboard;
+import User.UserDashboard;
 import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -245,9 +246,16 @@ public class LoginDashboard extends javax.swing.JFrame {
                 UserDashboard userDashboard = new UserDashboard();
                 userDashboard.setVisible(true);
                 this.dispose();
-            } else {
-                JOptionPane.showMessageDialog(null, "No account type found. Contact the Admin!");
-            }
+            } else if(type.equals("Staff")) {
+                JOptionPane.showMessageDialog(null, "Login Successful!");
+                 StaffDashboard sdd = new StaffDashboard();
+                sdd.setVisible(true);
+                this.dispose();
+                
+            }else{
+                    JOptionPane.showMessageDialog(null, "No account type found. Contact the Admin!");
+                    }
+            
         }
     }
 } else {
