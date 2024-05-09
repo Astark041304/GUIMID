@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package User;
+package Cashier;
+
 
 
 
@@ -40,7 +41,7 @@ public class UsersOrder extends javax.swing.JFrame {
     public void displayData(){
            try{
             dbConnector dbc = new dbConnector();
-            ResultSet rs = dbc.getData("SELECT food_id, food_name, food_meals, food_drinks, food_dessert FROM tbl_user");
+            ResultSet rs = dbc.getData("SELECT product_id, product_name, product_type, product_status, product_quantity, product_price FROM tbl_product");
             Userstable.setModel(DbUtils.resultSetToTableModel(rs));
              rs.close();
         }catch(SQLException ex){
@@ -81,7 +82,7 @@ public class UsersOrder extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         p_add = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -109,20 +110,20 @@ public class UsersOrder extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(Userstable);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 650, 400));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 660, 400));
 
         jPanel2.setBackground(new java.awt.Color(0, 153, 153));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-users-50.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic Medium", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("User Order");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, -1, -1));
+        jLabel3.setText("Order Tab");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, -1, -1));
 
         jLabel2.setText("jLabel2");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, -1, -1));
@@ -143,28 +144,29 @@ public class UsersOrder extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         jLabel8.setText("Edit");
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\SCC-COLLEGE\\Downloads\\icons8-edit-65.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-edit-40.png"))); // NOI18N
 
         javax.swing.GroupLayout p_editLayout = new javax.swing.GroupLayout(p_edit);
         p_edit.setLayout(p_editLayout);
         p_editLayout.setHorizontalGroup(
             p_editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, p_editLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(p_editLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         p_editLayout.setVerticalGroup(
             p_editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, p_editLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel8)
-                .addGap(21, 21, 21))
+            .addGroup(p_editLayout.createSequentialGroup()
+                .addGroup(p_editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jPanel1.add(p_edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, 140, 70));
+        jPanel1.add(p_edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, 140, 50));
 
         p_add.setBackground(new java.awt.Color(130, 202, 255));
         p_add.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -182,35 +184,35 @@ public class UsersOrder extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         jLabel7.setText("Add");
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\SCC-COLLEGE\\Downloads\\icons8-add-65.png")); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-add-35.png"))); // NOI18N
 
         javax.swing.GroupLayout p_addLayout = new javax.swing.GroupLayout(p_add);
         p_add.setLayout(p_addLayout);
         p_addLayout.setHorizontalGroup(
             p_addLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, p_addLayout.createSequentialGroup()
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE))
+            .addGroup(p_addLayout.createSequentialGroup()
+                .addContainerGap(39, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel9)
+                .addGap(25, 25, 25))
         );
         p_addLayout.setVerticalGroup(
             p_addLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(p_addLayout.createSequentialGroup()
-                .addComponent(jLabel6)
-                .addGap(0, 5, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, p_addLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addGap(21, 21, 21))
+                .addGroup(p_addLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
-        jPanel1.add(p_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, 140, 70));
+        jPanel1.add(p_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 90, 140, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,71 +228,6 @@ public class UsersOrder extends javax.swing.JFrame {
 
     }//GEN-LAST:event_UserstableMouseClicked
 
-    private void p_addMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_addMouseEntered
-       p_add.setBackground(hovercolor);
-       
-    }//GEN-LAST:event_p_addMouseEntered
-
-    private void p_addMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_addMouseExited
-        p_add.setBackground(navcolor);
-    }//GEN-LAST:event_p_addMouseExited
-
-    private void p_addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_addMouseClicked
-       createUserForm cuf = new createUserForm();
-       cuf.setVisible(true);
-       this.dispose();
-               
-    }//GEN-LAST:event_p_addMouseClicked
-
-    private void p_editMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_editMouseClicked
-       int rowIndex = Userstable.getSelectedRow();
-       
-       if(rowIndex < 0){
-        JOptionPane.showMessageDialog(null, "Please select an Item!");
-    }else{
-          
-            try{
-            dbConnector dbc = new dbConnector();
- 
-            TableModel tbl = Userstable.getModel();
-            
-            ResultSet rs = dbc.getData("SELECT * FROM tbl_user Where user_id = '"+tbl.getValueAt(rowIndex, 0)+"'");
-            if(rs.next()){
-                createUserForm cuf = new createUserForm();
-                cuf.setVisible(true);
-                this.dispose();
-                
-                
-                cuf.fn.setText(""+rs.getString("user_fname"));
-                cuf.em.setText(""+rs.getString("user_email"));
-                cuf.ln.setText(""+rs.getString("user_lname"));
-                cuf.pass.setText(""+rs.getString("user_pass"));
-                cuf.usern.setText(""+rs.getString("user_name"));
-                cuf.uid.setText(""+rs.getInt("user_id"));
-                cuf.at.setSelectedItem(""+rs.getString("acc_type"));
-                cuf.us.setSelectedItem(""+rs.getString("acc_status"));
-                cuf.add.setEnabled(false);
-                cuf.update.setEnabled(true);
-                cuf.setVisible(true);
-                this.dispose();
-            }
-           
-            
-            }catch(SQLException ex){
-                System.out.println(""+ex);
-            }
-       }
-      
-    }//GEN-LAST:event_p_editMouseClicked
-
-    private void p_editMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_editMouseEntered
-         p_edit.setBackground(hovercolor);
-    }//GEN-LAST:event_p_editMouseEntered
-
-    private void p_editMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_editMouseExited
-        p_edit.setBackground(navcolor);
-    }//GEN-LAST:event_p_editMouseExited
-
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
           Session sess = Session.getInstance();
        
@@ -301,6 +238,66 @@ public class UsersOrder extends javax.swing.JFrame {
            this.dispose();      
      
     }//GEN-LAST:event_formWindowActivated
+
+    private void p_editMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_editMouseClicked
+        int rowIndex = Userstable.getSelectedRow();
+
+        if(rowIndex < 0){
+            JOptionPane.showMessageDialog(null, "Please select a User!");
+        }else{
+
+            try{
+                dbConnector dbc = new dbConnector();
+
+                TableModel tbl = Userstable.getModel();
+
+                ResultSet rs = dbc.getData("SELECT * FROM tbl_user Where user_id = '"+tbl.getValueAt(rowIndex, 0)+"'");
+                if(rs.next()){
+                    createUserForm cuf = new createUserForm();
+                    cuf.setVisible(true);
+                    this.dispose();
+
+                    cuf.fn.setText(""+rs.getString("user_fname"));
+                    cuf.em.setText(""+rs.getString("user_email"));
+                    cuf.ln.setText(""+rs.getString("user_lname"));
+                    cuf.pass.setText(""+rs.getString("user_pass"));
+                    cuf.usern.setText(""+rs.getString("user_name"));
+                    cuf.uid.setText(""+rs.getInt("user_id"));
+                    cuf.at.setSelectedItem(""+rs.getString("acc_type"));
+                    cuf.us.setSelectedItem(""+rs.getString("acc_status"));
+                    cuf.add.setEnabled(false);
+                    cuf.update.setEnabled(true);
+                    cuf.setVisible(true);
+                    this.dispose();
+                }
+
+            }catch(SQLException ex){
+                System.out.println(""+ex);
+            }
+        }
+    }//GEN-LAST:event_p_editMouseClicked
+
+    private void p_editMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_editMouseEntered
+        p_edit.setBackground(hovercolor);
+    }//GEN-LAST:event_p_editMouseEntered
+
+    private void p_editMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_editMouseExited
+        p_edit.setBackground(navcolor);
+    }//GEN-LAST:event_p_editMouseExited
+
+    private void p_addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_addMouseClicked
+        createUserForm cuf = new createUserForm();
+        cuf.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_p_addMouseClicked
+
+    private void p_addMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_addMouseEntered
+        p_add.setBackground(hovercolor);
+    }//GEN-LAST:event_p_addMouseEntered
+
+    private void p_addMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_addMouseExited
+        p_add.setBackground(navcolor);
+    }//GEN-LAST:event_p_addMouseExited
  }
     /**
      * @param args the command line arguments
@@ -359,6 +356,38 @@ public class UsersOrder extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -376,9 +405,9 @@ public class UsersOrder extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

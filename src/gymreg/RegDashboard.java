@@ -151,7 +151,7 @@ public class RegDashboard extends javax.swing.JFrame {
 
         ut1.setBackground(new java.awt.Color(130, 202, 255));
         ut1.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        ut1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Admin", "Staff" }));
+        ut1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cashier", "Admin", " " }));
         jPanel3.add(ut1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 187, -1));
 
         jLabel8.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N

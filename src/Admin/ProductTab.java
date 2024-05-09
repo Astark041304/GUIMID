@@ -21,12 +21,12 @@ import net.proteanit.sql.DbUtils;
  *
  * @author John William
  */
-public class AdminForm extends javax.swing.JFrame {
+public class ProductTab extends javax.swing.JFrame {
 
     /**
      * Creates new form AdminDashboard
      */
-    public AdminForm() {
+    public ProductTab() {
         initComponents();
         displayData();
         
@@ -38,7 +38,7 @@ public class AdminForm extends javax.swing.JFrame {
     public void displayData(){
            try{
             dbConnector dbc = new dbConnector();
-            ResultSet rs = dbc.getData("SELECT user_id, user_fname, user_lname, user_email, acc_type, acc_status FROM tbl_user");
+            ResultSet rs = dbc.getData("SELECT product_id, product_name, product_type, product_status, product_quantity, product_price FROM tbl_product");
             Userstable.setModel(DbUtils.resultSetToTableModel(rs));
              rs.close();
         }catch(SQLException ex){
@@ -75,12 +75,6 @@ public class AdminForm extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         back = new javax.swing.JLabel();
-        p_edit = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        p_add = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         Adname = new javax.swing.JLabel();
@@ -91,6 +85,12 @@ public class AdminForm extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         Em = new javax.swing.JLabel();
         Id = new javax.swing.JLabel();
+        p_edit = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        p_add = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -129,7 +129,7 @@ public class AdminForm extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic Medium", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Users Tab");
+        jLabel3.setText("Product Tab");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, -1, -1));
 
         jLabel2.setText("jLabel2");
@@ -144,6 +144,52 @@ public class AdminForm extends javax.swing.JFrame {
             }
         });
         jPanel1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, -1, -1));
+
+        jPanel6.setBackground(new java.awt.Color(94, 160, 194));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-user-65.png"))); // NOI18N
+        jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
+
+        Adname.setFont(new java.awt.Font("Yu Gothic Medium", 1, 18)); // NOI18N
+        Adname.setText("Admin");
+        jPanel6.add(Adname, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 17, 65, -1));
+
+        Lname.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
+        Lname.setText("Admin");
+        jPanel6.add(Lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 53, 65, -1));
+
+        uid.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
+        uid.setText("Id");
+        jPanel6.add(uid, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 40, -1));
+
+        jSeparator2.setBackground(new java.awt.Color(130, 202, 255));
+        jSeparator2.setForeground(new java.awt.Color(204, 204, 255));
+        jPanel6.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 180, -1));
+
+        jButton3.setBackground(new java.awt.Color(130, 202, 255));
+        jButton3.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        jButton3.setText("Logout");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+        jPanel6.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 530, -1, -1));
+
+        jSeparator3.setBackground(new java.awt.Color(130, 202, 255));
+        jSeparator3.setForeground(new java.awt.Color(204, 204, 255));
+        jPanel6.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 180, -1));
+
+        Em.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
+        Em.setText("Email");
+        jPanel6.add(Em, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 150, -1));
+
+        Id.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
+        Id.setText("Uid:");
+        jPanel6.add(Id, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 40, -1));
+
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 580));
 
         p_edit.setBackground(new java.awt.Color(130, 202, 255));
         p_edit.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -225,52 +271,6 @@ public class AdminForm extends javax.swing.JFrame {
 
         jPanel1.add(p_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 450, 140, 50));
 
-        jPanel6.setBackground(new java.awt.Color(94, 160, 194));
-        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-user-65.png"))); // NOI18N
-        jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
-
-        Adname.setFont(new java.awt.Font("Yu Gothic Medium", 1, 18)); // NOI18N
-        Adname.setText("Admin");
-        jPanel6.add(Adname, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 17, 65, -1));
-
-        Lname.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
-        Lname.setText("Admin");
-        jPanel6.add(Lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 53, 65, -1));
-
-        uid.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
-        uid.setText("Id");
-        jPanel6.add(uid, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 40, -1));
-
-        jSeparator2.setBackground(new java.awt.Color(130, 202, 255));
-        jSeparator2.setForeground(new java.awt.Color(204, 204, 255));
-        jPanel6.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 180, -1));
-
-        jButton3.setBackground(new java.awt.Color(130, 202, 255));
-        jButton3.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
-        jButton3.setText("Logout");
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
-            }
-        });
-        jPanel6.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 530, -1, -1));
-
-        jSeparator3.setBackground(new java.awt.Color(130, 202, 255));
-        jSeparator3.setForeground(new java.awt.Color(204, 204, 255));
-        jPanel6.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 180, -1));
-
-        Em.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
-        Em.setText("Email");
-        jPanel6.add(Em, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 150, -1));
-
-        Id.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
-        Id.setText("Uid:");
-        jPanel6.add(Id, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 40, -1));
-
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 580));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -297,71 +297,6 @@ public class AdminForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_UserstableMouseClicked
 
-    private void p_addMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_addMouseEntered
-       p_add.setBackground(hovercolor);
-       
-    }//GEN-LAST:event_p_addMouseEntered
-
-    private void p_addMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_addMouseExited
-        p_add.setBackground(navcolor);
-    }//GEN-LAST:event_p_addMouseExited
-
-    private void p_addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_addMouseClicked
-       createUserForm cuf = new createUserForm();
-       cuf.setVisible(true);
-       this.dispose();
-               
-    }//GEN-LAST:event_p_addMouseClicked
-
-    private void p_editMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_editMouseClicked
-       int rowIndex = Userstable.getSelectedRow();
-       
-       if(rowIndex < 0){
-        JOptionPane.showMessageDialog(null, "Please select a User!");
-    }else{
-          
-            try{
-            dbConnector dbc = new dbConnector();
- 
-            TableModel tbl = Userstable.getModel();
-            
-            ResultSet rs = dbc.getData("SELECT * FROM tbl_user Where user_id = '"+tbl.getValueAt(rowIndex, 0)+"'");
-            if(rs.next()){
-                createUserForm cuf = new createUserForm();
-                cuf.setVisible(true);
-                this.dispose();
-                
-                
-                cuf.fn.setText(""+rs.getString("user_fname"));
-                cuf.em.setText(""+rs.getString("user_email"));
-                cuf.ln.setText(""+rs.getString("user_lname"));
-                cuf.pass.setText(""+rs.getString("user_pass"));
-                cuf.usern.setText(""+rs.getString("user_name"));
-                cuf.uid.setText(""+rs.getInt("user_id"));
-                cuf.at.setSelectedItem(""+rs.getString("acc_type"));
-                cuf.us.setSelectedItem(""+rs.getString("acc_status"));
-                cuf.add.setEnabled(false);
-                cuf.update.setEnabled(true);
-                cuf.setVisible(true);
-                this.dispose();
-            }
-           
-            
-            }catch(SQLException ex){
-                System.out.println(""+ex);
-            }
-       }
-      
-    }//GEN-LAST:event_p_editMouseClicked
-
-    private void p_editMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_editMouseEntered
-         p_edit.setBackground(hovercolor);
-    }//GEN-LAST:event_p_editMouseEntered
-
-    private void p_editMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_editMouseExited
-        p_edit.setBackground(navcolor);
-    }//GEN-LAST:event_p_editMouseExited
-
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
       Session sess = Session.getInstance();
       
@@ -382,6 +317,69 @@ public class AdminForm extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton3MouseClicked
 
+    private void p_editMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_editMouseClicked
+        int rowIndex = Userstable.getSelectedRow();
+
+        if(rowIndex < 0){
+            JOptionPane.showMessageDialog(null, "Please select a User!");
+        }else{
+
+            try{
+                dbConnector dbc = new dbConnector();
+
+                TableModel tbl = Userstable.getModel();
+
+                ResultSet rs = dbc.getData("SELECT * FROM tbl_user Where user_id = '"+tbl.getValueAt(rowIndex, 0)+"'");
+                if(rs.next()){
+                    createUserForm cuf = new createUserForm();
+                    cuf.setVisible(true);
+                    this.dispose();
+
+                    cuf.fn.setText(""+rs.getString("user_fname"));
+                    cuf.em.setText(""+rs.getString("user_email"));
+                    cuf.ln.setText(""+rs.getString("user_lname"));
+                    cuf.pass.setText(""+rs.getString("user_pass"));
+                    cuf.usern.setText(""+rs.getString("user_name"));
+                    cuf.uid.setText(""+rs.getInt("user_id"));
+                    cuf.at.setSelectedItem(""+rs.getString("acc_type"));
+                    cuf.us.setSelectedItem(""+rs.getString("acc_status"));
+                    cuf.add.setEnabled(false);
+                    cuf.update.setEnabled(true);
+                    cuf.setVisible(true);
+                    this.dispose();
+                }
+
+            }catch(SQLException ex){
+                System.out.println(""+ex);
+            }
+        }
+
+    }//GEN-LAST:event_p_editMouseClicked
+
+    private void p_editMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_editMouseEntered
+        p_edit.setBackground(hovercolor);
+    }//GEN-LAST:event_p_editMouseEntered
+
+    private void p_editMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_editMouseExited
+        p_edit.setBackground(navcolor);
+    }//GEN-LAST:event_p_editMouseExited
+
+    private void p_addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_addMouseClicked
+        createUserForm cuf = new createUserForm();
+        cuf.setVisible(true);
+        this.dispose();
+
+    }//GEN-LAST:event_p_addMouseClicked
+
+    private void p_addMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_addMouseEntered
+        p_add.setBackground(hovercolor);
+
+    }//GEN-LAST:event_p_addMouseEntered
+
+    private void p_addMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_addMouseExited
+        p_add.setBackground(navcolor);
+    }//GEN-LAST:event_p_addMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -399,14 +397,30 @@ public class AdminForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProductTab.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProductTab.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProductTab.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProductTab.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -427,7 +441,7 @@ public class AdminForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminForm().setVisible(true);
+                new ProductTab().setVisible(true);
             }
         });
     }

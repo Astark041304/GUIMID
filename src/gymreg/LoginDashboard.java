@@ -9,8 +9,6 @@ import Admin.AdminDashboard;
 import Config.Passwordhasher;
 import Config.Session;
 import Config.dbConnector;
-import Staff.StaffDashboard;
-import User.UserDashboard;
 import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -161,7 +159,8 @@ public class LoginDashboard extends javax.swing.JFrame {
         jPanel5.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 170, -1));
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic Medium", 1, 36)); // NOI18N
-        jLabel5.setText("User Login");
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText(" Login");
         jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 210, 40));
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic Medium", 2, 14)); // NOI18N
@@ -178,7 +177,7 @@ public class LoginDashboard extends javax.swing.JFrame {
         jPanel5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 230, 20));
         jPanel5.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 130, -1));
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 310, 370));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 310, 370));
 
         jPanel2.setBackground(new java.awt.Color(130, 202, 255));
 
@@ -241,18 +240,12 @@ public class LoginDashboard extends javax.swing.JFrame {
                 AdminDashboard adminDashboard = new AdminDashboard();
                 adminDashboard.setVisible(true);
                 this.dispose();
-            } else if (type.equals("User")) {
+            } else if (type.equals("Cashier")) {
                 JOptionPane.showMessageDialog(null, "Login Successful!");
-                UserDashboard userDashboard = new UserDashboard();
-                userDashboard.setVisible(true);
+                UsersOrder uo = new UsersOrder();
+                uo.setVisible(true);
                 this.dispose();
-            } else if(type.equals("Staff")) {
-                JOptionPane.showMessageDialog(null, "Login Successful!");
-                 StaffDashboard sdd = new StaffDashboard();
-                sdd.setVisible(true);
-                this.dispose();
-                
-            }else{
+            } else{ 
                     JOptionPane.showMessageDialog(null, "No account type found. Contact the Admin!");
                     }
             

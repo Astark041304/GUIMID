@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package User;
+package Passwordsettings;
+
 
 
 import Config.Session;
@@ -111,35 +112,35 @@ public class AccountSettings extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Account Type:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, 90, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 90, -1));
 
         ut1.setBackground(new java.awt.Color(130, 202, 255));
         ut1.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         ut1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Admin" }));
-        jPanel1.add(ut1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, 170, -1));
+        jPanel1.add(ut1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, 170, -1));
 
         jLabel5.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Username:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, 70, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 70, -1));
 
         jLabel4.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Email:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 40, -1));
-        jPanel1.add(fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 170, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 40, -1));
+        jPanel1.add(fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, 170, -1));
 
         jLabel11.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Last name:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 60, -1));
-        jPanel1.add(ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, 170, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 60, -1));
+        jPanel1.add(ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, 170, -1));
 
         jLabel12.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("First name:");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 60, -1));
-        jPanel1.add(usn, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 170, -1));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, 60, -1));
+        jPanel1.add(usn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 260, 170, -1));
 
         jPanel6.setBackground(new java.awt.Color(15, 8, 38));
 
@@ -192,9 +193,9 @@ public class AccountSettings extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 570, 50));
-        jPanel1.add(em, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, 170, -1));
+        jPanel1.add(em, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 170, -1));
 
-        acc_ln2.setFont(new java.awt.Font("Yu Gothic Medium", 1, 18)); // NOI18N
+        acc_ln2.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
         acc_ln2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acc_ln2.setText("Change Pass");
         acc_ln2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -207,10 +208,10 @@ public class AccountSettings extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(acc_ln2)
-                .addContainerGap())
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,7 +220,7 @@ public class AccountSettings extends javax.swing.JFrame {
                 .addComponent(acc_ln2))
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 320, -1, -1));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -293,6 +294,14 @@ public class AccountSettings extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -306,7 +315,7 @@ public class AccountSettings extends javax.swing.JFrame {
     public javax.swing.JLabel Em;
     public javax.swing.JLabel acc_fn;
     public javax.swing.JLabel acc_ln;
-    private javax.swing.JLabel acc_ln2;
+    public javax.swing.JLabel acc_ln2;
     private javax.swing.JTextField em;
     private javax.swing.JTextField fn;
     private javax.swing.JButton jButton3;

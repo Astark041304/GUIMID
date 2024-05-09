@@ -12,14 +12,20 @@ package Config;
 public class Session {
     
     private static Session instance;
-    private int uid;
+    private int uid; int product_id;
     private String fname;
     private String lname;
     private String email;
     private String username;
     private String type;
     private String status;
-   
+    
+    private String product_name;
+    private String product_type;
+    private String product_status;
+    private String product_quantity;
+    private String product_price;
+    
     
     private Session(){
         //Private cons.prevents instance
@@ -96,3 +102,5 @@ public class Session {
      
     
 }
+
+

@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package User;
+package Admin;
+
 
 
 import Config.Session;
@@ -14,12 +15,12 @@ import javax.swing.JOptionPane;
  *
  * @author John William
  */
-public class DessertMenu extends javax.swing.JFrame {
+public class DrinksMenu extends javax.swing.JFrame {
 
     /**
      * Creates new form AdminDashboard
      */
-    public DessertMenu() {
+    public DrinksMenu() {
         initComponents();
     }
 
@@ -42,7 +43,7 @@ public class DessertMenu extends javax.swing.JFrame {
         Lname = new javax.swing.JLabel();
         uid = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jButton3 = new javax.swing.JButton();
+        back = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         Em = new javax.swing.JLabel();
         Id = new javax.swing.JLabel();
@@ -99,15 +100,15 @@ public class DessertMenu extends javax.swing.JFrame {
         jSeparator1.setForeground(new java.awt.Color(204, 204, 255));
         jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 180, -1));
 
-        jButton3.setBackground(new java.awt.Color(130, 202, 255));
-        jButton3.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
-        jButton3.setText("Done");
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+        back.setBackground(new java.awt.Color(130, 202, 255));
+        back.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        back.setText("BACK");
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
+                backMouseClicked(evt);
             }
         });
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 530, -1, 20));
+        jPanel2.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 530, -1, -1));
 
         jSeparator2.setBackground(new java.awt.Color(130, 202, 255));
         jSeparator2.setForeground(new java.awt.Color(204, 204, 255));
@@ -126,19 +127,19 @@ public class DessertMenu extends javax.swing.JFrame {
         jLabel11.setText("User Info");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 580));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 600));
 
         jPanel3.setBackground(new java.awt.Color(94, 160, 194));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic Medium", 1, 11)); // NOI18N
-        jLabel3.setText("Dessert Menu");
+        jLabel3.setText("Drinks Menu");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 190, -1, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 550, 520));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 540, 530));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -148,7 +149,7 @@ public class DessertMenu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -174,12 +175,12 @@ public class DessertMenu extends javax.swing.JFrame {
       
     }//GEN-LAST:event_formWindowActivated
 
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-       JOptionPane.showMessageDialog(null, "Order is Successfull! ");
-        UsersOrder usd = new UsersOrder();
-          usd.setVisible(true);
+    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
+          AdminDashboard adb = new AdminDashboard();
+          adb.setVisible(true);
           this.dispose();
-    }//GEN-LAST:event_jButton3MouseClicked
+       
+    }//GEN-LAST:event_backMouseClicked
 
     /**
      * @param args the command line arguments
@@ -198,13 +199,13 @@ public class DessertMenu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DessertMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DrinksMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DessertMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DrinksMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DessertMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DrinksMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DessertMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DrinksMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -226,7 +227,7 @@ public class DessertMenu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DessertMenu().setVisible(true);
+                new DrinksMenu().setVisible(true);
             }
         });
     }
@@ -236,7 +237,7 @@ public class DessertMenu extends javax.swing.JFrame {
     public javax.swing.JLabel Em;
     public javax.swing.JLabel Id;
     public javax.swing.JLabel Lname;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton back;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;

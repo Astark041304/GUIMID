@@ -7,8 +7,6 @@ package Admin;
 
 import Config.dbConnector;
 import gymreg.LoginDashboard;
-import static gymreg.RegDashboard.email;
-import static gymreg.RegDashboard.usname;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -17,39 +15,32 @@ import javax.swing.JOptionPane;
  *
  * @author John William
  */
-public class createUserForm extends javax.swing.JFrame {
+public class Productedit extends javax.swing.JFrame {
 
     /**
      * Creates new form createUserForm
      */
-    public createUserForm() {
+    public Productedit() {
         initComponents();
     }
 
-    
+     public static String pname;
     
     public boolean duplicateCheck(){
         
         dbConnector dbc = new dbConnector();
+         
         
         try{
-            String query = "SELECT * FROM tbl_user  WHERE user_name = '" + usern.getText()+ "' OR user_email = '" +em.getText()+ "'";
+           String query = "SELECT * FROM tbl_product  WHERE product_name = '" + pn.getText() + "'";
+
             ResultSet resultSet = dbc.getData(query);
             
             if(resultSet.next()){
-                email = resultSet.getString("user_email");
+                pname = resultSet.getString("product_name");
    
-                if(email.equals(em.getText())){
-                    JOptionPane.showMessageDialog(null, "Email is already used!");
-                    em.setText("");
-                    
-                }
-                    
-                usname = resultSet.getString("user_name");
-                if(usname.equals(usern.getText())){
-                    JOptionPane.showMessageDialog(null, "Username is already used!");
-                    usern.setText("");
-                    
+                if(pname.equals(resultSet)){
+                    JOptionPane.showMessageDialog(null, " Product name is already used!");       
                 }
                 return true;
             }else{
@@ -64,6 +55,8 @@ public class createUserForm extends javax.swing.JFrame {
         
         
     }
+        
+    
 
     
      public boolean updateCheck(){
@@ -71,22 +64,15 @@ public class createUserForm extends javax.swing.JFrame {
         dbConnector dbc = new dbConnector();
         
         try{
-            String query = "SELECT * FROM tbl_user  WHERE (user_name = '" +usern.getText()+ "' OR user_email = '" +em.getText()+ "')AND user_id!= '"+uid.getText()+"'";
+            String query = "SELECT * FROM tbl_product  WHERE (product_name = '" +pn.getText()+ "')AND product_id!= '"+pid.getText()+"'";
             ResultSet resultSet = dbc.getData(query);
             
             if(resultSet.next()){ 
-                email = resultSet.getString("user_email");
+                pname = resultSet.getString("product_name");
    
-                if(email.equals(em.getText())){
-                    JOptionPane.showMessageDialog(null, "Email is already used!");
-                    em.setText("");
-                    
-                }
-                    
-                usname = resultSet.getString("user_name");
-                if(usname.equals(usern.getText())){
-                    JOptionPane.showMessageDialog(null, "Username is already used!");
-                    usern.setText("");
+                if(pname.equals(resultSet)){
+                    JOptionPane.showMessageDialog(null, "Product name is already used!");
+                   
                     
                 }
                 return true;
@@ -117,19 +103,13 @@ public class createUserForm extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         Back = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        uid = new javax.swing.JTextField();
-        ln = new javax.swing.JTextField();
-        em = new javax.swing.JTextField();
-        usern = new javax.swing.JTextField();
-        pass = new javax.swing.JTextField();
-        at = new javax.swing.JComboBox<>();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        us = new javax.swing.JComboBox<>();
-        fn = new javax.swing.JTextField();
+        pid = new javax.swing.JTextField();
+        pp = new javax.swing.JTextField();
+        pt = new javax.swing.JComboBox<>();
+        ps = new javax.swing.JComboBox<>();
+        pn = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         cancel = new javax.swing.JButton();
         update = new javax.swing.JButton();
@@ -138,10 +118,11 @@ public class createUserForm extends javax.swing.JFrame {
         clear = new javax.swing.JButton();
         add = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
-        uid1 = new javax.swing.JTextField();
         Editbg = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        pq = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -153,24 +134,20 @@ public class createUserForm extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        jLabel1.setText("First name:");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, -1, -1));
+        jLabel1.setText("product name:");
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        jLabel2.setText("Last name:");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 60, -1));
+        jLabel2.setText("product  type:");
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 80, -1));
 
         jLabel4.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        jLabel4.setText("Email:");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, -1));
+        jLabel4.setText("product status:");
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        jLabel5.setText("Username:");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, -1, -1));
-
-        jLabel6.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        jLabel6.setText("Password:");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, -1, -1));
+        jLabel5.setText("product price:");
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
 
         Back.setFont(new java.awt.Font("Yu Gothic Medium", 1, 24)); // NOI18N
         Back.setText("Back");
@@ -182,32 +159,21 @@ public class createUserForm extends javax.swing.JFrame {
         jPanel3.add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        jLabel3.setText("User Id:");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, 10));
+        jLabel3.setText("product Id:");
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, 10));
 
-        uid.setEnabled(false);
-        jPanel3.add(uid, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 200, 30));
-        jPanel3.add(ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 200, 30));
-        jPanel3.add(em, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 200, 30));
-        jPanel3.add(usern, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 200, 30));
-        jPanel3.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 200, 30));
+        pid.setEnabled(false);
+        jPanel3.add(pid, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 200, 30));
+        jPanel3.add(pp, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 200, 30));
 
-        at.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        at.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Admin" }));
-        jPanel3.add(at, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 187, -1));
+        pt.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        pt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Meal", "Drinks", "Desserts" }));
+        jPanel3.add(pt, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 200, 30));
 
-        jLabel8.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        jLabel8.setText("Account Type:");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, -1, 20));
-
-        jLabel11.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        jLabel11.setText("User Status:");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, -1, -1));
-
-        us.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        us.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Pending" }));
-        jPanel3.add(us, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, 187, -1));
-        jPanel3.add(fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 200, 30));
+        ps.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        ps.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Available", "Not Available" }));
+        jPanel3.add(ps, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 200, 30));
+        jPanel3.add(pn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 200, 30));
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(204, 204, 255)));
 
@@ -321,14 +287,11 @@ public class createUserForm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 330, -1));
+        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 330, -1));
 
         jSeparator2.setBackground(new java.awt.Color(130, 202, 255));
         jSeparator2.setForeground(new java.awt.Color(204, 204, 255));
-        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 410, -1));
-
-        uid1.setEnabled(false);
-        jPanel3.add(uid1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 200, 30));
+        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 292, 410, 10));
 
         Editbg.setBackground(new java.awt.Color(215, 220, 224));
         Editbg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 110, 208)));
@@ -337,7 +300,7 @@ public class createUserForm extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         jLabel7.setText("Editing");
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-edit-40.png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-edit-40.png"))); // NOI18N
 
         javax.swing.GroupLayout EditbgLayout = new javax.swing.GroupLayout(Editbg);
         Editbg.setLayout(EditbgLayout);
@@ -347,18 +310,23 @@ public class createUserForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel9)
+                .addComponent(jLabel8)
                 .addGap(21, 21, 21))
         );
         EditbgLayout.setVerticalGroup(
             EditbgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EditbgLayout.createSequentialGroup()
-                .addComponent(jLabel9)
+                .addComponent(jLabel8)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel3.add(Editbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, 50));
+        jPanel3.add(pq, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 200, 30));
+
+        jLabel6.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        jLabel6.setText("product quantity:");
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 410, 480));
 
@@ -401,7 +369,7 @@ public class createUserForm extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelActionPerformed
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
-       if(uid.getText().isEmpty() ||fn.getText().isEmpty()||ln.getText().isEmpty()||em.getText().isEmpty()||usern.getText().isEmpty()||pass.getText().isEmpty()){
+       if(pid.getText().isEmpty() ||pn.getText().isEmpty()||pt.getText().isEmpty()||ps.getText().isEmpty()||pp.getText().isEmpty()||pp.getText().isEmpty()){
          JOptionPane.showMessageDialog(null, "All fields are required!");   
         }else if(pass.getText().length()<8){
          JOptionPane.showMessageDialog(null, "Password character should be 8 above");
@@ -416,8 +384,8 @@ public class createUserForm extends javax.swing.JFrame {
           this.dispose();
         
       dbConnector dbc = new dbConnector();
-      dbc.updateData("UPDATE tbl_user SET user_fname ='"+fn.getText()+"', user_lname ='"+ln.getText()+"', user_email ='"+em.getText()+"', user_name ='"+usern.getText()+"', user_pass ='"+pass.getText()+"', acc_type ='"+at.getSelectedItem()+"', acc_status ='"+us.getSelectedItem()+"'"
-              + "WHERE user_id ='"+uid.getText()+"'");
+      dbc.updateData("UPDATE tbl_user SET user_fname ='"+pn.getText()+"', user_lname ='"+ln.getText()+"', user_email ='"+em.getText()+"', user_name ='"+pp.getText()+"', user_pass ='"+pass.getText()+"', acc_type ='"+pt.getSelectedItem()+"', acc_status ='"+ps.getSelectedItem()+"'"
+              + "WHERE user_id ='"+pid.getText()+"'");
     }//GEN-LAST:event_updateActionPerformed
     }
     
@@ -426,8 +394,8 @@ public class createUserForm extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteActionPerformed
 
     private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
-         if(fn.getText().isEmpty()|| ln.getText().isEmpty() || em.getText().isEmpty()
-                || usern.getText().isEmpty()|| pass.getText().isEmpty()){
+         if(pn.getText().isEmpty()|| ln.getText().isEmpty() || em.getText().isEmpty()
+                || pp.getText().isEmpty()|| pass.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "All fields are required!");
         }else if(pass.getText().length() < 8){
             JOptionPane.showMessageDialog(null, "Characters password is 8 above!");
@@ -440,8 +408,8 @@ public class createUserForm extends javax.swing.JFrame {
              dbConnector dbc = new dbConnector();
        
       if (dbc.insertData("INSERT INTO tbl_user (user_fname, user_lname, user_email, user_name, user_pass, acc_type, acc_status) VALUES('"
-     + fn.getText() + "','"+ln.getText()+"','"+ em.getText() + "','" 
-     + usern.getText() + "','" + pass.getText() + "','" + at.getSelectedItem() + "','"+us.getSelectedItem()+"')")){
+     + pn.getText() + "','"+ln.getText()+"','"+ em.getText() + "','" 
+     + pp.getText() + "','" + pass.getText() + "','" + pt.getSelectedItem() + "','"+ps.getSelectedItem()+"')")){
           
         
           JOptionPane.showMessageDialog(null, "Inserted Successfully!");
@@ -494,20 +462,21 @@ public class createUserForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(createUserForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Productedit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(createUserForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Productedit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(createUserForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Productedit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(createUserForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Productedit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new createUserForm().setVisible(true);
+                new Productedit().setVisible(true);
             }
         });
     }
@@ -516,14 +485,10 @@ public class createUserForm extends javax.swing.JFrame {
     private javax.swing.JLabel Back;
     private javax.swing.JPanel Editbg;
     public javax.swing.JButton add;
-    public javax.swing.JComboBox<String> at;
     private javax.swing.JButton cancel;
     private javax.swing.JButton clear;
     private javax.swing.JButton delete;
-    public javax.swing.JTextField em;
-    public javax.swing.JTextField fn;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -531,18 +496,17 @@ public class createUserForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator2;
-    public javax.swing.JTextField ln;
-    public javax.swing.JTextField pass;
+    public javax.swing.JTextField pid;
+    public javax.swing.JTextField pn;
+    public javax.swing.JTextField pp;
+    public javax.swing.JTextField pq;
+    public javax.swing.JComboBox<String> ps;
+    public javax.swing.JComboBox<String> pt;
     private javax.swing.JButton refresh;
-    public javax.swing.JTextField uid;
-    public javax.swing.JTextField uid1;
     public javax.swing.JButton update;
-    public javax.swing.JComboBox<String> us;
-    public javax.swing.JTextField usern;
     // End of variables declaration//GEN-END:variables
 }
