@@ -32,12 +32,12 @@ public class Productedit extends javax.swing.JFrame {
          
         
         try{
-           String query = "SELECT * FROM tbl_prod WHERE prod_name = '" + pn.getText() + "'";
+           String query = "SELECT * FROM tbl_product WHERE product_name = '" + pn.getText() + "'";
 
             ResultSet resultSet = dbc.getData(query);
             
             if(resultSet.next()){
-                pname = resultSet.getString("prod_name");
+                pname = resultSet.getString("product_name");
    
                 if(pname.equals(resultSet)){
                     JOptionPane.showMessageDialog(null, " Product name is already used!");       
@@ -64,11 +64,11 @@ public class Productedit extends javax.swing.JFrame {
         dbConnector dbc = new dbConnector();
         
         try{
-            String query = "SELECT * FROM tbl_prod  WHERE (product_name = '" +pn.getText()+ "')AND prod_id!= '"+pid.getText()+"'";
+            String query = "SELECT * FROM tbl_product WHERE (product_name = '" +pn.getText()+ "')AND product_id!= '"+pid.getText()+"'";
             ResultSet resultSet = dbc.getData(query);
             
             if(resultSet.next()){ 
-                pname = resultSet.getString("prod_name");
+                pname = resultSet.getString("product_name");
    
                 if(pname.equals(resultSet)){
                     JOptionPane.showMessageDialog(null, "Product name is already used!");
@@ -103,26 +103,22 @@ public class Productedit extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        Back = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         pid = new javax.swing.JTextField();
         pp = new javax.swing.JTextField();
         pt = new javax.swing.JComboBox<>();
         ps = new javax.swing.JComboBox<>();
         pn = new javax.swing.JTextField();
-        jPanel4 = new javax.swing.JPanel();
-        cancel = new javax.swing.JButton();
-        update = new javax.swing.JButton();
-        refresh = new javax.swing.JButton();
-        delete = new javax.swing.JButton();
-        clear = new javax.swing.JButton();
-        add = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         Editbg = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         pq = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        add = new javax.swing.JButton();
+        cancel = new javax.swing.JButton();
+        update = new javax.swing.JButton();
+        delete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -149,15 +145,6 @@ public class Productedit extends javax.swing.JFrame {
         jLabel5.setText("product price:");
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
 
-        Back.setFont(new java.awt.Font("Yu Gothic Medium", 1, 24)); // NOI18N
-        Back.setText("Back");
-        Back.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BackMouseClicked(evt);
-            }
-        });
-        jPanel3.add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, -1, -1));
-
         jLabel3.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel3.setText("product Id:");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, 10));
@@ -175,123 +162,9 @@ public class Productedit extends javax.swing.JFrame {
         jPanel3.add(ps, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 200, 30));
         jPanel3.add(pn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 200, 30));
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(204, 204, 255)));
-
-        cancel.setBackground(new java.awt.Color(130, 202, 255));
-        cancel.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        cancel.setText("Cancel");
-        cancel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cancelMouseClicked(evt);
-            }
-        });
-        cancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelActionPerformed(evt);
-            }
-        });
-
-        update.setBackground(new java.awt.Color(130, 202, 255));
-        update.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        update.setText("Update");
-        update.setEnabled(false);
-        update.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateActionPerformed(evt);
-            }
-        });
-
-        refresh.setBackground(new java.awt.Color(130, 202, 255));
-        refresh.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        refresh.setText("Refresh");
-        refresh.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                refreshMouseClicked(evt);
-            }
-        });
-        refresh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshActionPerformed(evt);
-            }
-        });
-
-        delete.setBackground(new java.awt.Color(130, 202, 255));
-        delete.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        delete.setText("Delete");
-        delete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteActionPerformed(evt);
-            }
-        });
-
-        clear.setBackground(new java.awt.Color(130, 202, 255));
-        clear.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        clear.setText("Clear");
-        clear.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                clearMouseClicked(evt);
-            }
-        });
-        clear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clearActionPerformed(evt);
-            }
-        });
-
-        add.setBackground(new java.awt.Color(130, 202, 255));
-        add.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        add.setText("Add");
-        add.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                addMouseClicked(evt);
-            }
-        });
-        add.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(clear)
-                    .addComponent(add))
-                .addGap(50, 50, 50)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(update)
-                    .addComponent(cancel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(delete, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(refresh, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap())
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(add)
-                    .addComponent(update)
-                    .addComponent(delete))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cancel)
-                    .addComponent(refresh)
-                    .addComponent(clear))
-                .addContainerGap())
-        );
-
-        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 330, -1));
-
         jSeparator2.setBackground(new java.awt.Color(130, 202, 255));
         jSeparator2.setForeground(new java.awt.Color(204, 204, 255));
-        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 292, 410, 10));
+        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 410, 10));
 
         Editbg.setBackground(new java.awt.Color(215, 220, 224));
         Editbg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 110, 208)));
@@ -328,16 +201,64 @@ public class Productedit extends javax.swing.JFrame {
         jLabel6.setText("product quantity:");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
 
+        add.setBackground(new java.awt.Color(130, 202, 255));
+        add.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        add.setText("Add");
+        add.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addMouseClicked(evt);
+            }
+        });
+        add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addActionPerformed(evt);
+            }
+        });
+        jPanel3.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, -1, -1));
+
+        cancel.setBackground(new java.awt.Color(130, 202, 255));
+        cancel.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        cancel.setText("Cancel");
+        cancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancelMouseClicked(evt);
+            }
+        });
+        cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelActionPerformed(evt);
+            }
+        });
+        jPanel3.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, -1, -1));
+
+        update.setBackground(new java.awt.Color(130, 202, 255));
+        update.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        update.setText("Update");
+        update.setEnabled(false);
+        update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateActionPerformed(evt);
+            }
+        });
+        jPanel3.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, -1, -1));
+
+        delete.setBackground(new java.awt.Color(130, 202, 255));
+        delete.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        delete.setText("Delete");
+        delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteActionPerformed(evt);
+            }
+        });
+        jPanel3.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, -1, -1));
+
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 410, 480));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -350,19 +271,9 @@ public class Productedit extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshActionPerformed
-       
-    
-
-    }//GEN-LAST:event_refreshActionPerformed
-
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_addActionPerformed
-
-    private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_clearActionPerformed
 
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
         // TODO add your handling code here:
@@ -381,8 +292,8 @@ public class Productedit extends javax.swing.JFrame {
           this.dispose();
         
       dbConnector dbc = new dbConnector();
-      dbc.updateData("UPDATE tbl_prod SET prod_name ='"+pn.getText()+"', prod_type ='"+pt.getSelectedItem()+"', prod_status ='"+ps.getSelectedItem()+"', prod_quant ='"+pq.getText()+"', prod_price ='"+pp.getText()+"','"
-              + "WHERE prod_id ='"+pid.getText()+"'");
+      dbc.updateData("UPDATE tbl_product SET product_name ='"+pn.getText()+"', product_type ='"+pt.getSelectedItem()+"', product_status ='"+ps.getSelectedItem()+"', product_quantity ='"+pq.getText()+"', product_price ='"+pp.getText()+"','"
+              + "WHERE product_id ='"+pid.getText()+"'");
     }//GEN-LAST:event_updateActionPerformed
     }
     
@@ -400,7 +311,7 @@ public class Productedit extends javax.swing.JFrame {
             
              dbConnector dbc = new dbConnector();
        
-      if (dbc.insertData("INSERT INTO tbl_prod (prod_name, prod_type, prod_status, prod_quant, prod_price) VALUES('"
+      if (dbc.insertData("INSERT INTO tbl_product (product_name, product_type, product_status, product_quantity, product_price) VALUES('"
      + pn.getText() + "','"+pt.getSelectedItem()+"','"+ ps.getSelectedItem() + "','" 
      + pp.getText() + "','" + pq.getText()+ "')")){
           
@@ -418,25 +329,11 @@ public class Productedit extends javax.swing.JFrame {
            
     }//GEN-LAST:event_addMouseClicked
 
-    private void clearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_clearMouseClicked
-
-    private void refreshMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refreshMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_refreshMouseClicked
-
     private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
        AdminForm adf = new  AdminForm();
        adf.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_cancelMouseClicked
-
-    private void BackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackMouseClicked
-        AdminForm af = new AdminForm();
-        af.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_BackMouseClicked
 
     /**
      * @param args the command line arguments
@@ -475,11 +372,9 @@ public class Productedit extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Back;
     private javax.swing.JPanel Editbg;
     public javax.swing.JButton add;
     private javax.swing.JButton cancel;
-    private javax.swing.JButton clear;
     private javax.swing.JButton delete;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -491,7 +386,6 @@ public class Productedit extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator2;
     public javax.swing.JTextField pid;
     public javax.swing.JTextField pn;
@@ -499,7 +393,6 @@ public class Productedit extends javax.swing.JFrame {
     public javax.swing.JTextField pq;
     public javax.swing.JComboBox<String> ps;
     public javax.swing.JComboBox<String> pt;
-    private javax.swing.JButton refresh;
     public javax.swing.JButton update;
     // End of variables declaration//GEN-END:variables
 }

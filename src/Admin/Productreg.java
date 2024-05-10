@@ -31,12 +31,12 @@ public class Productreg extends javax.swing.JFrame {
         dbConnector dbc = new dbConnector();
         
         try{
-           String query = "SELECT * FROM tbl_prod  WHERE product_name = '" + pn.getText() + "'";
+           String query = "SELECT * FROM tbl_product  WHERE product_name = '" + pn.getText() + "'";
 
             ResultSet resultSet = dbc.getData(query);
             
             if(resultSet.next()){
-                pname = resultSet.getString("prod_name");
+                pname = resultSet.getString("product_name");
    
                 if(pname.equals(resultSet)){
                     JOptionPane.showMessageDialog(null, " Product name is already used!");       
@@ -292,8 +292,8 @@ public class Productreg extends javax.swing.JFrame {
         }else{
              dbConnector dbc = new dbConnector();
 
-                if(dbc.insertData("INSERT INTO tbl_prod(product_id, product_name, product_type, product_status, product_quantity, product_price)"
-                    + "VALUES('"+pn.getText()+"', '"+pt.getSelectedItem()+"','"+ps.getSelectedItem()+"', '"+pq.getText()+pq.getText()))
+                if(dbc.insertData("INSERT INTO tbl_product(product_id, product_name, product_type, product_status, product_quantity, product_price)"
+                    + "VALUES('"+pn.getText()+ "', '"+pt.getSelectedItem()+ "','"+ps.getSelectedItem()+"', '"+pq.getText()+pq.getText()))
             {
                 JOptionPane.showMessageDialog(null,"Product added successfully!");
                 AdminDashboard adb = new AdminDashboard();
