@@ -358,8 +358,8 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_addpMouseClicked
 
     private void meaalsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_meaalsMouseClicked
-        MealsMenu mm = new MealsMenu():
-        mm.setVisible(true);
+        MealsMenu prg = new MealsMenu();
+        prg.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_meaalsMouseClicked
 

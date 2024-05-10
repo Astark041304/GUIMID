@@ -32,12 +32,12 @@ public class Productedit extends javax.swing.JFrame {
          
         
         try{
-           String query = "SELECT * FROM tbl_product  WHERE product_name = '" + pn.getText() + "'";
+           String query = "SELECT * FROM tbl_prod WHERE prod_name = '" + pn.getText() + "'";
 
             ResultSet resultSet = dbc.getData(query);
             
             if(resultSet.next()){
-                pname = resultSet.getString("product_name");
+                pname = resultSet.getString("prod_name");
    
                 if(pname.equals(resultSet)){
                     JOptionPane.showMessageDialog(null, " Product name is already used!");       
@@ -64,11 +64,11 @@ public class Productedit extends javax.swing.JFrame {
         dbConnector dbc = new dbConnector();
         
         try{
-            String query = "SELECT * FROM tbl_product  WHERE (product_name = '" +pn.getText()+ "')AND product_id!= '"+pid.getText()+"'";
+            String query = "SELECT * FROM tbl_prod  WHERE (product_name = '" +pn.getText()+ "')AND prod_id!= '"+pid.getText()+"'";
             ResultSet resultSet = dbc.getData(query);
             
             if(resultSet.next()){ 
-                pname = resultSet.getString("product_name");
+                pname = resultSet.getString("prod_name");
    
                 if(pname.equals(resultSet)){
                     JOptionPane.showMessageDialog(null, "Product name is already used!");
@@ -369,11 +369,8 @@ public class Productedit extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelActionPerformed
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
-       if(pid.getText().isEmpty() ||pn.getText().isEmpty()||pt.getText().isEmpty()||ps.getText().isEmpty()||pp.getText().isEmpty()||pp.getText().isEmpty()){
+       if(pid.getText().isEmpty() ||pn.getText().isEmpty() || pq.getText().isEmpty() ||pp.getText().isEmpty()){
          JOptionPane.showMessageDialog(null, "All fields are required!");   
-        }else if(pass.getText().length()<8){
-         JOptionPane.showMessageDialog(null, "Password character should be 8 above");
-         pass.setText("");
         }else if(updateCheck()){
         System.out.println("Duplicate Exist");
         }else{
@@ -384,8 +381,8 @@ public class Productedit extends javax.swing.JFrame {
           this.dispose();
         
       dbConnector dbc = new dbConnector();
-      dbc.updateData("UPDATE tbl_user SET user_fname ='"+pn.getText()+"', user_lname ='"+ln.getText()+"', user_email ='"+em.getText()+"', user_name ='"+pp.getText()+"', user_pass ='"+pass.getText()+"', acc_type ='"+pt.getSelectedItem()+"', acc_status ='"+ps.getSelectedItem()+"'"
-              + "WHERE user_id ='"+pid.getText()+"'");
+      dbc.updateData("UPDATE tbl_prod SET prod_name ='"+pn.getText()+"', prod_type ='"+pt.getSelectedItem()+"', prod_status ='"+ps.getSelectedItem()+"', prod_quant ='"+pq.getText()+"', prod_price ='"+pp.getText()+"','"
+              + "WHERE prod_id ='"+pid.getText()+"'");
     }//GEN-LAST:event_updateActionPerformed
     }
     
@@ -394,12 +391,8 @@ public class Productedit extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteActionPerformed
 
     private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
-         if(pn.getText().isEmpty()|| ln.getText().isEmpty() || em.getText().isEmpty()
-                || pp.getText().isEmpty()|| pass.getText().isEmpty()){
+         if(pn.getText().isEmpty()|| pp.getText().isEmpty() || pq.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "All fields are required!");
-        }else if(pass.getText().length() < 8){
-            JOptionPane.showMessageDialog(null, "Characters password is 8 above!");
-            pass.setText("");
         }else if(duplicateCheck()){
             System.out.println("Duplicate Exist!");
             
@@ -407,9 +400,9 @@ public class Productedit extends javax.swing.JFrame {
             
              dbConnector dbc = new dbConnector();
        
-      if (dbc.insertData("INSERT INTO tbl_user (user_fname, user_lname, user_email, user_name, user_pass, acc_type, acc_status) VALUES('"
-     + pn.getText() + "','"+ln.getText()+"','"+ em.getText() + "','" 
-     + pp.getText() + "','" + pass.getText() + "','" + pt.getSelectedItem() + "','"+ps.getSelectedItem()+"')")){
+      if (dbc.insertData("INSERT INTO tbl_prod (prod_name, prod_type, prod_status, prod_quant, prod_price) VALUES('"
+     + pn.getText() + "','"+pt.getSelectedItem()+"','"+ ps.getSelectedItem() + "','" 
+     + pp.getText() + "','" + pq.getText()+ "')")){
           
         
           JOptionPane.showMessageDialog(null, "Inserted Successfully!");

@@ -6,7 +6,7 @@
 package Passwordsettings;
 
 
-import User.*;
+
 import Config.Passwordhasher;
 import Config.Session;
 import Config.dbConnector;

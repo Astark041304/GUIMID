@@ -42,7 +42,7 @@ public class UsersOrder extends javax.swing.JFrame {
            try{
             dbConnector dbc = new dbConnector();
             ResultSet rs = dbc.getData("SELECT product_id, product_name, product_type, product_status, product_quantity, product_price FROM tbl_product");
-            Userstable.setModel(DbUtils.resultSetToTableModel(rs));
+           Userstable.setModel(DbUtils.resultSetToTableModel(rs));
              rs.close();
         }catch(SQLException ex){
             System.out.println("Errors: "+ex.getMessage());

@@ -6,6 +6,7 @@
 package gymreg;
 
 import Admin.AdminDashboard;
+
 import Config.Passwordhasher;
 import Config.Session;
 import Config.dbConnector;
@@ -242,9 +243,9 @@ public class LoginDashboard extends javax.swing.JFrame {
                 this.dispose();
             } else if (type.equals("Cashier")) {
                 JOptionPane.showMessageDialog(null, "Login Successful!");
-                UsersOrder uo = new UsersOrder();
-                uo.setVisible(true);
-                this.dispose();
+                  UsersOrder prg = new UsersOrder();
+                  prg.setVisible(true);
+                  this.dispose();
             } else{ 
                     JOptionPane.showMessageDialog(null, "No account type found. Contact the Admin!");
                     }
