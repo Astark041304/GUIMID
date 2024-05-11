@@ -7,6 +7,7 @@ package Admin;
 
 
 
+import Cashier.OrderTab;
 import Config.Session;
 import Config.dbConnector;
 import java.awt.Color;
@@ -379,20 +380,22 @@ public class ProductTab extends javax.swing.JFrame {
 
                 ResultSet rs = dbc.getData("SELECT * FROM tbl_product Where product_id = '"+tbl.getValueAt(rowIndex, 0)+"'");
                 if(rs.next()){
-                    ProductTab pt = new  ProductTab();
-                    pt.setVisible(true);
+                    Productedit pe = new  Productedit();
+                    pe.setVisible(true);
+                    this.dispose();
+                    
+                    pe.pid.setText(""+rs.getString("product_id"));
+                    pe.pn.setText(""+rs.getString("product_name"));
+                    pe.pt.setSelectedItem(""+rs.getString("product_type"));
+                    pe.ps.setSelectedItem(""+rs.getString("product_status"));
+                    pe.pq.setText(""+rs.getString("product_quantity"));
+                    pe.pp.setText(""+rs.getString("product_price"));
+                    pe.add.setEnabled(false);
+                    pe.update.setEnabled(true);
+                    pe.setVisible(true);
                     this.dispose();
 
-                    pt.pid.setText(""+rs.getString("product_id"));
-                    pt.pn.setText(""+rs.getString("product_name"));
-                    pt.pt.setText(""+rs.getString("product_type"));
-                    pt.ps.setText(""+rs.getString("product_status"));
-                    pt.pq.setText(""+rs.getString("product_quantity"));
-                    pt.pp.setText(""+rs.getInt("product_price"));
-                    pt.add.setEnabled(false);
-                    pt.update.setEnabled(true);
-                    pt.setVisible(true);
-                    this.dispose();
+
                 }
 
             }catch(SQLException ex){
@@ -411,8 +414,8 @@ public class ProductTab extends javax.swing.JFrame {
     }//GEN-LAST:event_p_editMouseExited
 
     private void orderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orderMouseClicked
-        UsersOrder uo = new UsersOrder();
-        uo.setVisible(true);
+        OrderTab ot = new OrderTab();
+        ot.setVisible(true);
         this.dispose();
 
     }//GEN-LAST:event_orderMouseClicked

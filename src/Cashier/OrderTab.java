@@ -7,7 +7,9 @@ package Cashier;
 
 import Admin.Adminpin;
 import Config.dbConnector;
+import java.awt.Color;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
 
@@ -23,6 +25,9 @@ public class OrderTab extends javax.swing.JFrame {
     public OrderTab() {
         initComponents();
     }
+    
+     Color navcolor = new Color(130,202,255);
+     Color hovercolor = new Color(204,102,255);
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -60,7 +65,7 @@ public class OrderTab extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(Userstable);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 660, 400));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 660, 400));
 
         edit.setBackground(new java.awt.Color(130, 202, 255));
         edit.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -147,7 +152,7 @@ public class OrderTab extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );
 
         pack();
@@ -170,26 +175,36 @@ public class OrderTab extends javax.swing.JFrame {
 
                 TableModel tbl = Userstable.getModel();
 
-                ResultSet rs = dbc.getData("SELECT * FROM tbl_product Where product_id = '"+tbl.getValueAt(rowIndex, 0)+"'");
+                ResultSet rs = dbc.getData("SELECT * FROM tbl_order Where order_id = '"+tbl.getValueAt(rowIndex, 0)+"'");
                 if(rs.next()){
+                    JOptionPane.showMessageDialog(null, "Enter Order to Edit! ");
+                      Order_edit ed = new Order_edit();
+                      ed.setVisible(true);
+                      this.dispose();
+                      
+                      
+                    ed.pid.setText(""+rs.getInt("order_id"));
+                    ed.pn.setText(""+rs.getInt("order_name"));
+                    ed.pt.setSelectedItem(""+rs.getInt("order_type"));
+                    ed.ps.setSelectedItem(""+rs.getInt("order_status"));
+                    ed.pq.setText(""+rs.getInt("order_quantity"));
+                    ed.pq.setText(""+rs.getInt("order_price"));
+                    ed.add.setEnabled(false);
+                    ed.setVisible(true);
+                    this.dispose();
+                              
+                }else{
                     JOptionPane.showMessageDialog(null, "Enter pin to Edit! ");
-                    Adminpin cuf = new Adminpin();
-                    cuf.setVisible(true);
-                    this.dispose();
-
-                    cuf.fn.setText(""+rs.getString("user_fname"));
-                    cuf.em.setText(""+rs.getString("user_email"));
-                    cuf.ln.setText(""+rs.getString("user_lname"));
-                    cuf.pass.setText(""+rs.getString("user_pass"));
-                    cuf.usern.setText(""+rs.getString("user_name"));
-                    cuf.uid.setText(""+rs.getInt("user_id"));
-                    cuf.at.setSelectedItem(""+rs.getString("acc_type"));
-                    cuf.us.setSelectedItem(""+rs.getString("acc_status"));
-                    cuf.add.setEnabled(false);
-                    cuf.update.setEnabled(true);
-                    cuf.setVisible(true);
-                    this.dispose();
-                }
+                      Adminpin ad = new Adminpin();
+                      ad.setVisible(true);
+                      this.dispose();
+                      
+                      
+                  
+                    
+                }      
+                        
+                
 
             }catch(SQLException ex){
                 System.out.println(""+ex);
@@ -198,11 +213,11 @@ public class OrderTab extends javax.swing.JFrame {
     }//GEN-LAST:event_editMouseClicked
 
     private void editMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseEntered
-        p_edit.setBackground(hovercolor);
+        edit.setBackground(hovercolor);
     }//GEN-LAST:event_editMouseEntered
 
     private void editMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseExited
-        p_edit.setBackground(navcolor);
+        edit.setBackground(navcolor);
     }//GEN-LAST:event_editMouseExited
 
     private void p_addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_addMouseClicked
