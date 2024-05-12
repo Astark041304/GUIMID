@@ -282,26 +282,34 @@ public class Productedit extends javax.swing.JFrame {
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
      
-            
-         if(pid.getText().isEmpty() ||pn.getText().isEmpty()||pq.getText().isEmpty()||pp.getText().isEmpty()){
-         JOptionPane.showMessageDialog(null, "All fields are required!");   
-        
-        }else if(updateCheck()){
-        System.out.println("Duplicate Exist");
-        }else{
-            
-        
+       if (pid.getText().isEmpty() || pn.getText().isEmpty() || pq.getText().isEmpty() || pp.getText().isEmpty()) {
+       JOptionPane.showMessageDialog(null, "All fields are required!");   
+       } else if (updateCheck()) {
+   
+        System.out.println("Duplicate exists");
+        } else {
+    
+        dbConnector dbc = new dbConnector();
+    
+    
+         String query = "UPDATE tbl_product SET product_name = '" + pn.getText() +
+                   "', product_type = '" + pt.getSelectedItem() +
+                   "', product_status = '" + ps.getSelectedItem() +
+                   "', product_quantity = '" + pq.getText() +
+                   "', product_price = '" + pp.getText() +
+                   "' WHERE product_id = '" + pid.getText() + "'"; 
+    
+   
+        if (dbc.executeUpdate(query) > 0) {
+        JOptionPane.showMessageDialog(null, "Product updated successfully!");
+       
           ProductTab adf = new ProductTab();
           adf.setVisible(true);
-          this.dispose();
-        
-      dbConnector dbc = new dbConnector();
-      dbc.updateData("UPDATE tbl_product SET product_name ='"+pn.getText()
-              +"', product_type ='"+pt.getSelectedItem()+"', product_status ='"+ps.getSelectedItem()
-              +"', product_quantity ='"+pq.getText()+"', product_price ='"+pp.getText()    
-              + "WHERE user_id ='"+pid.getText()+"'");
-    }                  
-     
+          this.dispose(); 
+      } else {
+        JOptionPane.showMessageDialog(null, "Failed to update product. Please try again.");
+        }
+     }
     }//GEN-LAST:event_updateActionPerformed
     
     

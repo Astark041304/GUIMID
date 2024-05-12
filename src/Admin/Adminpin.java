@@ -192,34 +192,25 @@ public class Adminpin extends javax.swing.JFrame {
 
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
       
-        try{
-             String adminPin = "1234";
+        String adminPin = "1234"; 
+        String inputPin = del.getText(); 
         
-         dbConnector dbc = new dbConnector();
-        Session sess = Session.getInstance();
-       
-       String query = "SELECT * FROM tbl_order '''";
-       ResultSet rs = dbc.getData(query);
-       if(rs.next()){
-        
-       
-
-     if (!adminPin.equals(del)) {
-         
-    String orderIdToDelete = del.getText(); 
-    JOptionPane.showMessageDialog(null, "Order " + orderIdToDelete + " deleted successfully!"); 
-    OrderTab tb = new OrderTab();
-    tb.setVisible(true);  
-    this.dispose();
-   
-} else {
-   JOptionPane.showMessageDialog(null, "Incorrect Admin PIN. Deletion canceled.");
-}
-     
-       }
-        }catch(SQLException ex){
-            System.out.println(""+ex);
-        }  
+        if (adminPin.equals(inputPin)) { 
+            dbConnector dbc = new dbConnector();
+            String query = "DELETE FROM tbl_order"; 
+            int rowsAffected = dbc.executeUpdate(query); 
+            
+            if (rowsAffected > 0) {
+                JOptionPane.showMessageDialog(null, "Order deleted successfully!");
+                OrderTab tb = new OrderTab();
+                tb.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "No orders were deleted. Please check your condition.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Incorrect Admin PIN. Deletion canceled.");
+        }
     }//GEN-LAST:event_jPanel5MouseClicked
 
     /**

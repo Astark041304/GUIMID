@@ -36,6 +36,13 @@ public class dbConnector {
             return rst;
         }
         
+        
+         public ResultSet OrderData(String sql) throws SQLException{
+            Statement stmt = connect.createStatement();
+            ResultSet rst = stmt.executeQuery(sql);
+            return rst;
+        }
+        
          public boolean insertData(String sql){
             try{
                 PreparedStatement pst = connect.prepareStatement(sql);
@@ -65,5 +72,49 @@ public class dbConnector {
             }
         
         }
+        
+        
+        
+          //Function to update data
+        public void deleteData(String sql){
+            try{
+                PreparedStatement pst = connect.prepareStatement(sql);
+                    int rowsAffected = pst.executeUpdate();
+                        if(rowsAffected > 0){
+                            JOptionPane.showMessageDialog(null, "Updated Successfully!");
+                        }else{
+                            System.out.println("Data Update Failed!");
+                        }
+                        pst.close();
+            }catch(SQLException ex){
+                System.out.println("Connection Error: "+ex);
+            }
+        
+        }
+        
+        
+         public int executeUpdate(String query) {
+        int rowsAffected = 0;
+        try {
+            Statement statement = connect.createStatement();
+            rowsAffected = statement.executeUpdate(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rowsAffected;
+    }
+    
+         
+         
+         public int setProductInfo(String query) {
+        int rowsAffected = 0;
+        try {
+            Statement statement = connect.createStatement();
+            rowsAffected = statement.executeUpdate(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rowsAffected;
+    }
     
 }

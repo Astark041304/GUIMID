@@ -312,23 +312,38 @@ public class createUserForm extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelActionPerformed
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
-       if(uid.getText().isEmpty() ||fn.getText().isEmpty()||ln.getText().isEmpty()||em.getText().isEmpty()||usern.getText().isEmpty()||pass.getText().isEmpty()){
-         JOptionPane.showMessageDialog(null, "All fields are required!");   
-        }else if(pass.getText().length()<8){
-         JOptionPane.showMessageDialog(null, "Password character should be 8 above");
-         pass.setText("");
-        }else if(updateCheck()){
-        System.out.println("Duplicate Exist");
-        }else{
-            
-        
-          AdminForm adf = new AdminForm();
-          adf.setVisible(true);
-          this.dispose();
-        
+          if (uid.getText().isEmpty() || fn.getText().isEmpty() || ln.getText().isEmpty() ||
+              em.getText().isEmpty() || usern.getText().isEmpty() || pass.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "All fields are required!");   
+          } else if (pass.getText().length() < 8) {
+        JOptionPane.showMessageDialog(null, "Password should be 8 characters or more");
+         pass.setText(""); 
+        } else if (updateCheck()) {
+       System.out.println("Duplicate Exist");
+       } else {
+    
       dbConnector dbc = new dbConnector();
-      dbc.updateData("UPDATE tbl_user SET user_fname ='"+fn.getText()+"', user_lname ='"+ln.getText()+"', user_email ='"+em.getText()+"', user_name ='"+usern.getText()+"', user_pass ='"+pass.getText()+"', acc_type ='"+at.getSelectedItem()+"', acc_status ='"+us.getSelectedItem()+"'"
-              + "WHERE user_id ='"+uid.getText()+"'");
+       String query = "UPDATE tbl_user SET user_fname = '" + fn.getText() +
+                   "', user_lname = '" + ln.getText() +
+                   "', user_email = '" + em.getText() +
+                   "', user_name = '" + usern.getText() +
+                   "', user_pass = '" + pass.getText() +
+                   "', acc_type = '" + at.getSelectedItem() +
+                   "', acc_status = '" + us.getSelectedItem() +
+                   "' WHERE user_id = '" + uid.getText() + "'";
+
+    
+    if (dbc.executeUpdate(query) > 0) {
+        JOptionPane.showMessageDialog(null, "Customer information updated successfully!");
+        
+        AdminForm adf = new AdminForm();
+        adf.setVisible(true);
+        this.dispose(); 
+    } else {
+        JOptionPane.showMessageDialog(null, "Failed to update Customer information. Please try again.");
+    }
+
+      
     }//GEN-LAST:event_updateActionPerformed
     }
     

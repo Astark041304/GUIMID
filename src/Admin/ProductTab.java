@@ -24,14 +24,22 @@ import net.proteanit.sql.DbUtils;
  */
 public class ProductTab extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AdminDashboard
-     */
+    
+    
+    
+    
     public ProductTab() {
         initComponents();
         displayData();
         
     }
+    
+    
+    
+    
+    
+    
+    
     
     Color navcolor = new Color(130,202,255);
     Color hovercolor = new Color(204,102,255);
@@ -414,9 +422,26 @@ public class ProductTab extends javax.swing.JFrame {
     }//GEN-LAST:event_p_editMouseExited
 
     private void orderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orderMouseClicked
-        OrderTab ot = new OrderTab();
-        ot.setVisible(true);
-        this.dispose();
+        int rowIndex = ProductTable.getSelectedRow();
+
+       if (rowIndex < 0) {
+      JOptionPane.showMessageDialog(null, "Please select a Product!");
+       } else {
+     try {
+        dbConnector dbc = new dbConnector();
+        TableModel tbl = ProductTable.getModel();
+        ResultSet rs = dbc.OrderData("SELECT * FROM tbl_order WHERE order_id = '" + tbl.getValueAt(rowIndex, 0) + "'");
+        
+        if (rs.next()) {
+           
+            OrderTab ot = new OrderTab();
+            ot.setVisible(true);       
+            this.dispose();
+        }
+    } catch (SQLException ex) {
+        System.out.println("" + ex);
+    }
+}
 
     }//GEN-LAST:event_orderMouseClicked
 

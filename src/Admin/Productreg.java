@@ -285,22 +285,29 @@ public class Productreg extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       if(pn.getText().isEmpty() || pq.getText().isEmpty() || pp.getText().isEmpty()) {
-       JOptionPane.showMessageDialog(null, "All fields are required!");
-       } else if(duplicateCheck()) {
-       System.out.println("Duplicate Exist");
-     } else {
-           
-     dbConnector dbc = new dbConnector();
+      if (pn.getText().isEmpty() || pq.getText().isEmpty() || pp.getText().isEmpty()) {
+          JOptionPane.showMessageDialog(null, "All fields are required!");
+      } else if (duplicateCheck()) {
     
-    if(dbc.insertData("INSERT INTO tbl_product(product_id, product_name, product_type, product_status, product_quantity, product_price)"
-        + " VALUES('" + pn.getText() + "', '" + pt.getSelectedItem() + "','" + ps.getSelectedItem() + "', '" + pq.getText() + "', '" + pp.getText() + "')")) {
+       System.out.println("Duplicate exists");
+       } else {
+   
+       dbConnector dbc = new dbConnector();
+    
+         String query = "INSERT INTO tbl_product(product_name, product_type, product_status, product_quantity, product_price) " +
+         "VALUES('" + pn.getText() + "', '" + pt.getSelectedItem() + "','" + ps.getSelectedItem() + "', " +
+         "'" + pq.getText() + "', '" + pp.getText() + "')";
+  
+         if (dbc.executeUpdate(query) > 0) {
         JOptionPane.showMessageDialog(null, "Product added successfully!");
+       
         AdminDashboard adb = new AdminDashboard();
         adb.setVisible(true);
-        this.dispose();
-    } 
-}
+        this.dispose(); 
+       } else {
+        JOptionPane.showMessageDialog(null, "Failed to add product. Please try again.");
+         }
+      }
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
