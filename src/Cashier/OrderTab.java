@@ -6,29 +6,62 @@
 package Cashier;
 
 import Admin.Adminpin;
+
+
 import Config.dbConnector;
+
 import java.awt.Color;
-import java.sql.ResultSet;
+
+import java.sql.ResultSet; 
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
  * @author User
  */
 public class OrderTab extends javax.swing.JFrame {
+    
+    
+    
+    
+    
 
     /**
      * Creates new form OrderTab
      */
     public OrderTab() {
         initComponents();
+        displayData();
     }
     
      Color navcolor = new Color(130,202,255);
      Color hovercolor = new Color(204,102,255);
 
+     
+     
+     public void displayData(){
+           try{
+            dbConnector dbc = new dbConnector();
+            ResultSet rs = dbc.getData("SELECT order_id, order_name, order_type, order_status, order_quantity, order_price FROM tbl_order");
+            Userstable.setModel(DbUtils.resultSetToTableModel(rs));
+             rs.close();
+        }catch(SQLException ex){
+            System.out.println("Errors: "+ex.getMessage());
+        
+        }    
+    
+    }
+     
+     
+     
+     
+    
+     
+     
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,6 +80,9 @@ public class OrderTab extends javax.swing.JFrame {
         p_add = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        edit1 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -105,7 +141,7 @@ public class OrderTab extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jPanel1.add(edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, 140, 50));
+        jPanel1.add(edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, 140, 50));
 
         p_add.setBackground(new java.awt.Color(130, 202, 255));
         p_add.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -143,6 +179,46 @@ public class OrderTab extends javax.swing.JFrame {
         );
 
         jPanel1.add(p_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, 140, 50));
+
+        edit1.setBackground(new java.awt.Color(130, 202, 255));
+        edit1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                edit1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                edit1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                edit1MouseExited(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        jLabel10.setText("DELETE");
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-edit-35.png"))); // NOI18N
+
+        javax.swing.GroupLayout edit1Layout = new javax.swing.GroupLayout(edit1);
+        edit1.setLayout(edit1Layout);
+        edit1Layout.setHorizontalGroup(
+            edit1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(edit1Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel5)
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+        edit1Layout.setVerticalGroup(
+            edit1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(edit1Layout.createSequentialGroup()
+                .addGroup(edit1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(edit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 140, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -235,6 +311,25 @@ public class OrderTab extends javax.swing.JFrame {
         p_add.setBackground(navcolor);
     }//GEN-LAST:event_p_addMouseExited
 
+    private void edit1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_edit1MouseClicked
+     
+        
+            JOptionPane.showMessageDialog(null, "Enter Pin to Delete!");
+            Adminpin pin = new Adminpin();
+            pin.setVisible(true);
+            this.dispose();
+       
+        
+    }//GEN-LAST:event_edit1MouseClicked
+
+    private void edit1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_edit1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edit1MouseEntered
+
+    private void edit1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_edit1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edit1MouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -273,7 +368,10 @@ public class OrderTab extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Userstable;
     private javax.swing.JPanel edit;
+    private javax.swing.JPanel edit1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -281,4 +379,6 @@ public class OrderTab extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel p_add;
     // End of variables declaration//GEN-END:variables
+
+    
 }

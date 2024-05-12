@@ -7,7 +7,7 @@
 package Admin;
 
 import Config.dbConnector;
-import java.security.NoSuchAlgorithmException;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -285,25 +285,22 @@ public class Productreg extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if(pn.getText().isEmpty()||pq.getText().isEmpty()||pp.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "All fields are required!");
-        }else if(duplicateCheck()){
-            System.out.println("Duplicate Exist");
-        }else{
-             dbConnector dbc = new dbConnector();
-
-                if(dbc.insertData("INSERT INTO tbl_product(product_id, product_name, product_type, product_status, product_quantity, product_price)"
-                    + "VALUES('"+pn.getText()+ "', '"+pt.getSelectedItem()+ "','"+ps.getSelectedItem()+"', '"+pq.getText()+pq.getText()))
-            {
-                JOptionPane.showMessageDialog(null,"Product added successfully!");
-                AdminDashboard adb = new AdminDashboard();
-                adb.setVisible(true);
-                this.dispose();
-            }else{
-                JOptionPane.showMessageDialog(null, "Connection Error!");
-                }
-
-        }
+       if(pn.getText().isEmpty() || pq.getText().isEmpty() || pp.getText().isEmpty()) {
+       JOptionPane.showMessageDialog(null, "All fields are required!");
+       } else if(duplicateCheck()) {
+       System.out.println("Duplicate Exist");
+     } else {
+           
+     dbConnector dbc = new dbConnector();
+    
+    if(dbc.insertData("INSERT INTO tbl_product(product_id, product_name, product_type, product_status, product_quantity, product_price)"
+        + " VALUES('" + pn.getText() + "', '" + pt.getSelectedItem() + "','" + ps.getSelectedItem() + "', '" + pq.getText() + "', '" + pp.getText() + "')")) {
+        JOptionPane.showMessageDialog(null, "Product added successfully!");
+        AdminDashboard adb = new AdminDashboard();
+        adb.setVisible(true);
+        this.dispose();
+    } 
+}
         
     }//GEN-LAST:event_jButton2ActionPerformed
 

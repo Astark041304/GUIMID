@@ -5,6 +5,14 @@
  */
 package Admin;
 
+import Cashier.OrderTab;
+import Config.Session;
+import Config.dbConnector;
+import java.security.NoSuchAlgorithmException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author User
@@ -30,7 +38,7 @@ public class Adminpin extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        del = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -55,11 +63,17 @@ public class Adminpin extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(94, 160, 194));
 
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        del.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic Medium", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Enter Pin");
+
+        jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel5MouseClicked(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -93,7 +107,7 @@ public class Adminpin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(64, Short.MAX_VALUE)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(del, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(64, 64, 64))
         );
         jPanel3Layout.setVerticalGroup(
@@ -102,7 +116,7 @@ public class Adminpin extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(del, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(26, Short.MAX_VALUE))
@@ -176,6 +190,38 @@ public class Adminpin extends javax.swing.JFrame {
        
     }//GEN-LAST:event_jButton3MouseClicked
 
+    private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
+      
+        try{
+             String adminPin = "1234";
+        
+         dbConnector dbc = new dbConnector();
+        Session sess = Session.getInstance();
+       
+       String query = "SELECT * FROM tbl_order '''";
+       ResultSet rs = dbc.getData(query);
+       if(rs.next()){
+        
+       
+
+     if (!adminPin.equals(del)) {
+         
+    String orderIdToDelete = del.getText(); 
+    JOptionPane.showMessageDialog(null, "Order " + orderIdToDelete + " deleted successfully!"); 
+    OrderTab tb = new OrderTab();
+    tb.setVisible(true);  
+    this.dispose();
+   
+} else {
+   JOptionPane.showMessageDialog(null, "Incorrect Admin PIN. Deletion canceled.");
+}
+     
+       }
+        }catch(SQLException ex){
+            System.out.println(""+ex);
+        }  
+    }//GEN-LAST:event_jPanel5MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -216,6 +262,7 @@ public class Adminpin extends javax.swing.JFrame {
     public javax.swing.JLabel Em;
     public javax.swing.JLabel Id;
     public javax.swing.JLabel Lname;
+    private javax.swing.JTextField del;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -227,7 +274,6 @@ public class Adminpin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField1;
     public javax.swing.JLabel uid;
     // End of variables declaration//GEN-END:variables
 }

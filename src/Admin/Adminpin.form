@@ -82,7 +82,7 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace pref="64" max="32767" attributes="0"/>
-                      <Component id="jTextField1" min="-2" pref="152" max="-2" attributes="0"/>
+                      <Component id="del" min="-2" pref="152" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -93,7 +93,7 @@
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+                      <Component id="del" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                       <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="26" max="32767" attributes="0"/>
@@ -102,7 +102,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="jTextField1">
+            <Component class="javax.swing.JTextField" name="del">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
               </Properties>
@@ -117,6 +117,9 @@
               </Properties>
             </Component>
             <Container class="javax.swing.JPanel" name="jPanel5">
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel5MouseClicked"/>
+              </Events>
 
               <Layout>
                 <DimensionLayout dim="0">
