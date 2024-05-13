@@ -34,28 +34,21 @@ public class AccountSettings extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        acc_fn = new javax.swing.JLabel();
-        acc_ln = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jButton3 = new javax.swing.JButton();
-        Em = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
         jLabel8 = new javax.swing.JLabel();
         ut1 = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         fn = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
         ln = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
         usn = new javax.swing.JTextField();
-        jPanel6 = new javax.swing.JPanel();
+        em = new javax.swing.JTextField();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         uid = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        em = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         acc_ln2 = new javax.swing.JLabel();
 
@@ -68,49 +61,10 @@ public class AccountSettings extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(31, 27, 27));
+        jPanel1.setBackground(new java.awt.Color(39, 105, 139));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(94, 160, 194));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-user-65.png"))); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
-
-        acc_fn.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
-        acc_fn.setText("user_fn");
-        jPanel2.add(acc_fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 87, 80, -1));
-
-        acc_ln.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
-        acc_ln.setText("user_ln");
-        jPanel2.add(acc_ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 127, 65, -1));
-
-        jSeparator1.setBackground(new java.awt.Color(130, 202, 255));
-        jSeparator1.setForeground(new java.awt.Color(204, 204, 255));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 180, -1));
-
-        jButton3.setBackground(new java.awt.Color(130, 202, 255));
-        jButton3.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
-        jButton3.setText("Logout");
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
-            }
-        });
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 510, -1, -1));
-
-        Em.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
-        Em.setText("Email");
-        jPanel2.add(Em, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 150, -1));
-
-        jSeparator2.setBackground(new java.awt.Color(130, 202, 255));
-        jSeparator2.setForeground(new java.awt.Color(204, 204, 255));
-        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 180, -1));
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 550));
-
-        jLabel8.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setFont(new java.awt.Font("Yu Gothic Medium", 1, 11)); // NOI18N
         jLabel8.setText("Account Type:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 90, -1));
 
@@ -119,32 +73,20 @@ public class AccountSettings extends javax.swing.JFrame {
         ut1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Admin" }));
         jPanel1.add(ut1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, 170, -1));
 
-        jLabel5.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Username:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 70, -1));
-
-        jLabel4.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Yu Gothic Medium", 1, 11)); // NOI18N
         jLabel4.setText("Email:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 40, -1));
         jPanel1.add(fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, 170, -1));
-
-        jLabel11.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Last name:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 60, -1));
         jPanel1.add(ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, 170, -1));
-
-        jLabel12.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("First name:");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, 60, -1));
         jPanel1.add(usn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 260, 170, -1));
+        jPanel1.add(em, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 170, -1));
 
-        jPanel6.setBackground(new java.awt.Color(15, 8, 38));
+        jPanel5.setBackground(new java.awt.Color(130, 202, 255));
 
-        jPanel7.setBackground(new java.awt.Color(25, 59, 124));
+        jLabel3.setFont(new java.awt.Font("Yu Gothic Medium", 1, 18)); // NOI18N
+        jLabel3.setText("Account Settings");
+
+        jPanel7.setBackground(new java.awt.Color(15, 8, 38));
         jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 142, 160)));
 
         uid.setFont(new java.awt.Font("Yu Gothic Medium", 1, 18)); // NOI18N
@@ -167,33 +109,39 @@ public class AccountSettings extends javax.swing.JFrame {
                 .addComponent(uid))
         );
 
-        jLabel3.setFont(new java.awt.Font("Yu Gothic Medium", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Account Settings");
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(293, Short.MAX_VALUE))
+                .addContainerGap(524, Short.MAX_VALUE))
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(81, 81, 81))
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 570, 50));
-        jPanel1.add(em, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 170, -1));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 50));
+
+        jPanel2.setBackground(new java.awt.Color(94, 160, 194));
+        jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(102, 102, 102), new java.awt.Color(102, 102, 102), new java.awt.Color(102, 102, 102), new java.awt.Color(102, 102, 102)));
+
+        jLabel12.setFont(new java.awt.Font("Yu Gothic Medium", 1, 11)); // NOI18N
+        jLabel12.setText("First name:");
+
+        jLabel11.setFont(new java.awt.Font("Yu Gothic Medium", 1, 11)); // NOI18N
+        jLabel11.setText("Last name:");
+
+        jLabel5.setFont(new java.awt.Font("Yu Gothic Medium", 1, 11)); // NOI18N
+        jLabel5.setText("Username:");
 
         acc_ln2.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
         acc_ln2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -208,10 +156,10 @@ public class AccountSettings extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(12, Short.MAX_VALUE)
                 .addComponent(acc_ln2)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,17 +168,50 @@ public class AccountSettings extends javax.swing.JFrame {
                 .addComponent(acc_ln2))
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, -1, -1));
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(166, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(122, 122, 122))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel11)
+                .addGap(41, 41, 41)
+                .addComponent(jLabel5)
+                .addGap(46, 46, 46)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 400, 220));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );
 
         pack();
@@ -248,12 +229,6 @@ public class AccountSettings extends javax.swing.JFrame {
            
       
     }//GEN-LAST:event_formWindowActivated
-
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        JOptionPane.showMessageDialog(null,"Logout Success!");
-        setVisible(false);
-        this.dispose();
-    }//GEN-LAST:event_jButton3MouseClicked
 
     private void acc_ln2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acc_ln2MouseClicked
         ChangePass cp = new ChangePass();
@@ -312,17 +287,12 @@ public class AccountSettings extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JLabel Em;
-    public javax.swing.JLabel acc_fn;
-    public javax.swing.JLabel acc_ln;
     public javax.swing.JLabel acc_ln2;
     private javax.swing.JTextField em;
     private javax.swing.JTextField fn;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -330,10 +300,8 @@ public class AccountSettings extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField ln;
     public javax.swing.JLabel uid;
     private javax.swing.JTextField usn;

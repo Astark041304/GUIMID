@@ -134,43 +134,44 @@ public class createUserForm extends javax.swing.JFrame {
         Editbg = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         add = new javax.swing.JButton();
         update = new javax.swing.JButton();
-        cancel = new javax.swing.JButton();
         delete = new javax.swing.JButton();
+        cancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(31, 27, 27));
+        jPanel1.setBackground(new java.awt.Color(39, 105, 139));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(94, 160, 194));
-        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(204, 255, 255), new java.awt.Color(204, 204, 255)));
+        jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(102, 102, 102), new java.awt.Color(102, 102, 102), new java.awt.Color(102, 102, 102), new java.awt.Color(102, 102, 102)));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Yu Gothic Medium", 1, 11)); // NOI18N
         jLabel1.setText("First name:");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, -1, -1));
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Yu Gothic Medium", 1, 11)); // NOI18N
         jLabel2.setText("Last name:");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 60, -1));
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Yu Gothic Medium", 1, 11)); // NOI18N
         jLabel4.setText("Email:");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, -1, -1));
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Yu Gothic Medium", 1, 11)); // NOI18N
         jLabel5.setText("Username:");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, -1, -1));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Yu Gothic Medium", 1, 11)); // NOI18N
         jLabel6.setText("Password:");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, -1, -1));
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Yu Gothic Medium", 1, 11)); // NOI18N
         jLabel3.setText("User Id:");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, -1, 10));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, 10));
 
         uid.setEnabled(false);
         jPanel3.add(uid, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 200, 30));
@@ -179,26 +180,26 @@ public class createUserForm extends javax.swing.JFrame {
         jPanel3.add(usern, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 200, 30));
         jPanel3.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 200, 30));
 
-        at.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        at.setFont(new java.awt.Font("Yu Gothic Medium", 0, 11)); // NOI18N
         at.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Cashier" }));
         jPanel3.add(at, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, 187, -1));
 
-        jLabel8.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Yu Gothic Medium", 1, 11)); // NOI18N
         jLabel8.setText("Account Type:");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, 20));
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, 20));
 
-        jLabel11.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Yu Gothic Medium", 1, 11)); // NOI18N
         jLabel11.setText("User Status:");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, -1, -1));
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, -1, -1));
 
-        us.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        us.setFont(new java.awt.Font("Yu Gothic Medium", 0, 11)); // NOI18N
         us.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Pending" }));
         jPanel3.add(us, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 187, -1));
         jPanel3.add(fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 200, 30));
 
         jSeparator2.setBackground(new java.awt.Color(130, 202, 255));
         jSeparator2.setForeground(new java.awt.Color(204, 204, 255));
-        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 410, 10));
+        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 410, 10));
 
         uid1.setEnabled(false);
         jPanel3.add(uid1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 200, 30));
@@ -231,7 +232,9 @@ public class createUserForm extends javax.swing.JFrame {
             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel3.add(Editbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, 50));
+        jPanel3.add(Editbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 50));
+
+        jPanel2.setBackground(new java.awt.Color(39, 105, 139));
 
         add.setBackground(new java.awt.Color(130, 202, 255));
         add.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
@@ -246,7 +249,6 @@ public class createUserForm extends javax.swing.JFrame {
                 addActionPerformed(evt);
             }
         });
-        jPanel3.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, -1, -1));
 
         update.setBackground(new java.awt.Color(130, 202, 255));
         update.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
@@ -257,7 +259,15 @@ public class createUserForm extends javax.swing.JFrame {
                 updateActionPerformed(evt);
             }
         });
-        jPanel3.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, -1, -1));
+
+        delete.setBackground(new java.awt.Color(130, 202, 255));
+        delete.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        delete.setText("Delete");
+        delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteActionPerformed(evt);
+            }
+        });
 
         cancel.setBackground(new java.awt.Color(130, 202, 255));
         cancel.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
@@ -272,31 +282,47 @@ public class createUserForm extends javax.swing.JFrame {
                 cancelActionPerformed(evt);
             }
         });
-        jPanel3.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, -1, -1));
 
-        delete.setBackground(new java.awt.Color(130, 202, 255));
-        delete.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        delete.setText("Delete");
-        delete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteActionPerformed(evt);
-            }
-        });
-        jPanel3.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, -1, -1));
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(add)
+                .addGap(28, 28, 28)
+                .addComponent(update)
+                .addGap(26, 26, 26)
+                .addComponent(delete)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(cancel)
+                .addGap(21, 21, 21))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(add)
+                    .addComponent(update)
+                    .addComponent(delete)
+                    .addComponent(cancel))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 410, 480));
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 390, 50));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 410, 430));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
         );
 
         pack();
@@ -371,8 +397,8 @@ public class createUserForm extends javax.swing.JFrame {
           
         
           JOptionPane.showMessageDialog(null, "Inserted Successfully!");
-          LoginDashboard lgd = new LoginDashboard();
-          lgd.setVisible(true);
+          AdminForm af = new AdminForm();
+          af.setVisible(true);
           this.dispose();
           
       }else{
@@ -443,6 +469,7 @@ public class createUserForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator2;
     public javax.swing.JTextField ln;
