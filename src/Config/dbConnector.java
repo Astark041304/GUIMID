@@ -38,9 +38,14 @@ public class dbConnector {
         
         
          public ResultSet OrderData(String sql) throws SQLException{
-            Statement stmt = connect.createStatement();
+                       
+            Statement stmt = connect.createStatement();                 
             ResultSet rst = stmt.executeQuery(sql);
             return rst;
+            
+                
+            
+             
         }
         
          public boolean insertData(String sql){

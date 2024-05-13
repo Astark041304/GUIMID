@@ -5,10 +5,12 @@
  */
 package Admin;
 
+import Config.Passwordhasher;
 import Config.dbConnector;
 import gymreg.LoginDashboard;
 import static gymreg.RegDashboard.email;
 import static gymreg.RegDashboard.usname;
+import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -388,12 +390,13 @@ public class createUserForm extends javax.swing.JFrame {
             System.out.println("Duplicate Exist!");
             
         }else{
-            
+            try{
              dbConnector dbc = new dbConnector();
-       
+         String passw = Passwordhasher.hashPassword(pass.getText());
+         
       if (dbc.insertData("INSERT INTO tbl_user (user_fname, user_lname, user_email, user_name, user_pass, acc_type, acc_status) VALUES('"
      + fn.getText() + "','"+ln.getText()+"','"+ em.getText() + "','" 
-     + usern.getText() + "','" + pass.getText() + "','" + at.getSelectedItem() + "','"+us.getSelectedItem()+"')")){
+     + usern.getText() + "','" + passw + "','" + at.getSelectedItem() + "','"+us.getSelectedItem()+"')")){
           
         
           JOptionPane.showMessageDialog(null, "Inserted Successfully!");
@@ -404,7 +407,10 @@ public class createUserForm extends javax.swing.JFrame {
       }else{
           JOptionPane.showMessageDialog(null, "Connection Error!");
       }
-            
+            }catch(NoSuchAlgorithmException ex){
+            System.out.println(""+ex);
+
+        }   
         }                    
            
     }//GEN-LAST:event_addMouseClicked

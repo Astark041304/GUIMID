@@ -196,13 +196,15 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         Adname.setFont(new java.awt.Font("Yu Gothic Medium", 1, 18)); // NOI18N
         Adname.setForeground(new java.awt.Color(255, 255, 255));
+        Adname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Adname.setText("Admin");
-        jPanel6.add(Adname, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 65, -1));
+        jPanel6.add(Adname, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 90, -1));
 
         Lname.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         Lname.setForeground(new java.awt.Color(255, 255, 255));
+        Lname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Lname.setText("Admin");
-        jPanel6.add(Lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 65, -1));
+        jPanel6.add(Lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 90, -1));
 
         uid.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
         uid.setText("Id");

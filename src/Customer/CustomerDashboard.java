@@ -73,7 +73,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(31, 27, 27));
+        jPanel1.setBackground(new java.awt.Color(39, 105, 139));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(94, 160, 194));
@@ -83,12 +83,14 @@ public class CustomerDashboard extends javax.swing.JFrame {
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
         Adname.setFont(new java.awt.Font("Yu Gothic Medium", 1, 18)); // NOI18N
+        Adname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Adname.setText("Customer");
-        jPanel2.add(Adname, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 100, -1));
+        jPanel2.add(Adname, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 110, -1));
 
         Lname.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
+        Lname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Lname.setText("Customer");
-        jPanel2.add(Lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 80, -1));
+        jPanel2.add(Lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 100, -1));
 
         uid.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
         uid.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -161,7 +163,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
 
         jPanel3.add(product, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 130, 110));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 50, 480, 450));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 620, 520));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

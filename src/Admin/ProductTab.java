@@ -12,9 +12,13 @@ import Config.Session;
 import Config.dbConnector;
 import Passwordsettings.AccountSettings;
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashSet;
+import java.util.Set;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import net.proteanit.sql.DbUtils;
@@ -87,13 +91,13 @@ public class ProductTab extends javax.swing.JFrame {
         p_edit = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        order = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         p_add1 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        order = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
@@ -144,13 +148,15 @@ public class ProductTab extends javax.swing.JFrame {
 
         Adname.setFont(new java.awt.Font("Yu Gothic Medium", 1, 18)); // NOI18N
         Adname.setForeground(new java.awt.Color(255, 255, 255));
+        Adname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Adname.setText("Admin");
-        jPanel6.add(Adname, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 65, -1));
+        jPanel6.add(Adname, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 90, -1));
 
         Lname.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         Lname.setForeground(new java.awt.Color(255, 255, 255));
+        Lname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Lname.setText("Admin");
-        jPanel6.add(Lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 65, -1));
+        jPanel6.add(Lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 90, -1));
 
         uid.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
         uid.setText("Id");
@@ -188,8 +194,13 @@ public class ProductTab extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Yu Gothic Medium", 1, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         jLabel8.setText("Edit");
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-edit-35.png"))); // NOI18N
 
@@ -200,58 +211,19 @@ public class ProductTab extends javax.swing.JFrame {
             .addGroup(p_editLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel8)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
                 .addContainerGap())
         );
         p_editLayout.setVerticalGroup(
             p_editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(p_editLayout.createSequentialGroup()
-                .addGroup(p_editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        order.setBackground(new java.awt.Color(130, 202, 255));
-        order.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(102, 102, 102), new java.awt.Color(102, 102, 102), new java.awt.Color(102, 102, 102), new java.awt.Color(102, 102, 102)));
-        order.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                orderMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                orderMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                orderMouseExited(evt);
-            }
-        });
-
-        jLabel7.setFont(new java.awt.Font("Yu Gothic Medium", 1, 18)); // NOI18N
-        jLabel7.setText("Order");
-        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel7MouseClicked(evt);
-            }
-        });
-
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-order-35.png"))); // NOI18N
-
-        javax.swing.GroupLayout orderLayout = new javax.swing.GroupLayout(order);
-        order.setLayout(orderLayout);
-        orderLayout.setHorizontalGroup(
-            orderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(orderLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel9)
-                .addGap(26, 26, 26))
-        );
-        orderLayout.setVerticalGroup(
-            orderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addGroup(p_editLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         p_add1.setBackground(new java.awt.Color(130, 202, 255));
@@ -268,7 +240,7 @@ public class ProductTab extends javax.swing.JFrame {
             }
         });
 
-        jLabel11.setFont(new java.awt.Font("Yu Gothic Medium", 1, 18)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         jLabel11.setText("Add");
 
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -281,14 +253,17 @@ public class ProductTab extends javax.swing.JFrame {
             .addGroup(p_add1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel11)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel13)
                 .addContainerGap())
         );
         p_add1Layout.setVerticalGroup(
             p_add1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, p_add1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel11)
+                .addContainerGap())
         );
 
         jButton3.setBackground(new java.awt.Color(130, 202, 255));
@@ -300,6 +275,47 @@ public class ProductTab extends javax.swing.JFrame {
             }
         });
 
+        order.setBackground(new java.awt.Color(130, 202, 255));
+        order.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(102, 102, 102), new java.awt.Color(102, 102, 102), new java.awt.Color(102, 102, 102), new java.awt.Color(102, 102, 102)));
+        order.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                orderMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                orderMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                orderMouseExited(evt);
+            }
+        });
+
+        jLabel9.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
+        jLabel9.setText("Order");
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-edit-35.png"))); // NOI18N
+
+        javax.swing.GroupLayout orderLayout = new javax.swing.GroupLayout(order);
+        order.setLayout(orderLayout);
+        orderLayout.setHorizontalGroup(
+            orderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(orderLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel6)
+                .addContainerGap())
+        );
+        orderLayout.setVerticalGroup(
+            orderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(orderLayout.createSequentialGroup()
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(orderLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -310,23 +326,23 @@ public class ProductTab extends javax.swing.JFrame {
                         .addGap(49, 49, 49)
                         .addComponent(jButton3))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(p_edit, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(order, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(p_add1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
-                .addContainerGap(43, Short.MAX_VALUE))
+                        .addGap(34, 34, 34)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(p_edit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(order, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(p_add1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(66, 66, 66)
+                .addContainerGap()
                 .addComponent(p_edit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(order, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(14, 14, 14)
                 .addComponent(p_add1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 173, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addGap(35, 35, 35))
         );
@@ -488,53 +504,6 @@ public class ProductTab extends javax.swing.JFrame {
 
     }//GEN-LAST:event_formWindowActivated
 
-    private void p_editMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_editMouseClicked
-        int rowIndex = ProductTable.getSelectedRow();
-
-        if(rowIndex < 0){
-            JOptionPane.showMessageDialog(null, "Please select a Product!");
-        }else{
-
-            try{
-                dbConnector dbc = new dbConnector();
-
-                TableModel tbl = ProductTable.getModel();
-
-                ResultSet rs = dbc.getData("SELECT * FROM tbl_product Where product_id = '"+tbl.getValueAt(rowIndex, 0)+"'");
-                if(rs.next()){
-                    Productedit pe = new  Productedit();
-                    pe.setVisible(true);
-                    this.dispose();
-                    
-                    pe.pid.setText(""+rs.getString("product_id"));
-                    pe.pn.setText(""+rs.getString("product_name"));
-                    pe.pt.setSelectedItem(""+rs.getString("product_type"));
-                    pe.ps.setSelectedItem(""+rs.getString("product_status"));
-                    pe.pq.setText(""+rs.getString("product_quantity"));
-                    pe.pp.setText(""+rs.getString("product_price"));
-                    pe.add.setEnabled(false);
-                    pe.update.setEnabled(true);
-                    pe.setVisible(true);
-                    this.dispose();
-
-
-                }
-
-            }catch(SQLException ex){
-                System.out.println(""+ex);
-            }
-        }
-
-    }//GEN-LAST:event_p_editMouseClicked
-
-    private void p_editMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_editMouseEntered
-        p_edit.setBackground(hovercolor);
-    }//GEN-LAST:event_p_editMouseEntered
-
-    private void p_editMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_editMouseExited
-        p_edit.setBackground(navcolor);
-    }//GEN-LAST:event_p_editMouseExited
-
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         JOptionPane.showMessageDialog(null,"Logout Success!");
         setVisible(false);
@@ -542,51 +511,54 @@ public class ProductTab extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void p_add1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add1MouseExited
-        p_edit.setBackground(navcolor);
+        p_add1.setBackground(navcolor);
     }//GEN-LAST:event_p_add1MouseExited
 
     private void p_add1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add1MouseEntered
-        p_edit.setBackground(hovercolor);
+       p_add1.setBackground(hovercolor);
     }//GEN-LAST:event_p_add1MouseEntered
 
     private void p_add1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_p_add1MouseClicked
-
-    private void orderMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orderMouseExited
-        order.setBackground(navcolor);
-    }//GEN-LAST:event_orderMouseExited
-
-    private void orderMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orderMouseEntered
-        order.setBackground(hovercolor);
-    }//GEN-LAST:event_orderMouseEntered
-
-    private void orderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orderMouseClicked
+                Set<Integer> selectedRows = new HashSet<>();
+        
+       
         int rowIndex = ProductTable.getSelectedRow();
 
-        if (rowIndex < 0) {
-            JOptionPane.showMessageDialog(null, "Please select a Product!");
-        } else {
+        if (rowIndex >= 0) {
             try {
                 dbConnector dbc = new dbConnector();
                 TableModel tbl = ProductTable.getModel();
-                ResultSet rs = dbc.OrderData("SELECT * FROM tbl_order WHERE order_id = '" + tbl.getValueAt(rowIndex, 0) + "'");
+                String productId = tbl.getValueAt(rowIndex, 0).toString();  
+
+                ResultSet rs = dbc.getData("SELECT * FROM tbl_product WHERE product_id = '" + productId + "'");
 
                 if (rs.next()) {
-
                     OrderTab ot = new OrderTab();
                     ot.setVisible(true);
-                    this.dispose();
+                    
+                    DefaultTableModel orderModel = (DefaultTableModel) ot.CustomerTable.getModel();
+                    
+                 
+                    if (!selectedRows.contains(rowIndex)) {
+                        orderModel.addRow(new Object[]{
+                            rs.getString("product_id"),
+                            rs.getString("product_name"),
+                            rs.getString("product_type"),
+                            rs.getString("product_status"),
+                            rs.getString("product_quantity"),
+                            rs.getString("product_price"),
+                        });
+                        
+                        selectedRows.add(rowIndex);  
+                    }
+                    
+                    this.dispose();  
                 }
             } catch (SQLException ex) {
                 System.out.println("" + ex);
             }
-        }
-    }//GEN-LAST:event_orderMouseClicked
-
-    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel7MouseClicked
+        }  
+    }//GEN-LAST:event_p_add1MouseClicked
 
     private void settingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsMouseClicked
         AccountSettings as = new  AccountSettings();
@@ -605,6 +577,110 @@ public class ProductTab extends javax.swing.JFrame {
     private void settingsFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_settingsFocusGained
         // TODO add your handling code here:
     }//GEN-LAST:event_settingsFocusGained
+
+    private void p_editMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_editMouseExited
+        p_edit.setBackground(navcolor);
+    }//GEN-LAST:event_p_editMouseExited
+
+    private void p_editMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_editMouseEntered
+        p_edit.setBackground(hovercolor);
+    }//GEN-LAST:event_p_editMouseEntered
+
+    private void p_editMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_editMouseClicked
+        int rowIndex = ProductTable.getSelectedRow();
+
+        if(rowIndex < 0){
+            JOptionPane.showMessageDialog(null, "Please select a Product!");
+        }else{
+
+            try{
+                dbConnector dbc = new dbConnector();
+
+                TableModel tbl = ProductTable.getModel();
+
+                ResultSet rs = dbc.getData("SELECT * FROM tbl_product Where product_id = '"+tbl.getValueAt(rowIndex, 0)+"'");
+                if(rs.next()){
+                    Productedit pe = new  Productedit();
+                    pe.setVisible(true);
+                    this.dispose();
+
+                    pe.pid.setText(""+rs.getString("product_id"));
+                    pe.pn.setText(""+rs.getString("product_name"));
+                    pe.pt.setSelectedItem(""+rs.getString("product_type"));
+                    pe.ps.setSelectedItem(""+rs.getString("product_status"));
+                    pe.pq.setText(""+rs.getString("product_quantity"));
+                    pe.pp.setText(""+rs.getString("product_price"));
+                    pe.add.setEnabled(false);
+                    pe.update.setEnabled(true);
+                    pe.setVisible(true);
+                    this.dispose();
+
+                }
+
+            }catch(SQLException ex){
+                System.out.println(""+ex);
+            }
+        }
+    }//GEN-LAST:event_p_editMouseClicked
+
+    
+    
+   
+    
+    private void orderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orderMouseClicked
+       Set<Integer> selectedRows = new HashSet<>();
+        
+       
+        int rowIndex = ProductTable.getSelectedRow();
+
+        if (rowIndex >= 0) {
+            try {
+                dbConnector dbc = new dbConnector();
+                TableModel tbl = ProductTable.getModel();
+                String productId = tbl.getValueAt(rowIndex, 0).toString();  
+
+                ResultSet rs = dbc.getData("SELECT * FROM tbl_product WHERE product_id = '" + productId + "'");
+
+                if (rs.next()) {
+                    OrderTab ot = new OrderTab();
+                    ot.setVisible(true);
+                    
+                    DefaultTableModel orderModel = (DefaultTableModel) ot.CustomerTable.getModel();
+                    
+                 
+                    if (!selectedRows.contains(rowIndex)) {
+                        orderModel.addRow(new Object[]{
+                            rs.getString("product_id"),
+                            rs.getString("product_name"),
+                            rs.getString("product_type"),
+                            rs.getString("product_status"),
+                            rs.getString("product_quantity"),
+                            rs.getString("product_price"),
+                        });
+                        
+                        selectedRows.add(rowIndex);  
+                    }
+                    
+                    this.dispose();  
+                }
+            } catch (SQLException ex) {
+                System.out.println("" + ex);
+            }
+        }
+        
+    }//GEN-LAST:event_orderMouseClicked
+
+    private void orderMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orderMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_orderMouseEntered
+
+    private void orderMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orderMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_orderMouseExited
+
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+      
+    }//GEN-LAST:event_jLabel8MouseClicked
 
     /**
      * @param args the command line arguments
@@ -689,7 +765,7 @@ public class ProductTab extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;

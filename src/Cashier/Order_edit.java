@@ -24,6 +24,14 @@ public class Order_edit extends javax.swing.JFrame {
     public Order_edit() {
         initComponents();
     }
+    
+    
+    
+    
+    
+    
+    
+    
 
      public static String pname;
     
@@ -33,15 +41,15 @@ public class Order_edit extends javax.swing.JFrame {
          
         
         try{
-           String query = "SELECT * FROM tbl_product WHERE product_name = '" + pn.getText() + "'";
+           String query = "SELECT * FROM tbl_order WHERE order_name = '" + pn.getText() + "'";
 
             ResultSet resultSet = dbc.getData(query);
             
             if(resultSet.next()){
-                pname = resultSet.getString("product_name");
+                pname = resultSet.getString("order_name");
    
                 if(pname.equals(resultSet)){
-                    JOptionPane.showMessageDialog(null, " Product name is already used!");       
+                    JOptionPane.showMessageDialog(null, " Order name is already used!");       
                 }
                 return true;
             }else{
@@ -65,12 +73,12 @@ public class Order_edit extends javax.swing.JFrame {
         dbConnector dbc = new dbConnector();
         
         try{
-            String query = "SELECT * FROM tbl_product WHERE (product_name = '" +pn.getText()+ "')AND product_id!= '"+pid.getText()+"'";
+            String query = "SELECT * FROM tbl_order WHERE (order_name = '" +pn.getText()+ "')AND order_id!= '"+oid.getText()+"'";
             ResultSet resultSet = dbc.getData(query);
             
             
             if(resultSet.next()){ 
-                pname = resultSet.getString("product_name");
+                pname = resultSet.getString("order_name");
    
                 if(pname.equals(resultSet)){
                     JOptionPane.showMessageDialog(null, "Product name is already used!");
@@ -106,7 +114,7 @@ public class Order_edit extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        pid = new javax.swing.JTextField();
+        oid = new javax.swing.JTextField();
         pp = new javax.swing.JTextField();
         pt = new javax.swing.JComboBox<>();
         ps = new javax.swing.JComboBox<>();
@@ -151,8 +159,8 @@ public class Order_edit extends javax.swing.JFrame {
         jLabel3.setText("Order Id:");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, 10));
 
-        pid.setEnabled(false);
-        jPanel3.add(pid, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 200, 30));
+        oid.setEnabled(false);
+        jPanel3.add(oid, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 200, 30));
         jPanel3.add(pp, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 200, 30));
 
         pt.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
@@ -254,13 +262,13 @@ public class Order_edit extends javax.swing.JFrame {
         });
         jPanel3.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, -1, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 410, 480));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 410, 480));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -284,7 +292,7 @@ public class Order_edit extends javax.swing.JFrame {
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
      
             
-         if(pid.getText().isEmpty() ||pn.getText().isEmpty()||pq.getText().isEmpty()||pp.getText().isEmpty()){
+         if(oid.getText().isEmpty() ||pn.getText().isEmpty()||pq.getText().isEmpty()||pp.getText().isEmpty()){
          JOptionPane.showMessageDialog(null, "All fields are required!");   
         
         }else if(updateCheck()){
@@ -297,10 +305,10 @@ public class Order_edit extends javax.swing.JFrame {
           this.dispose();
         
       dbConnector dbc = new dbConnector();
-      dbc.updateData("UPDATE tbl_product SET product_name ='"+pn.getText()
-              +"', product_type ='"+pt.getSelectedItem()+"', product_status ='"+ps.getSelectedItem()
-              +"', product_quantity ='"+pq.getText()+"', product_price ='"+pp.getText()    
-              + "WHERE user_id ='"+pid.getText()+"'");
+      dbc.updateData("UPDATE tbl_order SET order_name ='"+pn.getText()
+              +"', order_type ='"+pt.getSelectedItem()+"', order_status ='"+ps.getSelectedItem()
+              +"', order_quantity ='"+pq.getText()+"', order_price ='"+pp.getText()    
+              + "WHERE order_id ='"+oid.getText()+"'");
     }                  
      
     }//GEN-LAST:event_updateActionPerformed
@@ -320,7 +328,7 @@ public class Order_edit extends javax.swing.JFrame {
             
              dbConnector dbc = new dbConnector();
        
-      if (dbc.insertData("INSERT INTO tbl_product (product_name, product_type, product_status, product_quantity, product_price) VALUES('"
+      if (dbc.insertData("INSERT INTO tbl_order (order_name, order_type, order_status, order_quantity, order_price) VALUES('"
      + pn.getText() + "','"+pt.getSelectedItem()+"','"+ ps.getSelectedItem() + "','" 
      + pp.getText() + "','" + pq.getText()+ "')")){
           
@@ -398,7 +406,7 @@ public class Order_edit extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator2;
-    public javax.swing.JTextField pid;
+    public javax.swing.JTextField oid;
     public javax.swing.JTextField pn;
     public javax.swing.JTextField pp;
     public javax.swing.JTextField pq;

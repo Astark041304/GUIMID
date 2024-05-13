@@ -11,8 +11,12 @@ package Config;
  */
 public class Session {
     
+    
+    
+    
+    
     private static Session instance;
-    private int uid; int product_id;
+    private int uid; int product_id; 
     private String fname;
     private String lname;
     private String email;
@@ -99,6 +103,10 @@ public class Session {
     public void setStatus(String status) {
         this.status = status;
     }
+    
+    
+    
+    
      
     
 }

@@ -359,7 +359,7 @@ public class Productedit extends javax.swing.JFrame {
           
         
           JOptionPane.showMessageDialog(null, "Inserted Successfully!");
-          LoginDashboard lgd = new LoginDashboard();
+          ProductTab lgd = new ProductTab();
           lgd.setVisible(true);
           this.dispose();
           

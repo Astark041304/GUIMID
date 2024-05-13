@@ -12,6 +12,7 @@ import Cashier.Order_edit;
 import Config.Passwordhasher;
 import Config.Session;
 import Config.dbConnector;
+import Customer.CustomerDashboard;
 import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -235,8 +236,8 @@ public class LoginDashboard extends javax.swing.JFrame {
                   
             }else if (type.equals("Customer")) {
                 JOptionPane.showMessageDialog(null, "Login Successful!");
-                  ProductTab prg = new ProductTab();
-                  prg.setVisible(true);
+                  CustomerDashboard csd = new CustomerDashboard();
+                  csd.setVisible(true);
                   this.dispose();
                   
             } else { 

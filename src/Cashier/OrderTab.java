@@ -5,10 +5,14 @@
  */
 package Cashier;
 
+import Admin.AdminDashboard;
 import Admin.Adminpin;
+import Admin.ProductTab;
+import Config.Session;
 
 
 import Config.dbConnector;
+import Passwordsettings.AccountSettings;
 
 import java.awt.Color;
 
@@ -46,7 +50,7 @@ public class OrderTab extends javax.swing.JFrame {
            try{
             dbConnector dbc = new dbConnector();
             ResultSet rs = dbc.getData("SELECT order_id, order_name, order_type, order_status, order_quantity, order_price FROM tbl_order");
-            Userstable.setModel(DbUtils.resultSetToTableModel(rs));
+            CustomerTable.setModel(DbUtils.resultSetToTableModel(rs));
              rs.close();
         }catch(SQLException ex){
             System.out.println("Errors: "+ex.getMessage());
@@ -73,112 +77,94 @@ public class OrderTab extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Userstable = new javax.swing.JTable();
+        CustomerTable = new javax.swing.JTable();
+        jPanel6 = new javax.swing.JPanel();
+        uid = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jButton3 = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JSeparator();
+        Em = new javax.swing.JLabel();
+        Id = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        edit1 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         edit = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         p_add = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        edit1 = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jSeparator5 = new javax.swing.JSeparator();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        settings = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        Adname = new javax.swing.JLabel();
+        Lname = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        back = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(31, 27, 27));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Userstable.setAutoCreateRowSorter(true);
-        Userstable.setBackground(new java.awt.Color(153, 255, 255));
-        Userstable.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(204, 255, 255), new java.awt.Color(204, 204, 255)));
-        Userstable.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        Userstable.setForeground(new java.awt.Color(51, 51, 51));
-        Userstable.addMouseListener(new java.awt.event.MouseAdapter() {
+        CustomerTable.setAutoCreateRowSorter(true);
+        CustomerTable.setBackground(new java.awt.Color(153, 255, 255));
+        CustomerTable.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(204, 255, 255), new java.awt.Color(204, 204, 255)));
+        CustomerTable.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        CustomerTable.setForeground(new java.awt.Color(51, 51, 51));
+        CustomerTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                UserstableMouseClicked(evt);
+                CustomerTableMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(Userstable);
+        jScrollPane1.setViewportView(CustomerTable);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 660, 400));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 620, 550));
 
-        edit.setBackground(new java.awt.Color(130, 202, 255));
-        edit.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanel6.setBackground(new java.awt.Color(39, 105, 139));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        uid.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
+        uid.setText("Id");
+        jPanel6.add(uid, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 40, -1));
+
+        jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator2.setForeground(new java.awt.Color(153, 153, 153));
+        jPanel6.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 180, -1));
+
+        jButton3.setBackground(new java.awt.Color(130, 202, 255));
+        jButton3.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        jButton3.setText("Logout");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                editMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                editMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                editMouseExited(evt);
+                jButton3MouseClicked(evt);
             }
         });
+        jPanel6.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 530, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
-        jLabel8.setText("Edit");
+        jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator3.setForeground(new java.awt.Color(153, 153, 153));
+        jPanel6.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 180, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-edit-35.png"))); // NOI18N
+        Em.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
+        Em.setText("Email");
+        jPanel6.add(Em, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 140, -1));
 
-        javax.swing.GroupLayout editLayout = new javax.swing.GroupLayout(edit);
-        edit.setLayout(editLayout);
-        editLayout.setHorizontalGroup(
-            editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(editLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
-                .addContainerGap(29, Short.MAX_VALUE))
-        );
-        editLayout.setVerticalGroup(
-            editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(editLayout.createSequentialGroup()
-                .addGroup(editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        Id.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
+        Id.setText("Uid:");
+        jPanel6.add(Id, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 40, -1));
 
-        jPanel1.add(edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, 140, 50));
-
-        p_add.setBackground(new java.awt.Color(130, 202, 255));
-        p_add.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                p_addMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                p_addMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                p_addMouseExited(evt);
-            }
-        });
-
-        jLabel7.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
-        jLabel7.setText("Add");
-
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-add-35.png"))); // NOI18N
-
-        javax.swing.GroupLayout p_addLayout = new javax.swing.GroupLayout(p_add);
-        p_add.setLayout(p_addLayout);
-        p_addLayout.setHorizontalGroup(
-            p_addLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(p_addLayout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel9)
-                .addGap(25, 25, 25))
-        );
-        p_addLayout.setVerticalGroup(
-            p_addLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(p_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, 140, 50));
+        jPanel4.setBackground(new java.awt.Color(39, 105, 139));
 
         edit1.setBackground(new java.awt.Color(130, 202, 255));
         edit1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -193,8 +179,8 @@ public class OrderTab extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
-        jLabel10.setText("DELETE");
+        jLabel10.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
+        jLabel10.setText("Delete");
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-edit-35.png"))); // NOI18N
 
@@ -203,11 +189,11 @@ public class OrderTab extends javax.swing.JFrame {
         edit1Layout.setHorizontalGroup(
             edit1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(edit1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGap(8, 8, 8))
         );
         edit1Layout.setVerticalGroup(
             edit1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -218,7 +204,226 @@ public class OrderTab extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jPanel1.add(edit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 140, 50));
+        edit.setBackground(new java.awt.Color(130, 202, 255));
+        edit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                editMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                editMouseExited(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
+        jLabel8.setText("Edit");
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-edit-35.png"))); // NOI18N
+
+        javax.swing.GroupLayout editLayout = new javax.swing.GroupLayout(edit);
+        edit.setLayout(editLayout);
+        editLayout.setHorizontalGroup(
+            editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(editLayout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addComponent(jLabel8)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addContainerGap())
+        );
+        editLayout.setVerticalGroup(
+            editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(editLayout.createSequentialGroup()
+                .addGroup(editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        p_add.setBackground(new java.awt.Color(130, 202, 255));
+        p_add.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                p_addMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                p_addMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                p_addMouseExited(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
+        jLabel7.setText("Add");
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-add-35.png"))); // NOI18N
+
+        javax.swing.GroupLayout p_addLayout = new javax.swing.GroupLayout(p_add);
+        p_add.setLayout(p_addLayout);
+        p_addLayout.setHorizontalGroup(
+            p_addLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(p_addLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel9)
+                .addContainerGap())
+        );
+        p_addLayout.setVerticalGroup(
+            p_addLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(edit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(p_add, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(edit1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(88, 88, 88)
+                .addComponent(edit1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(p_add, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(156, Short.MAX_VALUE))
+        );
+
+        jPanel6.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 180, 430));
+
+        jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator5.setForeground(new java.awt.Color(153, 153, 153));
+        jPanel6.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 180, 10));
+
+        jPanel3.setBackground(new java.awt.Color(236, 232, 232));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 180, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        jPanel6.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 180, 40));
+
+        jPanel7.setBackground(new java.awt.Color(236, 232, 232));
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 180, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        jPanel6.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 180, 40));
+
+        settings.setBackground(new java.awt.Color(130, 202, 255));
+        settings.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                settingsMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                settingsMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                settingsMouseExited(evt);
+            }
+        });
+
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-user-65.png"))); // NOI18N
+
+        javax.swing.GroupLayout settingsLayout = new javax.swing.GroupLayout(settings);
+        settings.setLayout(settingsLayout);
+        settingsLayout.setHorizontalGroup(
+            settingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, settingsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 60, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        settingsLayout.setVerticalGroup(
+            settingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, settingsLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel6.add(settings, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 80, 70));
+
+        Adname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Adname.setText("Client");
+        jPanel6.add(Adname, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 90, 30));
+
+        Lname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Lname.setText("Client");
+        jPanel6.add(Lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 50, 80, 20));
+
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 600));
+
+        jPanel9.setBackground(new java.awt.Color(130, 202, 255));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-users-50.png"))); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Yu Gothic Medium", 1, 24)); // NOI18N
+        jLabel3.setText("Order Tab");
+
+        back.setFont(new java.awt.Font("Yu Gothic Medium", 1, 24)); // NOI18N
+        back.setText("Back");
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 361, Short.MAX_VALUE)
+                .addComponent(back)
+                .addContainerGap())
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 620, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -228,64 +433,22 @@ public class OrderTab extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void UserstableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UserstableMouseClicked
-
-    }//GEN-LAST:event_UserstableMouseClicked
+    private void CustomerTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CustomerTableMouseClicked
+               
+    }//GEN-LAST:event_CustomerTableMouseClicked
 
     private void editMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseClicked
-        
-        int rowIndex = Userstable.getSelectedRow();
-
-        if(rowIndex < 0){
-            JOptionPane.showMessageDialog(null, "Please select a Order!");
-        }else{
-
-            try{
-                dbConnector dbc = new dbConnector();
-
-                TableModel tbl = Userstable.getModel();
-
-                ResultSet rs = dbc.getData("SELECT * FROM tbl_order Where order_id = '"+tbl.getValueAt(rowIndex, 0)+"'");
-                if(rs.next()){
-                    JOptionPane.showMessageDialog(null, "Enter Order to Edit! ");
-                      Order_edit ed = new Order_edit();
-                      ed.setVisible(true);
-                      this.dispose();
-                      
-                      
-                    ed.pid.setText(""+rs.getInt("order_id"));
-                    ed.pn.setText(""+rs.getInt("order_name"));
-                    ed.pt.setSelectedItem(""+rs.getInt("order_type"));
-                    ed.ps.setSelectedItem(""+rs.getInt("order_status"));
-                    ed.pq.setText(""+rs.getInt("order_quantity"));
-                    ed.pq.setText(""+rs.getInt("order_price"));
-                    ed.add.setEnabled(false);
-                    ed.setVisible(true);
-                    this.dispose();
-                              
-                }else{
-                    JOptionPane.showMessageDialog(null, "Enter pin to Edit! ");
-                      Adminpin ad = new Adminpin();
-                      ad.setVisible(true);
-                      this.dispose();
-                      
-                      
-                  
-                    
-                }      
-                        
-                
-
-            }catch(SQLException ex){
-                System.out.println(""+ex);
-            }
-        }
+      Order_edit ad = new Order_edit();
+      ad.setVisible(true);
+      this.dispose();
+       
     }//GEN-LAST:event_editMouseClicked
 
     private void editMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseEntered
@@ -297,8 +460,8 @@ public class OrderTab extends javax.swing.JFrame {
     }//GEN-LAST:event_editMouseExited
 
     private void p_addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_addMouseClicked
-        JOptionPane.showMessageDialog(null, "Enter pin to Edit! ");
-                    Adminpin cuf = new Adminpin();
+       
+                    ProductTab cuf = new ProductTab();
                     cuf.setVisible(true);
                     this.dispose();
     }//GEN-LAST:event_p_addMouseClicked
@@ -329,6 +492,42 @@ public class OrderTab extends javax.swing.JFrame {
     private void edit1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_edit1MouseExited
         // TODO add your handling code here:
     }//GEN-LAST:event_edit1MouseExited
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        JOptionPane.showMessageDialog(null,"Logout Success!");
+        setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void settingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsMouseClicked
+        AccountSettings as = new  AccountSettings();
+        as.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_settingsMouseClicked
+
+    private void settingsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsMouseEntered
+        settings.setBackground(hovercolor);
+    }//GEN-LAST:event_settingsMouseEntered
+
+    private void settingsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsMouseExited
+        settings.setBackground(navcolor);
+    }//GEN-LAST:event_settingsMouseExited
+
+    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
+        AdminDashboard adb  = new AdminDashboard ();
+        adb.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_backMouseClicked
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        Session sess = Session.getInstance();
+      
+           Adname.setText(""+sess.getFname());
+           Lname.setText(""+sess.getLname());
+           uid.setText(""+sess.getUid());
+           Em.setText(""+sess.getEmail());
+           
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -366,18 +565,37 @@ public class OrderTab extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable Userstable;
+    private javax.swing.JLabel Adname;
+    public javax.swing.JTable CustomerTable;
+    public javax.swing.JLabel Em;
+    public javax.swing.JLabel Id;
+    private javax.swing.JLabel Lname;
+    private javax.swing.JLabel back;
     private javax.swing.JPanel edit;
     private javax.swing.JPanel edit1;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JPanel p_add;
+    private javax.swing.JPanel settings;
+    public javax.swing.JLabel uid;
     // End of variables declaration//GEN-END:variables
 
     
