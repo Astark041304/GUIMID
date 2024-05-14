@@ -125,14 +125,15 @@ public class Order_edit extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         pq = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         add = new javax.swing.JButton();
+        delete = new javax.swing.JButton();
         cancel = new javax.swing.JButton();
         update = new javax.swing.JButton();
-        delete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(31, 27, 27));
+        jPanel1.setBackground(new java.awt.Color(39, 105, 139));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(94, 160, 194));
@@ -174,7 +175,7 @@ public class Order_edit extends javax.swing.JFrame {
 
         jSeparator2.setBackground(new java.awt.Color(130, 202, 255));
         jSeparator2.setForeground(new java.awt.Color(204, 204, 255));
-        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 410, 10));
+        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 410, 10));
 
         Editbg.setBackground(new java.awt.Color(215, 220, 224));
         Editbg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 110, 208)));
@@ -211,6 +212,8 @@ public class Order_edit extends javax.swing.JFrame {
         jLabel6.setText("Order quantity:");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
 
+        jPanel2.setBackground(new java.awt.Color(39, 105, 139));
+
         add.setBackground(new java.awt.Color(130, 202, 255));
         add.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         add.setText("Add");
@@ -224,7 +227,15 @@ public class Order_edit extends javax.swing.JFrame {
                 addActionPerformed(evt);
             }
         });
-        jPanel3.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, -1, -1));
+
+        delete.setBackground(new java.awt.Color(130, 202, 255));
+        delete.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        delete.setText("Delete");
+        delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteActionPerformed(evt);
+            }
+        });
 
         cancel.setBackground(new java.awt.Color(130, 202, 255));
         cancel.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
@@ -239,7 +250,6 @@ public class Order_edit extends javax.swing.JFrame {
                 cancelActionPerformed(evt);
             }
         });
-        jPanel3.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, -1, -1));
 
         update.setBackground(new java.awt.Color(130, 202, 255));
         update.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
@@ -250,19 +260,37 @@ public class Order_edit extends javax.swing.JFrame {
                 updateActionPerformed(evt);
             }
         });
-        jPanel3.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, -1, -1));
 
-        delete.setBackground(new java.awt.Color(130, 202, 255));
-        delete.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        delete.setText("Delete");
-        delete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteActionPerformed(evt);
-            }
-        });
-        jPanel3.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, -1, -1));
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(add)
+                .addGap(18, 18, 18)
+                .addComponent(delete)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cancel)
+                .addGap(18, 18, 18)
+                .addComponent(update)
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(add)
+                    .addComponent(delete)
+                    .addComponent(cancel)
+                    .addComponent(update))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 410, 480));
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 370, 50));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, 410, 480));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -404,6 +432,7 @@ public class Order_edit extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator2;
     public javax.swing.JTextField oid;

@@ -30,7 +30,7 @@ public class OrderTab extends javax.swing.JFrame {
     
     
     
-    
+  
     
 
     /**
@@ -41,15 +41,15 @@ public class OrderTab extends javax.swing.JFrame {
         displayData();
     }
     
-     Color navcolor = new Color(130,202,255);
-     Color hovercolor = new Color(204,102,255);
+      Color navcolor = new Color(130,202,255);
+      Color hovercolor = new Color(240,240,240);
 
      
      
      public void displayData(){
            try{
             dbConnector dbc = new dbConnector();
-            ResultSet rs = dbc.getData("SELECT order_id, order_name, order_type, order_status, order_quantity, order_price FROM tbl_order");
+            ResultSet rs = dbc.getData("SELECT order_id, product_id, order_type, order_status, order_quantity, order_price FROM tbl_order");
             CustomerTable.setModel(DbUtils.resultSetToTableModel(rs));
              rs.close();
         }catch(SQLException ex){
@@ -81,12 +81,11 @@ public class OrderTab extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         uid = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        jButton3 = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
         Em = new javax.swing.JLabel();
         Id = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        edit1 = new javax.swing.JPanel();
+        delete = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         edit = new javax.swing.JPanel();
@@ -95,6 +94,7 @@ public class OrderTab extends javax.swing.JFrame {
         p_add = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
         jSeparator5 = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
@@ -142,16 +142,6 @@ public class OrderTab extends javax.swing.JFrame {
         jSeparator2.setForeground(new java.awt.Color(153, 153, 153));
         jPanel6.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 180, -1));
 
-        jButton3.setBackground(new java.awt.Color(130, 202, 255));
-        jButton3.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
-        jButton3.setText("Logout");
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
-            }
-        });
-        jPanel6.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 530, -1, -1));
-
         jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator3.setForeground(new java.awt.Color(153, 153, 153));
         jPanel6.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 180, -1));
@@ -166,16 +156,16 @@ public class OrderTab extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(39, 105, 139));
 
-        edit1.setBackground(new java.awt.Color(130, 202, 255));
-        edit1.addMouseListener(new java.awt.event.MouseAdapter() {
+        delete.setBackground(new java.awt.Color(130, 202, 255));
+        delete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                edit1MouseClicked(evt);
+                deleteMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                edit1MouseEntered(evt);
+                deleteMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                edit1MouseExited(evt);
+                deleteMouseExited(evt);
             }
         });
 
@@ -184,21 +174,21 @@ public class OrderTab extends javax.swing.JFrame {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-edit-35.png"))); // NOI18N
 
-        javax.swing.GroupLayout edit1Layout = new javax.swing.GroupLayout(edit1);
-        edit1.setLayout(edit1Layout);
-        edit1Layout.setHorizontalGroup(
-            edit1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(edit1Layout.createSequentialGroup()
+        javax.swing.GroupLayout deleteLayout = new javax.swing.GroupLayout(delete);
+        delete.setLayout(deleteLayout);
+        deleteLayout.setHorizontalGroup(
+            deleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(deleteLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
                 .addGap(8, 8, 8))
         );
-        edit1Layout.setVerticalGroup(
-            edit1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(edit1Layout.createSequentialGroup()
-                .addGroup(edit1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+        deleteLayout.setVerticalGroup(
+            deleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(deleteLayout.createSequentialGroup()
+                .addGroup(deleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -277,32 +267,44 @@ public class OrderTab extends javax.swing.JFrame {
             .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
+        jButton3.setBackground(new java.awt.Color(130, 202, 255));
+        jButton3.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        jButton3.setText("Logout");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(edit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(p_add, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(edit1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(edit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(p_add, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(28, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(51, 51, 51))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(88, 88, 88)
-                .addComponent(edit1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(p_add, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(156, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(49, 49, 49))
         );
 
         jPanel6.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 180, 430));
@@ -474,24 +476,23 @@ public class OrderTab extends javax.swing.JFrame {
         p_add.setBackground(navcolor);
     }//GEN-LAST:event_p_addMouseExited
 
-    private void edit1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_edit1MouseClicked
-     
-        
-            JOptionPane.showMessageDialog(null, "Enter Pin to Delete!");
+    private void deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseClicked
+
+            JOptionPane.showMessageDialog(null, "Wait For Admin Pin to Delete!");
             Adminpin pin = new Adminpin();
             pin.setVisible(true);
             this.dispose();
        
         
-    }//GEN-LAST:event_edit1MouseClicked
+    }//GEN-LAST:event_deleteMouseClicked
 
-    private void edit1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_edit1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edit1MouseEntered
+    private void deleteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseEntered
+        delete.setBackground(hovercolor);
+    }//GEN-LAST:event_deleteMouseEntered
 
-    private void edit1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_edit1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edit1MouseExited
+    private void deleteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseExited
+        delete.setBackground(navcolor);
+    }//GEN-LAST:event_deleteMouseExited
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         JOptionPane.showMessageDialog(null,"Logout Success!");
@@ -571,8 +572,8 @@ public class OrderTab extends javax.swing.JFrame {
     public javax.swing.JLabel Id;
     private javax.swing.JLabel Lname;
     private javax.swing.JLabel back;
+    private javax.swing.JPanel delete;
     private javax.swing.JPanel edit;
-    private javax.swing.JPanel edit1;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

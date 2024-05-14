@@ -1,25 +1,30 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Admin;
+package Cashier;
 
+import Admin.*;
 import Cashier.OrderTab;
-
+import Config.Session;
 import Config.dbConnector;
+import java.security.NoSuchAlgorithmException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author User
  */
-public class Adminpin extends javax.swing.JFrame {
+public class Orderquantity extends javax.swing.JFrame {
 
     /**
      * Creates new form Adminpin
      */
-    public Adminpin() {
+    public Orderquantity() {
         initComponents();
     }
 
@@ -57,9 +62,9 @@ public class Adminpin extends javax.swing.JFrame {
 
         del.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        jLabel1.setFont(new java.awt.Font("Yu Gothic Medium", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Yu Gothic Medium", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Enter Pin");
+        jLabel1.setText("Enter Quantity to Order");
 
         jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -94,14 +99,10 @@ public class Adminpin extends javax.swing.JFrame {
                 .addComponent(del, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(64, 64, 64))
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(jLabel1)))
+                .addGap(86, 86, 86)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,10 +113,10 @@ public class Adminpin extends javax.swing.JFrame {
                 .addComponent(del, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 290, 160));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, 290, 160));
 
         jPanel9.setBackground(new java.awt.Color(130, 202, 255));
 
@@ -181,10 +182,10 @@ public class Adminpin extends javax.swing.JFrame {
              dbConnector dbc = new dbConnector();
              
              
-         
+          String deleteData = "del";
              
-          String ProductOrderQuery = "SELECT * FROM tbl_product WHERE order_id";
-           int rowsAffectedProduct = dbc.executeUpdate( ProductOrderQuery);
+            dbc.deleteData("DELETE tbl_product SET order_id = ");
+           int rowsAffectedProduct = dbc.executeUpdate(deleteData);
   
            String deleteOrderQuery = "DELETE FROM tbl_order";
            int rowsAffectedOrder = dbc.executeUpdate(deleteOrderQuery);
@@ -194,7 +195,7 @@ public class Adminpin extends javax.swing.JFrame {
         ot.setVisible(true);
         this.dispose();
         } else {
-        JOptionPane.showMessageDialog(null, "No orders were deleted. ");
+        JOptionPane.showMessageDialog(null, "No orders were deleted. Please check your condition.");
       }
          } else {
     JOptionPane.showMessageDialog(null, "Incorrect Admin PIN. Deletion canceled.");
@@ -224,20 +225,21 @@ public class Adminpin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Adminpin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Orderquantity.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Adminpin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Orderquantity.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Adminpin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Orderquantity.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Adminpin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Orderquantity.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Adminpin().setVisible(true);
+                new Orderquantity().setVisible(true);
             }
         });
     }

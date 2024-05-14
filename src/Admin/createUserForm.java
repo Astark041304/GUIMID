@@ -362,7 +362,7 @@ public class createUserForm extends javax.swing.JFrame {
 
     
     if (dbc.executeUpdate(query) > 0) {
-        JOptionPane.showMessageDialog(null, "Customer information updated successfully!");
+        JOptionPane.showMessageDialog(null, "Users information updated successfully!");
         
         AdminForm adf = new AdminForm();
         adf.setVisible(true);
