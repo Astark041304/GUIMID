@@ -635,10 +635,9 @@ public class ProductTab extends javax.swing.JFrame {
             try {
                 dbConnector dbc = new dbConnector();
                 TableModel tbl = ProductTable.getModel();
-                String productId = tbl.getValueAt(rowIndex, 0).toString();  
+                
 
-                ResultSet rs = dbc.getData("SELECT * FROM tbl_product WHERE product_id = '" + productId + "'");
-
+                ResultSet rs = dbc.getData("SELECT * FROM tbl_product Where product_id = '" + tbl.getValueAt(rowIndex, 0)+"'");
                 if (rs.next()) {
                     OrderTab ot = new OrderTab();
                     ot.setVisible(true);
@@ -648,7 +647,7 @@ public class ProductTab extends javax.swing.JFrame {
                  
                     if (!selectedRows.contains(rowIndex)) {
                         orderModel.addRow(new Object[]{
-                            rs.getString("product_id"),
+                            rs.getString("product_id"),                    
                             rs.getString("product_name"),
                             rs.getString("product_type"),
                             rs.getString("product_status"),
@@ -665,7 +664,6 @@ public class ProductTab extends javax.swing.JFrame {
                 System.out.println("" + ex);
             }
         }
-        
     }//GEN-LAST:event_orderMouseClicked
 
     private void orderMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orderMouseEntered

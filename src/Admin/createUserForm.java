@@ -7,7 +7,7 @@ package Admin;
 
 import Config.Passwordhasher;
 import Config.dbConnector;
-import gymreg.LoginDashboard;
+
 import static gymreg.RegDashboard.email;
 import static gymreg.RegDashboard.usname;
 import java.security.NoSuchAlgorithmException;

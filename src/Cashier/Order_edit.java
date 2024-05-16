@@ -320,24 +320,34 @@ public class Order_edit extends javax.swing.JFrame {
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
      
             
-         if(oid.getText().isEmpty() ||pn.getText().isEmpty()||pq.getText().isEmpty()||pp.getText().isEmpty()){
-         JOptionPane.showMessageDialog(null, "All fields are required!");   
-        
-        }else if(updateCheck()){
-        System.out.println("Duplicate Exist");
-        }else{
-            
-        
+         if (oid.getText().isEmpty() || pn.getText().isEmpty() || pq.getText().isEmpty() || pp.getText().isEmpty()) {
+       JOptionPane.showMessageDialog(null, "All fields are required!");   
+       } else if (updateCheck()) {
+   
+        System.out.println("Duplicate exists");
+        } else {
+    
+        dbConnector dbc = new dbConnector();
+    
+    
+         String query = "UPDATE tbl_order SET order_name = '" + pn.getText() +
+                   "', order_type = '" + pt.getSelectedItem() +
+                   "', order_status = '" + ps.getSelectedItem() +
+                   "', order_quantity = '" + pq.getText() +
+                   "', order_price = '" + pp.getText() +
+                   "' WHERE order_id = '" + oid.getText() + "'"; 
+    
+   
+        if (dbc.executeUpdate(query) > 0) {
+        JOptionPane.showMessageDialog(null, "Product Edit Successfully!");
+       
           ProductTab adf = new ProductTab();
           adf.setVisible(true);
-          this.dispose();
-        
-      dbConnector dbc = new dbConnector();
-      dbc.updateData("UPDATE tbl_order SET order_name ='"+pn.getText()
-              +"', order_type ='"+pt.getSelectedItem()+"', order_status ='"+ps.getSelectedItem()
-              +"', order_quantity ='"+pq.getText()+"', order_price ='"+pp.getText()    
-              + "WHERE order_id ='"+oid.getText()+"'");
-    }                  
+          this.dispose(); 
+      } else {
+        JOptionPane.showMessageDialog(null, "Failed to Edit Product. Please try again.");
+        }
+     }
      
     }//GEN-LAST:event_updateActionPerformed
     

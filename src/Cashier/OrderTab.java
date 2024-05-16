@@ -8,6 +8,7 @@ package Cashier;
 import Admin.AdminDashboard;
 import Admin.Adminpin;
 import Admin.ProductTab;
+import Admin.Productedit;
 import Config.Session;
 
 
@@ -49,7 +50,7 @@ public class OrderTab extends javax.swing.JFrame {
      public void displayData(){
            try{
             dbConnector dbc = new dbConnector();
-            ResultSet rs = dbc.getData("SELECT order_id, product_id, order_type, order_status, order_quantity, order_price FROM tbl_order");
+            ResultSet rs = dbc.getData("SELECT order_id, order_name, order_type, order_status, order_quantity, order_price FROM tbl_order");
             CustomerTable.setModel(DbUtils.resultSetToTableModel(rs));
              rs.close();
         }catch(SQLException ex){
@@ -447,10 +448,41 @@ public class OrderTab extends javax.swing.JFrame {
     }//GEN-LAST:event_CustomerTableMouseClicked
 
     private void editMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseClicked
-      Order_edit ad = new Order_edit();
-      ad.setVisible(true);
-      this.dispose();
-       
+      int rowIndex = CustomerTable.getSelectedRow();
+
+        if(rowIndex < 0){
+            JOptionPane.showMessageDialog(null, "Please select a Order!");
+        }else{
+
+            try{
+                dbConnector dbc = new dbConnector();
+
+                TableModel tbl = CustomerTable.getModel();
+
+                ResultSet rs = dbc.getData("SELECT * FROM tbl_order Where order_id = '"+tbl.getValueAt(rowIndex, 0)+"'");
+                if(rs.next()){
+                    Order_edit od = new Order_edit();
+                    od.setVisible(true);
+                    this.dispose();
+
+                   od.oid.setText(""+rs.getString("order_id"));
+                   od.pn.setText(""+rs.getString("order_name"));
+                   od.pt.setSelectedItem(""+rs.getString("order_type"));
+                   od.ps.setSelectedItem(""+rs.getString("order_status"));
+                   od.pq.setText(""+rs.getString("order_quantity"));
+                   od.pp.setText(""+rs.getString("order_price"));
+                   od.add.setEnabled(false);
+                   od.update.setEnabled(true);
+                   od.setVisible(true);
+                    this.dispose();
+
+
+                }
+
+            }catch(SQLException ex){
+                System.out.println(""+ex);
+            }
+        }       
     }//GEN-LAST:event_editMouseClicked
 
     private void editMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseEntered
