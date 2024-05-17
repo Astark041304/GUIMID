@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2024 at 02:20 PM
+-- Generation Time: May 17, 2024 at 05:21 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `restaurant menu`
+-- Database: `restaurant_menu`
 --
 
 -- --------------------------------------------------------
@@ -31,10 +31,17 @@ CREATE TABLE `tbl_order` (
   `order_id` int(50) NOT NULL,
   `order_name` varchar(50) NOT NULL,
   `order_type` varchar(50) NOT NULL,
-  `order_status` varchar(50) NOT NULL,
   `order_quantity` int(50) NOT NULL,
   `order_price` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_order`
+--
+
+INSERT INTO `tbl_order` (`order_id`, `order_name`, `order_type`, `order_quantity`, `order_price`) VALUES
+(1, 'spaghetti', 'Meal', 20, '20'),
+(2, 'lechon', 'Meal', 30, '30');
 
 -- --------------------------------------------------------
 
@@ -116,7 +123,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_order`
 --
 ALTER TABLE `tbl_order`
-  MODIFY `order_id` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `order_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_product`
