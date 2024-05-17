@@ -16,12 +16,12 @@ import javax.swing.JOptionPane;
  *
  * @author John William
  */
-public class Order_edit extends javax.swing.JFrame {
+public class Createorder extends javax.swing.JFrame {
 
     /**
      * Creates new form createUserForm
      */
-    public Order_edit() {
+    public Createorder() {
         initComponents();
     }
     
@@ -115,19 +115,11 @@ public class Order_edit extends javax.swing.JFrame {
         oid = new javax.swing.JTextField();
         ot = new javax.swing.JComboBox<>();
         on = new javax.swing.JTextField();
-        jSeparator2 = new javax.swing.JSeparator();
-        Editbg = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         oq = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        add = new javax.swing.JButton();
-        delete = new javax.swing.JButton();
-        cancel = new javax.swing.JButton();
-        update = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         op = new javax.swing.JTextField();
+        order = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
@@ -161,130 +153,33 @@ public class Order_edit extends javax.swing.JFrame {
         ot.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Meal", "Drinks", "Desserts" }));
         jPanel3.add(ot, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 200, 30));
         jPanel3.add(on, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 200, 30));
-
-        jSeparator2.setBackground(new java.awt.Color(130, 202, 255));
-        jSeparator2.setForeground(new java.awt.Color(204, 204, 255));
-        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 410, 10));
-
-        Editbg.setBackground(new java.awt.Color(215, 220, 224));
-        Editbg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 110, 208)));
-
-        jLabel7.setBackground(new java.awt.Color(215, 220, 224));
-        jLabel7.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
-        jLabel7.setText("Editing");
-
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-edit-40.png"))); // NOI18N
-
-        javax.swing.GroupLayout EditbgLayout = new javax.swing.GroupLayout(Editbg);
-        Editbg.setLayout(EditbgLayout);
-        EditbgLayout.setHorizontalGroup(
-            EditbgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EditbgLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel8)
-                .addGap(21, 21, 21))
-        );
-        EditbgLayout.setVerticalGroup(
-            EditbgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(EditbgLayout.createSequentialGroup()
-                .addComponent(jLabel8)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        jPanel3.add(Editbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, 50));
         jPanel3.add(oq, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 200, 30));
 
         jLabel6.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel6.setText("Order quantity:");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
 
-        jPanel2.setBackground(new java.awt.Color(39, 105, 139));
-
-        add.setBackground(new java.awt.Color(130, 202, 255));
-        add.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        add.setText("Add");
-        add.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                addMouseClicked(evt);
-            }
-        });
-        add.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addActionPerformed(evt);
-            }
-        });
-
-        delete.setBackground(new java.awt.Color(130, 202, 255));
-        delete.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        delete.setText("Delete");
-        delete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteActionPerformed(evt);
-            }
-        });
-
-        cancel.setBackground(new java.awt.Color(130, 202, 255));
-        cancel.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        cancel.setText("Cancel");
-        cancel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cancelMouseClicked(evt);
-            }
-        });
-        cancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelActionPerformed(evt);
-            }
-        });
-
-        update.setBackground(new java.awt.Color(130, 202, 255));
-        update.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        update.setText("Update");
-        update.setEnabled(false);
-        update.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(add)
-                .addGap(18, 18, 18)
-                .addComponent(delete)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cancel)
-                .addGap(18, 18, 18)
-                .addComponent(update)
-                .addContainerGap(32, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(add)
-                    .addComponent(delete)
-                    .addComponent(cancel)
-                    .addComponent(update))
-                .addContainerGap(16, Short.MAX_VALUE))
-        );
-
-        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 370, 50));
-
         jLabel9.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel9.setText("Order price:");
         jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, -1));
         jPanel3.add(op, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 200, 30));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 410, 480));
+        order.setBackground(new java.awt.Color(130, 202, 255));
+        order.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        order.setText("Order");
+        order.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                orderMouseClicked(evt);
+            }
+        });
+        order.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orderActionPerformed(evt);
+            }
+        });
+        jPanel3.add(order, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 200, -1));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 410, 310));
 
         jPanel4.setBackground(new java.awt.Color(130, 202, 255));
 
@@ -336,86 +231,33 @@ public class Order_edit extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
+    private void orderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_addActionPerformed
+    }//GEN-LAST:event_orderActionPerformed
+    
+    
+    private void orderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orderMouseClicked
+        if (on.getText().isEmpty() || oq.getText().isEmpty() || op.getText().isEmpty()) {
+    JOptionPane.showMessageDialog(null, "All fields are required!");
+        } else if (duplicateCheck()) {
+    System.out.println("Duplicate Exist!");
+} else {
+    dbConnector dbc = new dbConnector();
 
-    private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cancelActionPerformed
+    if (dbc.insertData("INSERT INTO tbl_order (order_name, order_type, order_quantity, order_price) VALUES('"
+            + on.getText() + "','" + ot.getSelectedItem() + "','" + oq.getText() + "','" + op.getText() + "')")) {
 
-    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
-     
-            
-         if (oid.getText().isEmpty() || on.getText().isEmpty() || oq.getText().isEmpty() ) {
-       JOptionPane.showMessageDialog(null, "All fields are required!");   
-       } else if (updateCheck()) {
-   
-        System.out.println("Duplicate exists");
-        } else {
-    
-        dbConnector dbc = new dbConnector();
-    
-    
-         String query = "UPDATE tbl_order SET order_name = '" + on.getText() +
-                   "', order_type = '" + ot.getSelectedItem() +                 
-                   "', order_quantity = '" + oq.getText() +
-                   "', order_price = '" + op.getText() +
-                
-                   "' WHERE order_id = '" + oid.getText() + "'"; 
-    
-   
-        if (dbc.executeUpdate(query) > 0) {
-        JOptionPane.showMessageDialog(null, "Order Edit Successfully!");
-       
-          OrderM adf = new OrderM();
-          adf.setVisible(true);
-          this.dispose(); 
-      } else {
-        JOptionPane.showMessageDialog(null, "Failed to Edit Order. Please try again.");
-        }
-     }
-     
-    }//GEN-LAST:event_updateActionPerformed
-    
-    
-    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_deleteActionPerformed
+        JOptionPane.showMessageDialog(null, "Inserted Successfully!");
+        OrderM lgd = new OrderM();
+        lgd.setVisible(true);
+        this.dispose();
 
-    private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
-         if(on.getText().isEmpty()|| oq.getText().isEmpty() || op.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "All fields are required!");
-        }else if(duplicateCheck()){
-            System.out.println("Duplicate Exist!");
-            
-        }else{
-            
-             dbConnector dbc = new dbConnector();
-       
-      if (dbc.insertData("INSERT INTO tbl_order (order_name, order_type, order_quantity, order_price,) VALUES('"
-     + on.getText() + "','"+ot.getSelectedItem()+"','"+ "','" 
-    + oq.getText()+ "',)")){
-          
-        
-          JOptionPane.showMessageDialog(null, "Inserted Successfully!");
-          LoginDashboard lgd = new LoginDashboard();
-          lgd.setVisible(true);
-          this.dispose();
-          
-      }else{
-          JOptionPane.showMessageDialog(null, "Connection Error!");
-      }
-            
-        }                    
+    } else {
+        JOptionPane.showMessageDialog(null, "Connection Error!");
+    }
+}                    
            
-    }//GEN-LAST:event_addMouseClicked
-
-    private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
-       AdminForm adf = new  AdminForm();
-       adf.setVisible(true);
-       this.dispose();
-    }//GEN-LAST:event_cancelMouseClicked
+    }//GEN-LAST:event_orderMouseClicked
 
     /**
      * @param args the command line arguments
@@ -434,14 +276,18 @@ public class Order_edit extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Order_edit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Createorder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Order_edit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Createorder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Order_edit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Createorder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Order_edit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Createorder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -450,16 +296,12 @@ public class Order_edit extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Order_edit().setVisible(true);
+                new Createorder().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Editbg;
-    public javax.swing.JButton add;
-    private javax.swing.JButton cancel;
-    private javax.swing.JButton delete;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -467,19 +309,15 @@ public class Order_edit extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JSeparator jSeparator2;
     public javax.swing.JTextField oid;
     public javax.swing.JTextField on;
     public javax.swing.JTextField op;
     public javax.swing.JTextField oq;
+    public javax.swing.JButton order;
     public javax.swing.JComboBox<String> ot;
-    public javax.swing.JButton update;
     // End of variables declaration//GEN-END:variables
 }

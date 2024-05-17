@@ -6,13 +6,11 @@
 package gymreg;
 
 import Admin.AdminDashboard;
-import Admin.ProductTab;
-import Cashier.OrderTab;
-import Cashier.Order_edit;
+import Cashier.CashierM;
+import Cashier.OrderM;
 import Config.Passwordhasher;
 import Config.Session;
 import Config.dbConnector;
-import Customer.CustomerDashboard;
 import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -219,7 +217,7 @@ public class LoginDashboard extends javax.swing.JFrame {
         
        if (user.getText().isEmpty() || pass.getText().isEmpty()) {
         JOptionPane.showMessageDialog(null, "All fields are required!");
-    } else {
+         } else {
         if (!status.equals("Active")) {
             JOptionPane.showMessageDialog(null, "Account is In-Active. Contact the Admin!");
         } else {
@@ -230,25 +228,19 @@ public class LoginDashboard extends javax.swing.JFrame {
                 this.dispose();
             } else if (type.equals("Cashier")) {
                 JOptionPane.showMessageDialog(null, "Login Successful!");
-                  OrderTab prg = new OrderTab();
-                  prg.setVisible(true);
+                  CashierM chm = new CashierM();
+                  chm.setVisible(true);
                   this.dispose();
-                  
-            }else if (type.equals("Customer")) {
-                JOptionPane.showMessageDialog(null, "Login Successful!");
-                  CustomerDashboard csd = new CustomerDashboard();
-                  csd.setVisible(true);
-                  this.dispose();
-                  
+           
             } else { 
                     JOptionPane.showMessageDialog(null, "No account type found. Contact the Admin!");
                     }
             
-        }
-    }
-} else {
-    JOptionPane.showMessageDialog(null, "Invalid Account!");
-}
+                   }
+                 }
+             } else {
+                    JOptionPane.showMessageDialog(null, "Invalid Account!");
+             }
 
         
     }//GEN-LAST:event_LoginActionPerformed
