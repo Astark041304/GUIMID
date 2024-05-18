@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Cashier;
+package Admin;
 
+import Cashier.*;
 import Config.dbConnector;
 import Passwordsettings.AccountSettings;
 import java.sql.ResultSet;
@@ -15,12 +16,12 @@ import net.proteanit.sql.DbUtils;
  *
  * @author John William
  */
-public class Resibo extends javax.swing.JFrame {
+public class Reports extends javax.swing.JFrame {
 
     /**
      * Creates new form Resibo
      */
-    public Resibo() {
+    public Reports() {
         initComponents();
         displayData();
     }
@@ -50,25 +51,18 @@ public class Resibo extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TableReceipt = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         back = new javax.swing.JLabel();
         Adname1 = new javax.swing.JLabel();
         set = new javax.swing.JLabel();
         home = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        ProductTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(39, 105, 139));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jScrollPane1.setViewportView(TableReceipt);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 460, 500));
 
         jPanel5.setBackground(new java.awt.Color(151, 96, 9));
 
@@ -81,7 +75,7 @@ public class Resibo extends javax.swing.JFrame {
 
         Adname1.setFont(new java.awt.Font("Yu Gothic Medium", 1, 24)); // NOI18N
         Adname1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Adname1.setText("Order Reciept");
+        Adname1.setText("Sales Report");
 
         set.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-settings-35.png"))); // NOI18N
         set.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -104,7 +98,7 @@ public class Resibo extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(77, 77, 77)
                 .addComponent(Adname1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 407, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 441, Short.MAX_VALUE)
                 .addComponent(home)
                 .addGap(18, 18, 18)
                 .addComponent(back)
@@ -120,38 +114,29 @@ public class Resibo extends javax.swing.JFrame {
             .addComponent(home, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 50));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 50));
 
-        jLabel2.setFont(new java.awt.Font("Yu Gothic", 1, 11)); // NOI18N
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-print-30.png"))); // NOI18N
-        jLabel2.setText("Print");
+        ProductTable.setAutoCreateRowSorter(true);
+        ProductTable.setBackground(new java.awt.Color(153, 255, 255));
+        ProductTable.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(204, 255, 255), new java.awt.Color(204, 204, 255)));
+        ProductTable.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        ProductTable.setForeground(new java.awt.Color(51, 51, 51));
+        ProductTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ProductTableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(ProductTable);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 560, 130, 30));
-
-        jLabel10.setBackground(new java.awt.Color(255, 204, 204));
-        jLabel10.setForeground(new java.awt.Color(255, 204, 204));
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Borcelle (4).png"))); // NOI18N
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, 570));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 630, 510));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,8 +154,8 @@ public class Resibo extends javax.swing.JFrame {
     }//GEN-LAST:event_setMouseClicked
 
     private void homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseClicked
-        CashierM cm = new CashierM();
-        cm.setVisible(true);
+        AdminDashboard ad = new AdminDashboard();
+        ad.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_homeMouseClicked
 
@@ -179,6 +164,10 @@ public class Resibo extends javax.swing.JFrame {
         cm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_backMouseClicked
+
+    private void ProductTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProductTableMouseClicked
+
+    }//GEN-LAST:event_ProductTableMouseClicked
 
     /**
      * @param args the command line arguments
@@ -197,33 +186,31 @@ public class Resibo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Resibo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reports.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Resibo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reports.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Resibo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reports.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Resibo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reports.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Resibo().setVisible(true);
+                new Reports().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel Adname1;
-    private javax.swing.JTable TableReceipt;
+    private javax.swing.JTable ProductTable;
     private javax.swing.JLabel back;
     private javax.swing.JLabel home;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel set;

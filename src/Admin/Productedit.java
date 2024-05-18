@@ -6,6 +6,7 @@
 package Admin;
 
 import Config.dbConnector;
+import Passwordsettings.AccountSettings;
 import gymreg.LoginDashboard;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -123,17 +124,18 @@ public class Productedit extends javax.swing.JFrame {
         cancel = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         Adname1 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
+        set = new javax.swing.JLabel();
+        home = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(39, 105, 139));
+        jPanel1.setBackground(new java.awt.Color(184, 167, 95));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel3.setBackground(new java.awt.Color(94, 160, 194));
-        jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(102, 102, 102), new java.awt.Color(102, 102, 102), new java.awt.Color(102, 102, 102), new java.awt.Color(102, 102, 102)));
+        jPanel3.setBackground(new java.awt.Color(151, 96, 9));
+        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(204, 204, 255)));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic Medium", 1, 11)); // NOI18N
@@ -170,7 +172,7 @@ public class Productedit extends javax.swing.JFrame {
         jPanel3.add(pn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 200, 30));
 
         jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
-        jSeparator2.setForeground(new java.awt.Color(153, 153, 153));
+        jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
         jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 410, 10));
 
         Editbg.setBackground(new java.awt.Color(215, 220, 224));
@@ -201,14 +203,14 @@ public class Productedit extends javax.swing.JFrame {
             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel3.add(Editbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 40));
+        jPanel3.add(Editbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 50));
         jPanel3.add(pq, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 200, 30));
 
         jLabel6.setFont(new java.awt.Font("Yu Gothic Medium", 1, 11)); // NOI18N
         jLabel6.setText("product quantity:");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
 
-        jPanel2.setBackground(new java.awt.Color(39, 105, 139));
+        jPanel2.setBackground(new java.awt.Color(215, 220, 224));
 
         add.setBackground(new java.awt.Color(130, 202, 255));
         add.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
@@ -262,7 +264,7 @@ public class Productedit extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(add)
                 .addGap(18, 18, 18)
                 .addComponent(delete)
@@ -284,49 +286,61 @@ public class Productedit extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 380, 40));
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 360, 40));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 410, 450));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 410, 450));
 
-        jPanel4.setBackground(new java.awt.Color(130, 202, 255));
+        jPanel4.setBackground(new java.awt.Color(184, 167, 95));
 
-        Adname1.setFont(new java.awt.Font("Yu Gothic Medium", 1, 18)); // NOI18N
+        Adname1.setFont(new java.awt.Font("Yu Gothic Medium", 1, 24)); // NOI18N
         Adname1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Adname1.setText("Edit Info");
 
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-settings-35.png"))); // NOI18N
-
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-back-35.png"))); // NOI18N
 
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-home-35.png"))); // NOI18N
+        set.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-settings-35.png"))); // NOI18N
+        set.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                setMouseClicked(evt);
+            }
+        });
+
+        home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-home-35.png"))); // NOI18N
+        home.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                homeMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(Adname1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 502, Short.MAX_VALUE)
-                .addComponent(jLabel20)
+                .addContainerGap()
+                .addComponent(Adname1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 490, Short.MAX_VALUE)
+                .addComponent(home)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel19)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel18)
-                .addGap(29, 29, 29))
+                .addComponent(set)
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
-                    .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-            .addComponent(Adname1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Adname1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(set, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(home, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 50));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 50));
+
+        jLabel9.setBackground(new java.awt.Color(255, 204, 204));
+        jLabel9.setForeground(new java.awt.Color(255, 204, 204));
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Borcelle (4).png"))); // NOI18N
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, 570));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -336,7 +350,7 @@ public class Productedit extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -422,6 +436,18 @@ public class Productedit extends javax.swing.JFrame {
        this.dispose();
     }//GEN-LAST:event_cancelMouseClicked
 
+    private void setMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setMouseClicked
+        AccountSettings as = new  AccountSettings();
+        as.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_setMouseClicked
+
+    private void homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseClicked
+        AdminDashboard as = new  AdminDashboard();
+        as.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_homeMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -459,22 +485,22 @@ public class Productedit extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Adname1;
+    public javax.swing.JLabel Adname1;
     private javax.swing.JPanel Editbg;
     public javax.swing.JButton add;
     private javax.swing.JButton cancel;
     private javax.swing.JButton delete;
+    private javax.swing.JLabel home;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -486,6 +512,7 @@ public class Productedit extends javax.swing.JFrame {
     public javax.swing.JTextField pq;
     public javax.swing.JComboBox<String> ps;
     public javax.swing.JComboBox<String> pt;
+    private javax.swing.JLabel set;
     public javax.swing.JButton update;
     // End of variables declaration//GEN-END:variables
 }

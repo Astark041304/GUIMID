@@ -55,6 +55,7 @@ public class ChangePass extends javax.swing.JFrame {
         uid = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         back = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
@@ -83,7 +84,7 @@ public class ChangePass extends javax.swing.JFrame {
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, 290, -1));
 
-        jPanel3.setBackground(new java.awt.Color(94, 160, 194));
+        jPanel3.setBackground(new java.awt.Color(236, 232, 232));
 
         jLabel4.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel4.setText("Confirm Password:");
@@ -111,7 +112,7 @@ public class ChangePass extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 290, 40));
 
-        jPanel4.setBackground(new java.awt.Color(94, 160, 194));
+        jPanel4.setBackground(new java.awt.Color(236, 232, 232));
 
         jLabel12.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel12.setText("Old Password:");
@@ -139,7 +140,7 @@ public class ChangePass extends javax.swing.JFrame {
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 290, 40));
 
-        jPanel5.setBackground(new java.awt.Color(94, 160, 194));
+        jPanel5.setBackground(new java.awt.Color(236, 232, 232));
 
         jLabel11.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel11.setText("New Password:");
@@ -167,7 +168,7 @@ public class ChangePass extends javax.swing.JFrame {
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 290, 40));
 
-        jPanel6.setBackground(new java.awt.Color(130, 202, 255));
+        jPanel6.setBackground(new java.awt.Color(184, 167, 95));
 
         jPanel7.setBackground(new java.awt.Color(25, 59, 124));
         jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 142, 160)));
@@ -195,8 +196,7 @@ public class ChangePass extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Yu Gothic Medium", 1, 18)); // NOI18N
         jLabel3.setText("Password Settings");
 
-        back.setFont(new java.awt.Font("Yu Gothic Medium", 1, 24)); // NOI18N
-        back.setText("Back");
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-back-35.png"))); // NOI18N
         back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backMouseClicked(evt);
@@ -212,9 +212,9 @@ public class ChangePass extends javax.swing.JFrame {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 397, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 478, Short.MAX_VALUE)
                 .addComponent(back)
-                .addGap(18, 18, 18))
+                .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,12 +224,17 @@ public class ChangePass extends javax.swing.JFrame {
                 .addGap(81, 81, 81))
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(back, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(back, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 50));
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 50));
+
+        jLabel10.setBackground(new java.awt.Color(255, 204, 204));
+        jLabel10.setForeground(new java.awt.Color(255, 204, 204));
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Borcelle (4).png"))); // NOI18N
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, 550));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -239,7 +244,7 @@ public class ChangePass extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -259,7 +264,9 @@ public class ChangePass extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
+        AccountSettings as = new  AccountSettings();
+        as.setVisible(true);
+        this.dispose();
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -295,9 +302,7 @@ public class ChangePass extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
-        AccountSettings ass = new AccountSettings();
-        ass.setVisible(true);
-        this.dispose();
+        
     }//GEN-LAST:event_backMouseClicked
 
     /**
@@ -355,6 +360,7 @@ public class ChangePass extends javax.swing.JFrame {
     private javax.swing.JPasswordField cp;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel3;

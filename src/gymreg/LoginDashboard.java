@@ -11,6 +11,7 @@ import Cashier.OrderM;
 import Config.Passwordhasher;
 import Config.Session;
 import Config.dbConnector;
+import Passwordsettings.AccountSettings;
 import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -96,11 +97,8 @@ public class LoginDashboard extends javax.swing.JFrame {
         show = new javax.swing.JCheckBox();
         pass = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel8 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
 
         jPasswordField1.setText("jPasswordField1");
@@ -114,7 +112,7 @@ public class LoginDashboard extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(39, 105, 139));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel5.setBackground(new java.awt.Color(94, 160, 194));
+        jPanel5.setBackground(new java.awt.Color(184, 167, 95));
         jPanel5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51)));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel5.add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 171, -1));
@@ -127,7 +125,7 @@ public class LoginDashboard extends javax.swing.JFrame {
         jLabel1.setText("Username:");
         jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, 20));
 
-        Login.setBackground(new java.awt.Color(130, 202, 255));
+        Login.setBackground(new java.awt.Color(151, 96, 9));
         Login.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         Login.setText("Login");
         Login.addActionListener(new java.awt.event.ActionListener() {
@@ -143,7 +141,7 @@ public class LoginDashboard extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-password-20.png"))); // NOI18N
         jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
-        show.setBackground(new java.awt.Color(130, 202, 255));
+        show.setBackground(new java.awt.Color(184, 167, 95));
         show.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         show.setText("Show password");
         show.addActionListener(new java.awt.event.ActionListener() {
@@ -164,44 +162,29 @@ public class LoginDashboard extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText(" Login");
         jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 210, 40));
+        jPanel5.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 130, -1));
 
-        jLabel10.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
-        jLabel10.setText("No Account? Click here to register");
-        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel11.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
+        jLabel11.setText("No Account? Click here to register");
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel10MouseClicked(evt);
+                jLabel11MouseClicked(evt);
             }
         });
-        jPanel5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 230, 20));
-        jPanel5.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 130, -1));
+        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 230, 20));
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 60, 310, 440));
-
-        jLabel8.setFont(new java.awt.Font("Century Gothic", 3, 24)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Order Tracker");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 170, -1));
-
-        jLabel11.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Restaruant Menu and  ");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
-
-        jLabel4.setFont(new java.awt.Font("Century Gothic", 2, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(222, 222, 26));
-        jLabel4.setText("Manage your food order easily");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 230, 20));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, 310, 360));
 
         jLabel9.setBackground(new java.awt.Color(255, 204, 204));
         jLabel9.setForeground(new java.awt.Color(255, 204, 204));
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cartoon-food-images-clip-art-15-removebg-preview.png"))); // NOI18N
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(-90, 180, 520, 510));
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Borcelle (3).png"))); // NOI18N
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, -1, 690));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,11 +244,9 @@ public class LoginDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_passActionPerformed
 
-    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
-        RegDashboard rd = new RegDashboard();
-        rd.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jLabel10MouseClicked
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel11MouseClicked
     
     /**
      * @param args the command line arguments
@@ -306,15 +287,12 @@ public class LoginDashboard extends javax.swing.JFrame {
     private javax.swing.JButton Login;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;

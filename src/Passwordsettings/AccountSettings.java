@@ -51,6 +51,7 @@ public class AccountSettings extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         acc_ln2 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
@@ -81,7 +82,7 @@ public class AccountSettings extends javax.swing.JFrame {
         jPanel1.add(usn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 260, 170, -1));
         jPanel1.add(em, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 170, -1));
 
-        jPanel5.setBackground(new java.awt.Color(130, 202, 255));
+        jPanel5.setBackground(new java.awt.Color(184, 167, 95));
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic Medium", 1, 18)); // NOI18N
         jLabel3.setText("Account Settings");
@@ -131,8 +132,8 @@ public class AccountSettings extends javax.swing.JFrame {
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 50));
 
-        jPanel2.setBackground(new java.awt.Color(94, 160, 194));
-        jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(102, 102, 102), new java.awt.Color(102, 102, 102), new java.awt.Color(102, 102, 102), new java.awt.Color(102, 102, 102)));
+        jPanel2.setBackground(new java.awt.Color(236, 232, 232));
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(204, 204, 255)));
 
         jLabel12.setFont(new java.awt.Font("Yu Gothic Medium", 1, 11)); // NOI18N
         jLabel12.setText("First name:");
@@ -181,7 +182,7 @@ public class AccountSettings extends javax.swing.JFrame {
                         .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(166, Short.MAX_VALUE)
+                .addContainerGap(168, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(122, 122, 122))
         );
@@ -196,10 +197,15 @@ public class AccountSettings extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addGap(46, 46, 46)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 400, 220));
+
+        jLabel10.setBackground(new java.awt.Color(255, 204, 204));
+        jLabel10.setForeground(new java.awt.Color(255, 204, 204));
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Borcelle (4).png"))); // NOI18N
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, 570));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -211,7 +217,7 @@ public class AccountSettings extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -291,6 +297,7 @@ public class AccountSettings extends javax.swing.JFrame {
     private javax.swing.JTextField em;
     private javax.swing.JTextField fn;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel3;
