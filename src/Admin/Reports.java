@@ -57,14 +57,14 @@ public class Reports extends javax.swing.JFrame {
         set = new javax.swing.JLabel();
         home = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        ProductTable = new javax.swing.JTable();
+        TableReceipt = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(39, 105, 139));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel5.setBackground(new java.awt.Color(151, 96, 9));
+        jPanel5.setBackground(new java.awt.Color(184, 167, 95));
 
         back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-back-35.png"))); // NOI18N
         back.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -116,17 +116,17 @@ public class Reports extends javax.swing.JFrame {
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 50));
 
-        ProductTable.setAutoCreateRowSorter(true);
-        ProductTable.setBackground(new java.awt.Color(153, 255, 255));
-        ProductTable.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(204, 255, 255), new java.awt.Color(204, 204, 255)));
-        ProductTable.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        ProductTable.setForeground(new java.awt.Color(51, 51, 51));
-        ProductTable.addMouseListener(new java.awt.event.MouseAdapter() {
+        TableReceipt.setAutoCreateRowSorter(true);
+        TableReceipt.setBackground(new java.awt.Color(153, 255, 255));
+        TableReceipt.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(204, 255, 255), new java.awt.Color(204, 204, 255)));
+        TableReceipt.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        TableReceipt.setForeground(new java.awt.Color(51, 51, 51));
+        TableReceipt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ProductTableMouseClicked(evt);
+                TableReceiptMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(ProductTable);
+        jScrollPane1.setViewportView(TableReceipt);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 630, 510));
 
@@ -165,9 +165,9 @@ public class Reports extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_backMouseClicked
 
-    private void ProductTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProductTableMouseClicked
+    private void TableReceiptMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableReceiptMouseClicked
 
-    }//GEN-LAST:event_ProductTableMouseClicked
+    }//GEN-LAST:event_TableReceiptMouseClicked
 
     /**
      * @param args the command line arguments
@@ -207,7 +207,7 @@ public class Reports extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel Adname1;
-    private javax.swing.JTable ProductTable;
+    private javax.swing.JTable TableReceipt;
     private javax.swing.JLabel back;
     private javax.swing.JLabel home;
     private javax.swing.JPanel jPanel1;

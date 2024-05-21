@@ -245,7 +245,7 @@ public class createUserForm extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(215, 220, 224));
 
-        add.setBackground(new java.awt.Color(130, 202, 255));
+        add.setBackground(new java.awt.Color(184, 167, 95));
         add.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         add.setText("Add");
         add.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -259,7 +259,7 @@ public class createUserForm extends javax.swing.JFrame {
             }
         });
 
-        update.setBackground(new java.awt.Color(130, 202, 255));
+        update.setBackground(new java.awt.Color(184, 167, 95));
         update.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         update.setText("Update");
         update.setEnabled(false);
@@ -269,7 +269,7 @@ public class createUserForm extends javax.swing.JFrame {
             }
         });
 
-        delete.setBackground(new java.awt.Color(130, 202, 255));
+        delete.setBackground(new java.awt.Color(184, 167, 95));
         delete.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         delete.setText("Delete");
         delete.addActionListener(new java.awt.event.ActionListener() {
@@ -278,7 +278,7 @@ public class createUserForm extends javax.swing.JFrame {
             }
         });
 
-        cancel.setBackground(new java.awt.Color(130, 202, 255));
+        cancel.setBackground(new java.awt.Color(184, 167, 95));
         cancel.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         cancel.setText("Cancel");
         cancel.addMouseListener(new java.awt.event.MouseAdapter() {

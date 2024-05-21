@@ -69,7 +69,7 @@ public class ChangePass extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(39, 105, 139));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2.setBackground(new java.awt.Color(130, 202, 255));
+        jButton2.setBackground(new java.awt.Color(184, 167, 95));
         jButton2.setFont(new java.awt.Font("Yu Gothic Medium", 1, 11)); // NOI18N
         jButton2.setText("Save");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {

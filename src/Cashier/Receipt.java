@@ -9,20 +9,24 @@ import Admin.*;
 import Config.dbConnector;
 import Passwordsettings.AccountSettings;
 import gymreg.LoginDashboard;
+import java.awt.print.PrinterException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
 
 /**
  *
  * @author John William
  */
-public class Order_edit extends javax.swing.JFrame {
+public class Receipt extends javax.swing.JFrame {
 
     /**
      * Creates new form createUserForm
      */
-    public Order_edit() {
+    public Receipt() {
         initComponents();
     }
     
@@ -126,7 +130,6 @@ public class Order_edit extends javax.swing.JFrame {
         add = new javax.swing.JButton();
         delete = new javax.swing.JButton();
         cancel = new javax.swing.JButton();
-        update = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         pa = new javax.swing.JTextField();
         dte = new javax.swing.JTextField();
@@ -136,7 +139,10 @@ public class Order_edit extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         Adname1 = new javax.swing.JLabel();
         set = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtReceipt = new javax.swing.JTextArea();
         jLabel10 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -210,7 +216,7 @@ public class Order_edit extends javax.swing.JFrame {
 
         add.setBackground(new java.awt.Color(184, 167, 95));
         add.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        add.setText("Add");
+        add.setText("Print");
         add.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 addMouseClicked(evt);
@@ -224,7 +230,7 @@ public class Order_edit extends javax.swing.JFrame {
 
         delete.setBackground(new java.awt.Color(184, 167, 95));
         delete.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        delete.setText("Delete");
+        delete.setText("Clear");
         delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteActionPerformed(evt);
@@ -233,7 +239,7 @@ public class Order_edit extends javax.swing.JFrame {
 
         cancel.setBackground(new java.awt.Color(184, 167, 95));
         cancel.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        cancel.setText("Cancel");
+        cancel.setText("Exit");
         cancel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cancelMouseClicked(evt);
@@ -245,30 +251,18 @@ public class Order_edit extends javax.swing.JFrame {
             }
         });
 
-        update.setBackground(new java.awt.Color(184, 167, 95));
-        update.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        update.setText("Update");
-        update.setEnabled(false);
-        update.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(19, 19, 19)
                 .addComponent(add)
-                .addGap(20, 20, 20)
+                .addGap(18, 18, 18)
                 .addComponent(delete)
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addComponent(cancel)
-                .addGap(18, 18, 18)
-                .addComponent(update)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,12 +271,11 @@ public class Order_edit extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(add)
                     .addComponent(delete)
-                    .addComponent(cancel)
-                    .addComponent(update))
-                .addContainerGap(16, Short.MAX_VALUE))
+                    .addComponent(cancel))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 350, 50));
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 250, 40));
 
         jLabel9.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel9.setText("Order Date:");
@@ -294,7 +287,7 @@ public class Order_edit extends javax.swing.JFrame {
         jLabel11.setText("Payment Amount:");
         jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 410, 430));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 410, 370));
 
         jPanel5.setBackground(new java.awt.Color(184, 167, 95));
 
@@ -338,10 +331,29 @@ public class Order_edit extends javax.swing.JFrame {
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
 
+        txtReceipt.setColumns(20);
+        txtReceipt.setRows(5);
+        jScrollPane1.setViewportView(txtReceipt);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 270, 390));
+
         jLabel10.setBackground(new java.awt.Color(255, 204, 204));
         jLabel10.setForeground(new java.awt.Color(255, 204, 204));
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Borcelle (4).png"))); // NOI18N
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 800, 550));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 850, 540));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 440, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 70, 300, 440));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -359,46 +371,20 @@ public class Order_edit extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-        // TODO add your handling code here:
+             
+        
+        try {
+            txtReceipt.print();
+        } catch (PrinterException ex) {
+            Logger.getLogger(Receipt.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   
+
     }//GEN-LAST:event_addActionPerformed
 
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cancelActionPerformed
-
-    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
-     
-            
-         if (oid.getText().isEmpty() || on.getText().isEmpty() || oq.getText().isEmpty() ) {
-       JOptionPane.showMessageDialog(null, "All fields are required!");   
-       } else if (updateCheck()) {
-   
-        System.out.println("Duplicate exists");
-        } else {
-    
-        dbConnector dbc = new dbConnector();
-    
-    
-         String query = "UPDATE tbl_order SET order_name = '" + on.getText() +
-                   "', order_type = '" + ot.getSelectedItem() +                 
-                   "', order_quantity = '" + oq.getText() +
-                   "', order_payment_amount = '" + pa.getText() +
-                
-                   "' WHERE order_id = '" + oid.getText() + "'"; 
-    
-   
-        if (dbc.executeUpdate(query) > 0) {
-        JOptionPane.showMessageDialog(null, "Order Edit Successfully!");
-       
-          OrderM adf = new OrderM();
-          adf.setVisible(true);
-          this.dispose(); 
-      } else {
-        JOptionPane.showMessageDialog(null, "Failed to Edit Order. Please try again.");
-        }
-     }
-     
-    }//GEN-LAST:event_updateActionPerformed
     
     
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
@@ -462,14 +448,18 @@ public class Order_edit extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Order_edit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Receipt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Order_edit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Receipt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Order_edit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Receipt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Order_edit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Receipt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -478,7 +468,7 @@ public class Order_edit extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Order_edit().setVisible(true);
+                new Receipt().setVisible(true);
             }
         });
     }
@@ -504,7 +494,9 @@ public class Order_edit extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
     public javax.swing.JTextField oid;
     public javax.swing.JTextField on;
@@ -512,6 +504,6 @@ public class Order_edit extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> ot;
     public javax.swing.JTextField pa;
     private javax.swing.JLabel set;
-    public javax.swing.JButton update;
+    private javax.swing.JTextArea txtReceipt;
     // End of variables declaration//GEN-END:variables
 }

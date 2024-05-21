@@ -5,10 +5,10 @@
  */
 package Cashier;
 
-import Admin.*;
+
 import Config.dbConnector;
 import Passwordsettings.AccountSettings;
-import gymreg.LoginDashboard;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -119,8 +119,10 @@ public class Createorder extends javax.swing.JFrame {
         oq = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        op = new javax.swing.JTextField();
+        pa = new javax.swing.JTextField();
         order = new javax.swing.JButton();
+        dte = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         back = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -163,11 +165,11 @@ public class Createorder extends javax.swing.JFrame {
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        jLabel9.setText("Order price:");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, -1));
-        jPanel3.add(op, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 200, 30));
+        jLabel9.setText("Order Date:");
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
+        jPanel3.add(pa, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 200, 30));
 
-        order.setBackground(new java.awt.Color(130, 202, 255));
+        order.setBackground(new java.awt.Color(184, 167, 95));
         order.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         order.setText("Order");
         order.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -180,7 +182,12 @@ public class Createorder extends javax.swing.JFrame {
                 orderActionPerformed(evt);
             }
         });
-        jPanel3.add(order, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 200, -1));
+        jPanel3.add(order, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 200, -1));
+        jPanel3.add(dte, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 200, 30));
+
+        jLabel11.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        jLabel11.setText("Payment Amount:");
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 410, 310));
 
@@ -251,15 +258,15 @@ public class Createorder extends javax.swing.JFrame {
     
     
     private void orderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orderMouseClicked
-        if (on.getText().isEmpty() || oq.getText().isEmpty() || op.getText().isEmpty()) {
+        if (on.getText().isEmpty() || oq.getText().isEmpty() || pa.getText().isEmpty()) {
     JOptionPane.showMessageDialog(null, "All fields are required!");
         } else if (duplicateCheck()) {
     System.out.println("Duplicate Exist!");
 } else {
     dbConnector dbc = new dbConnector();
 
-    if (dbc.insertData("INSERT INTO tbl_order (order_name, order_type, order_quantity, order_price) VALUES('"
-            + on.getText() + "','" + ot.getSelectedItem() + "','" + oq.getText() + "','" + op.getText() + "')")) {
+    if (dbc.insertData("INSERT INTO tbl_order (order_name, order_type, order_quantity, order_payment_amount, order_date) VALUES('"
+            + on.getText() + "','" + ot.getSelectedItem() + "','" + oq.getText() + "','" + pa.getText() +"','" + dte.getText() + "')")) {
 
         JOptionPane.showMessageDialog(null, "Inserted Successfully!");
         OrderM lgd = new OrderM();
@@ -329,8 +336,10 @@ public class Createorder extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel back;
+    public javax.swing.JTextField dte;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -341,10 +350,10 @@ public class Createorder extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     public javax.swing.JTextField oid;
     public javax.swing.JTextField on;
-    public javax.swing.JTextField op;
     public javax.swing.JTextField oq;
     public javax.swing.JButton order;
     public javax.swing.JComboBox<String> ot;
+    public javax.swing.JTextField pa;
     private javax.swing.JLabel set;
     // End of variables declaration//GEN-END:variables
 }

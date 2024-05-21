@@ -358,7 +358,7 @@
                 <Component class="javax.swing.JButton" name="add">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ca" red="82" type="rgb"/>
+                      <Color blue="5f" green="a7" red="b8" type="rgb"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Trebuchet MS" size="11" style="1"/>
@@ -376,7 +376,7 @@
                 <Component class="javax.swing.JButton" name="delete">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ca" red="82" type="rgb"/>
+                      <Color blue="5f" green="a7" red="b8" type="rgb"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Trebuchet MS" size="11" style="1"/>
@@ -390,7 +390,7 @@
                 <Component class="javax.swing.JButton" name="update">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ca" red="82" type="rgb"/>
+                      <Color blue="5f" green="a7" red="b8" type="rgb"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Trebuchet MS" size="11" style="1"/>
@@ -408,7 +408,7 @@
                 <Component class="javax.swing.JButton" name="cancel">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ca" red="82" type="rgb"/>
+                      <Color blue="5f" green="a7" red="b8" type="rgb"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Trebuchet MS" size="11" style="1"/>

@@ -102,7 +102,7 @@ public class Productreg extends javax.swing.JFrame {
         jPanel10.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(204, 204, 255)));
         jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2.setBackground(new java.awt.Color(130, 202, 255));
+        jButton2.setBackground(new java.awt.Color(184, 167, 95));
         jButton2.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jButton2.setText("Register");
         jButton2.addActionListener(new java.awt.event.ActionListener() {

@@ -52,7 +52,7 @@ public class OrderM extends javax.swing.JFrame {
      public void displayData(){
            try{
             dbConnector dbc = new dbConnector();
-            ResultSet rs = dbc.getData("SELECT order_id, order_name, order_type, order_quantity, order_price FROM tbl_order");
+            ResultSet rs = dbc.getData("SELECT order_id, order_name, order_type, order_quantity, order_payment_amount, order_date FROM tbl_order");
             CustomerTable.setModel(DbUtils.resultSetToTableModel(rs));
              rs.close();
         }catch(SQLException ex){
@@ -209,7 +209,7 @@ public class OrderM extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-edit-35.png"))); // NOI18N
-        jLabel8.setText("Edit");
+        jLabel8.setText("Update");
 
         javax.swing.GroupLayout editLayout = new javax.swing.GroupLayout(edit);
         edit.setLayout(editLayout);
@@ -217,7 +217,7 @@ public class OrderM extends javax.swing.JFrame {
             editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(editLayout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel8)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         editLayout.setVerticalGroup(
@@ -530,8 +530,8 @@ public class OrderM extends javax.swing.JFrame {
                    od.on.setText(""+rs.getString("order_name"));
                    od.ot.setSelectedItem(""+rs.getString("order_type"));                
                    od.oq.setText(""+rs.getString("order_quantity"));
-                   od.op.setText(""+rs.getString("order_price"));
-                           
+                   od.pa.setText(""+rs.getString("order_payment_amount"));
+                   od.dte.setText(""+rs.getString("order_date"));       
                    od.add.setEnabled(false);
                    od.update.setEnabled(true);
                    od.setVisible(true);
@@ -611,45 +611,43 @@ public class OrderM extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void p_add2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add2MouseClicked
-                  int rowIndex = CustomerTable.getSelectedRow();
+                   int rowIndex = CustomerTable.getSelectedRow();
 
            if(rowIndex < 0){
-          JOptionPane.showMessageDialog(null, "Please select a Order!");
-        }else{
-
-         try{
-        dbConnector dbc = new dbConnector();
-
-        TableModel tbl = CustomerTable.getModel();
-
-        ResultSet rs = dbc.getData("SELECT * FROM tbl_order Where order_id = '"+tbl.getValueAt(rowIndex, 0)+"'");
-        if(rs.next()){
-           
+          JOptionPane.showMessageDialog(null, "Please select Order to Checkout!");
           
-            String receipt = "Receipt\n";
-            receipt += "Order ID: " + rs.getString("order_id") + "\n";
-            receipt += "Order Name: " + rs.getString("order_name") + "\n";
-            receipt += "Order Type: " + rs.getString("order_type") + "\n";
-            receipt += "Quantity: " + rs.getString("order_quantity") + "\n";
-            receipt += "Price: " + rs.getString("order_price") + "\n";
-            int quantity = Integer.parseInt(rs.getString("order_quantity"));
-            double price = Double.parseDouble(rs.getString("order_price"));
-            double total = quantity * price;
-            receipt += "Total: " + String.format("%.2f", total) + "\n";
+        }else{
+               try{
+                  dbConnector dbc = new dbConnector();
+                      TableModel tbl = CustomerTable.getModel();
+                 ResultSet rs = dbc.getData("SELECT * FROM tbl_order Where order_id = '"+tbl.getValueAt(rowIndex, 0)+"'");
+                if(rs.next()){
+               
+               Receipt res = new Receipt();
+                    res.oid.setText(""+rs.getString("order_id"));
+                   res.on.setText(""+rs.getString("order_name"));
+                   res.ot.setSelectedItem(""+rs.getString("order_type"));                
+                   res.oq.setText(""+rs.getString("order_quantity"));
+                   res.pa.setText(""+rs.getString("order_payment_amount"));
+                   res.dte.setText(""+rs.getString("order_date"));       
+                  
+                   
+                   res.setVisible(true);
+                    this.dispose();
+             res.setVisible(true);
+               this.dispose();
+               System.out.println("");
+               
+                }
                 
-            JOptionPane.showMessageDialog(null, receipt, "Receipt", JOptionPane.INFORMATION_MESSAGE);
-             OrderM od = new OrderM();
-             od.setVisible(true);
-             this.dispose();
-        }
-
-    }catch(SQLException ex){
-        System.out.println(""+ex);
-    }
+                }catch(SQLException ex){
+                System.out.println(""+ex);
+            }
+               
 }    
            
     }//GEN-LAST:event_p_add2MouseClicked
-
+           
     private void p_add2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add2MouseEntered
        p_add2.setBackground(hovercolor);
     }//GEN-LAST:event_p_add2MouseEntered
