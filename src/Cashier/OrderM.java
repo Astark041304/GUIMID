@@ -5,10 +5,8 @@
  */
 package Cashier;
 
-import Admin.AdminDashboard;
+
 import Admin.Adminpin;
-import Admin.ProductTab;
-import Admin.Productedit;
 import Config.Session;
 
 

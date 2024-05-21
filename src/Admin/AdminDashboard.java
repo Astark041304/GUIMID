@@ -516,15 +516,17 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_setMouseClicked
 
     private void product1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_product1MouseClicked
-        // TODO add your handling code here:
+     ProductTab tb = new ProductTab();
+     tb.setVisible(true);
+     this.dispose();
     }//GEN-LAST:event_product1MouseClicked
 
     private void product1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_product1MouseEntered
-        // TODO add your handling code here:
+      product1.setBackground(hovercolor);
     }//GEN-LAST:event_product1MouseEntered
 
     private void product1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_product1MouseExited
-        // TODO add your handling code here:
+           product1.setBackground(navcolor);
     }//GEN-LAST:event_product1MouseExited
 
     /**

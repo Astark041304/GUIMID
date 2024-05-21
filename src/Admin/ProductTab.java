@@ -487,45 +487,9 @@ public class ProductTab extends javax.swing.JFrame {
     }//GEN-LAST:event_p_add1MouseEntered
 
     private void p_add1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add1MouseClicked
-                Set<Integer> selectedRows = new HashSet<>();
-        
-       
-        int rowIndex = ProductTable.getSelectedRow();
-
-        if (rowIndex >= 0) {
-            try {
-                dbConnector dbc = new dbConnector();
-                TableModel tbl = ProductTable.getModel();
-                String productId = tbl.getValueAt(rowIndex, 0).toString();  
-
-                ResultSet rs = dbc.getData("SELECT * FROM tbl_product WHERE product_id = '" + productId + "'");
-
-                if (rs.next()) {
-                    OrderM ot = new OrderM();
-                    ot.setVisible(true);
-                    
-                    DefaultTableModel orderModel = (DefaultTableModel) ot.CustomerTable.getModel();
-                    
-                 
-                    if (!selectedRows.contains(rowIndex)) {
-                        orderModel.addRow(new Object[]{
-                            rs.getString("product_id"),
-                            rs.getString("product_name"),
-                            rs.getString("product_type"),
-                            rs.getString("product_status"),
-                            rs.getString("product_quantity"),
-                            rs.getString("product_price"),
-                        });
-                        
-                        selectedRows.add(rowIndex);  
-                    }
-                    
-                    this.dispose();  
-                }
-            } catch (SQLException ex) {
-                System.out.println("" + ex);
-            }
-        }  
+              Productreg pd = new Productreg();
+              pd.setVisible(true);
+              this.dispose();
     }//GEN-LAST:event_p_add1MouseClicked
 
     private void settingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsMouseClicked
