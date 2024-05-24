@@ -467,27 +467,31 @@ public class Receipt extends javax.swing.JFrame {
     }//GEN-LAST:event_setMouseClicked
 
     private void recActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recActionPerformed
-                  double priceFromDatabase = Double.parseDouble(op.getText());
+                double priceFromDatabase = Double.parseDouble(op.getText());
                  double paymentAmount = Double.parseDouble(pa.getText());
-                   double change = priceFromDatabase - paymentAmount;
+                 double change;
 
-    
-                     if (change >= 0) {
-                      change = 0;
-                       }
+           if (paymentAmount < priceFromDatabase) {
+         JOptionPane.showMessageDialog(null, "Payment amount is not enough!");
+                  return;
+              } else {
+            change = priceFromDatabase - paymentAmount;
+            }
 
-                    txtReceipt.setText("-----------------------------------------------------------------\n");
-                    txtReceipt.setText(txtReceipt.getText() + "                               Order Receipt   \n");
-                    txtReceipt.setText(txtReceipt.getText() + "-----------------------------------------------------------------\n"); 
-                    txtReceipt.setText(txtReceipt.getText() + "Order Id: " + oid.getText() + "\n\n");
-                    txtReceipt.setText(txtReceipt.getText() + "Order Name: " + on.getText() + "\n\n");
-                    txtReceipt.setText(txtReceipt.getText() + "Order Type: " + ot.getSelectedItem() + "\n\n");
-                    txtReceipt.setText(txtReceipt.getText() + "Order Quantity: " + oq.getText() + "\n\n");
-                    txtReceipt.setText(txtReceipt.getText() + "Order price: " + op.getText() + "\n\n");
-                    txtReceipt.setText(txtReceipt.getText() + "Order Payment: " + pa.getText() + "\n\n");
-                    txtReceipt.setText(txtReceipt.getText() + "Change: " + change + "\n\n");
-                    txtReceipt.setText(txtReceipt.getText() + "Order Date: " + dte.getText() + "\n\n");
-        
+                         change = Math.abs(change);
+
+                      txtReceipt.setText("-----------------------------------------------------------------\n");
+                      txtReceipt.setText(txtReceipt.getText() + "                               Order Receipt   \n");
+                      txtReceipt.setText(txtReceipt.getText() + "-----------------------------------------------------------------\n"); 
+                      txtReceipt.setText(txtReceipt.getText() + "Order Id: " + oid.getText() + "\n\n");
+                      txtReceipt.setText(txtReceipt.getText() + "Order Name: " + on.getText() + "\n\n");
+                      txtReceipt.setText(txtReceipt.getText() + "Order Type: " + ot.getSelectedItem() + "\n\n");
+                      txtReceipt.setText(txtReceipt.getText() + "Order Quantity: " + oq.getText() + "\n\n");
+                      txtReceipt.setText(txtReceipt.getText() + "Order price: " + op.getText() + "\n\n");
+                      txtReceipt.setText(txtReceipt.getText() + "Order Payment: " + pa.getText() + "\n\n");
+                      txtReceipt.setText(txtReceipt.getText() + "Change: " + change + "\n\n");
+                      txtReceipt.setText(txtReceipt.getText() + "Order Date: " + dte.getText() + "\n\n");
+                   
     }//GEN-LAST:event_recActionPerformed
 
     private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
