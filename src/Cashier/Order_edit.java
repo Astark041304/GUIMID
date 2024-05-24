@@ -11,6 +11,9 @@ import Passwordsettings.AccountSettings;
 import gymreg.LoginDashboard;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import static java.time.temporal.TemporalQueries.localDate;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,6 +27,10 @@ public class Order_edit extends javax.swing.JFrame {
      */
     public Order_edit() {
         initComponents();
+         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+      LocalDate localDate = LocalDate.now();
+        System.out.println(dtf.format(localDate));
+        dte.setText(""+dtf.format(localDate));
     }
     
     
@@ -128,9 +135,9 @@ public class Order_edit extends javax.swing.JFrame {
         cancel = new javax.swing.JButton();
         update = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        pa = new javax.swing.JTextField();
         dte = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        op = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
@@ -149,23 +156,23 @@ public class Order_edit extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel1.setText("Order name:");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, -1));
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel2.setText("Order  type:");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 80, -1));
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 80, -1));
 
         jLabel3.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel3.setText("Order Id:");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, 10));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, -1, 10));
 
         oid.setEnabled(false);
-        jPanel3.add(oid, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 200, 30));
+        jPanel3.add(oid, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 200, 30));
 
         ot.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         ot.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Meal", "Drinks", "Desserts" }));
-        jPanel3.add(ot, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 200, 30));
-        jPanel3.add(on, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 200, 30));
+        jPanel3.add(ot, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 200, 30));
+        jPanel3.add(on, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 200, 30));
 
         jSeparator2.setBackground(new java.awt.Color(130, 202, 255));
         jSeparator2.setForeground(new java.awt.Color(204, 204, 255));
@@ -200,11 +207,11 @@ public class Order_edit extends javax.swing.JFrame {
         );
 
         jPanel3.add(Editbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 50));
-        jPanel3.add(oq, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 200, 30));
+        jPanel3.add(oq, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 200, 30));
 
         jLabel6.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        jLabel6.setText("Order quantity:");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
+        jLabel6.setText("Order price:");
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(215, 220, 224));
 
@@ -286,13 +293,13 @@ public class Order_edit extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel9.setText("Order Date:");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
-        jPanel3.add(pa, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 200, 30));
-        jPanel3.add(dte, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 200, 30));
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, -1));
+        jPanel3.add(dte, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 200, 30));
 
-        jLabel11.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        jLabel11.setText("Payment Amount:");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
+        jLabel12.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        jLabel12.setText("Order quantity:");
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
+        jPanel3.add(op, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 200, 30));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 410, 430));
 
@@ -381,8 +388,10 @@ public class Order_edit extends javax.swing.JFrame {
     
          String query = "UPDATE tbl_order SET order_name = '" + on.getText() +
                    "', order_type = '" + ot.getSelectedItem() +                 
-                   "', order_quantity = '" + oq.getText() +
-                   "', order_payment_amount = '" + pa.getText() +
+                   "', order_quantity = '" + oq.getText() +           
+                  "', order_price = '" + op.getText() +
+              
+                  "', order_dte = '" + dte.getText() +
                 
                    "' WHERE order_id = '" + oid.getText() + "'"; 
     
@@ -406,30 +415,26 @@ public class Order_edit extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteActionPerformed
 
     private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
-         if(on.getText().isEmpty()|| oq.getText().isEmpty() || pa.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "All fields are required!");
-        }else if(duplicateCheck()){
-            System.out.println("Duplicate Exist!");
-            
-        }else{
-            
-             dbConnector dbc = new dbConnector();
-       
-      if (dbc.insertData("INSERT INTO tbl_order (order_name, order_type, order_quantity, order_payment_amount, order_date) VALUES('"
-     + on.getText() + "','"+ot.getSelectedItem()+"','"+ "','" 
-    + oq.getText()+ "','" + dte.getText() +"',)")){
-          
         
-          JOptionPane.showMessageDialog(null, "Inserted Successfully!");
-          LoginDashboard lgd = new LoginDashboard();
-          lgd.setVisible(true);
-          this.dispose();
-          
-      }else{
-          JOptionPane.showMessageDialog(null, "Connection Error!");
-      }
-            
-        }                    
+      if (on.getText().isEmpty() || oq.getText().isEmpty() || op.getText().isEmpty()) {
+    JOptionPane.showMessageDialog(null, "All fields are required!");
+} else if (duplicateCheck()) {
+    System.out.println("Duplicate Exist!");
+} else {
+    dbConnector dbc = new dbConnector();
+
+    if (dbc.insertData("INSERT INTO tbl_order (order_name, order_type, order_quantity, order_price, order_date) VALUES('"
+            + on.getText() + "','" + ot.getSelectedItem() + "','" + oq.getText() + "','" + op.getText() + "','" + dte.getText() + "')")) {
+
+        JOptionPane.showMessageDialog(null, "Inserted Successfully!");
+        OrderM lgd = new OrderM();
+        lgd.setVisible(true);
+        this.dispose();
+
+    } else {
+        JOptionPane.showMessageDialog(null, "Connection Error!");
+    }
+}                 
            
     }//GEN-LAST:event_addMouseClicked
 
@@ -492,7 +497,7 @@ public class Order_edit extends javax.swing.JFrame {
     public javax.swing.JTextField dte;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
@@ -508,9 +513,9 @@ public class Order_edit extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     public javax.swing.JTextField oid;
     public javax.swing.JTextField on;
+    public javax.swing.JTextField op;
     public javax.swing.JTextField oq;
     public javax.swing.JComboBox<String> ot;
-    public javax.swing.JTextField pa;
     private javax.swing.JLabel set;
     public javax.swing.JButton update;
     // End of variables declaration//GEN-END:variables

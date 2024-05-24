@@ -9,8 +9,12 @@ package Cashier;
 import Config.dbConnector;
 import Passwordsettings.AccountSettings;
 
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,6 +28,10 @@ public class Createorder extends javax.swing.JFrame {
      */
     public Createorder() {
         initComponents();
+         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+      LocalDate localDate = LocalDate.now();
+        System.out.println(dtf.format(localDate));
+        dte.setText(""+dtf.format(localDate));
     }
     
     
@@ -119,10 +127,10 @@ public class Createorder extends javax.swing.JFrame {
         oq = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        pa = new javax.swing.JTextField();
         order = new javax.swing.JButton();
         dte = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
+        op = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         back = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -141,33 +149,32 @@ public class Createorder extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel1.setText("Order name:");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, -1));
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel2.setText("Order  type:");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 80, -1));
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 80, -1));
 
         jLabel3.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel3.setText("Order Id:");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, 10));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, 10));
 
         oid.setEnabled(false);
-        jPanel3.add(oid, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 200, 30));
+        jPanel3.add(oid, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 200, 30));
 
         ot.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         ot.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Meal", "Drinks", "Desserts" }));
-        jPanel3.add(ot, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 200, 30));
-        jPanel3.add(on, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 200, 30));
-        jPanel3.add(oq, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 200, 30));
+        jPanel3.add(ot, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 200, 30));
+        jPanel3.add(on, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 200, 30));
+        jPanel3.add(oq, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 200, 30));
 
         jLabel6.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel6.setText("Order quantity:");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel9.setText("Order Date:");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
-        jPanel3.add(pa, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 200, 30));
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
 
         order.setBackground(new java.awt.Color(184, 167, 95));
         order.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
@@ -182,14 +189,15 @@ public class Createorder extends javax.swing.JFrame {
                 orderActionPerformed(evt);
             }
         });
-        jPanel3.add(order, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 200, -1));
-        jPanel3.add(dte, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 200, 30));
+        jPanel3.add(order, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 200, -1));
+        jPanel3.add(dte, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 200, 30));
 
         jLabel11.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        jLabel11.setText("Payment Amount:");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
+        jLabel11.setText("Order Price:");
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, -1));
+        jPanel3.add(op, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 200, 30));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 410, 310));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 410, 310));
 
         jPanel4.setBackground(new java.awt.Color(184, 167, 95));
 
@@ -258,15 +266,19 @@ public class Createorder extends javax.swing.JFrame {
     
     
     private void orderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orderMouseClicked
-        if (on.getText().isEmpty() || oq.getText().isEmpty() || pa.getText().isEmpty()) {
+      DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+      LocalDate localDate = LocalDate.now();
+        System.out.println(dtf.format(localDate));
+        
+        if (on.getText().isEmpty() || oq.getText().isEmpty() || op.getText().isEmpty() || dte.getText().isEmpty()) {
     JOptionPane.showMessageDialog(null, "All fields are required!");
-        } else if (duplicateCheck()) {
+} else if (duplicateCheck()) {
     System.out.println("Duplicate Exist!");
 } else {
     dbConnector dbc = new dbConnector();
 
-    if (dbc.insertData("INSERT INTO tbl_order (order_name, order_type, order_quantity, order_payment_amount, order_date) VALUES('"
-            + on.getText() + "','" + ot.getSelectedItem() + "','" + oq.getText() + "','" + pa.getText() +"','" + dte.getText() + "')")) {
+    if (dbc.insertData("INSERT INTO tbl_order (order_name, order_type, order_quantity, order_price, order_date) VALUES('"
+            + on.getText() + "','" + ot.getSelectedItem() + "','" + oq.getText() + "','" + op.getText() + "','" + dte.getText() + "')")) {
 
         JOptionPane.showMessageDialog(null, "Inserted Successfully!");
         OrderM lgd = new OrderM();
@@ -276,8 +288,7 @@ public class Createorder extends javax.swing.JFrame {
     } else {
         JOptionPane.showMessageDialog(null, "Connection Error!");
     }
-}                    
-           
+}   
     }//GEN-LAST:event_orderMouseClicked
 
     private void setMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setMouseClicked
@@ -350,10 +361,10 @@ public class Createorder extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     public javax.swing.JTextField oid;
     public javax.swing.JTextField on;
+    public javax.swing.JTextField op;
     public javax.swing.JTextField oq;
     public javax.swing.JButton order;
     public javax.swing.JComboBox<String> ot;
-    public javax.swing.JTextField pa;
     private javax.swing.JLabel set;
     // End of variables declaration//GEN-END:variables
 }

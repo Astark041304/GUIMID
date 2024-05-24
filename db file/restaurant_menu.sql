@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 17, 2024 at 05:21 PM
+-- Generation Time: May 24, 2024 at 01:45 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -32,16 +32,21 @@ CREATE TABLE `tbl_order` (
   `order_name` varchar(50) NOT NULL,
   `order_type` varchar(50) NOT NULL,
   `order_quantity` int(50) NOT NULL,
-  `order_price` varchar(50) NOT NULL
+  `order_price` int(50) NOT NULL,
+  `order_date` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_order`
 --
 
-INSERT INTO `tbl_order` (`order_id`, `order_name`, `order_type`, `order_quantity`, `order_price`) VALUES
-(1, 'spaghetti', 'Meal', 20, '20'),
-(2, 'lechon', 'Meal', 30, '30');
+INSERT INTO `tbl_order` (`order_id`, `order_name`, `order_type`, `order_quantity`, `order_price`, `order_date`) VALUES
+(1, 'spaghetti', 'Meal', 20, 20, ''),
+(2, 'lechon', 'Meal', 30, 30, ''),
+(3, 'leche flan', 'Desserts', 20, 30, '22323'),
+(4, 'cake', 'Desserts', 20, 15, '22323'),
+(5, 'sprite', 'Drinks', 20, 30, '05/24/2024'),
+(6, 'babaoy', 'Meal', 20, 670, '05/24/2024');
 
 -- --------------------------------------------------------
 
@@ -123,7 +128,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_order`
 --
 ALTER TABLE `tbl_order`
-  MODIFY `order_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `order_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbl_product`

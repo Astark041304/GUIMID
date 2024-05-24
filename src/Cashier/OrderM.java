@@ -50,7 +50,7 @@ public class OrderM extends javax.swing.JFrame {
      public void displayData(){
            try{
             dbConnector dbc = new dbConnector();
-            ResultSet rs = dbc.getData("SELECT order_id, order_name, order_type, order_quantity, order_payment_amount, order_date FROM tbl_order");
+            ResultSet rs = dbc.getData("SELECT order_id, order_name, order_type, order_quantity, order_price, order_date FROM tbl_order");
             CustomerTable.setModel(DbUtils.resultSetToTableModel(rs));
              rs.close();
         }catch(SQLException ex){
@@ -528,7 +528,8 @@ public class OrderM extends javax.swing.JFrame {
                    od.on.setText(""+rs.getString("order_name"));
                    od.ot.setSelectedItem(""+rs.getString("order_type"));                
                    od.oq.setText(""+rs.getString("order_quantity"));
-                   od.pa.setText(""+rs.getString("order_payment_amount"));
+                   od.op.setText(""+rs.getString("order_price"));
+             
                    od.dte.setText(""+rs.getString("order_date"));       
                    od.add.setEnabled(false);
                    od.update.setEnabled(true);
@@ -626,7 +627,7 @@ public class OrderM extends javax.swing.JFrame {
                    res.on.setText(""+rs.getString("order_name"));
                    res.ot.setSelectedItem(""+rs.getString("order_type"));                
                    res.oq.setText(""+rs.getString("order_quantity"));
-                   res.pa.setText(""+rs.getString("order_payment_amount"));
+                    res.op.setText(""+rs.getString("order_price"));              
                    res.dte.setText(""+rs.getString("order_date"));       
                   
                    
