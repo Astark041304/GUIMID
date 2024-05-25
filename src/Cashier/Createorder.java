@@ -6,13 +6,13 @@
 package Cashier;
 
 
+import Admin.ProductM;
 import Config.dbConnector;
 import Passwordsettings.AccountSettings;
-
-
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
@@ -37,7 +37,23 @@ public class Createorder extends javax.swing.JFrame {
     
     
     
+   public boolean isProductAvailable(String productName) {
+    dbConnector dbc = new dbConnector();
+    String query = "SELECT product_name FROM tbl_product WHERE product_name = ?";
     
+    try (Connection conn = dbc.getConnection();
+         PreparedStatement pstmt = conn.prepareStatement(query)) {
+        
+        pstmt.setString(1, productName);
+        try (ResultSet resultSet = pstmt.executeQuery()) {
+            return resultSet.next();
+        }
+    } catch (SQLException ex) {
+        System.err.println("Error checking product availability: " + ex.getMessage());
+        return false;
+    }
+}
+
     
     
     
@@ -90,7 +106,7 @@ public class Createorder extends javax.swing.JFrame {
                 pname = resultSet.getString("order_name");
    
                 if(pname.equals(resultSet)){
-                    JOptionPane.showMessageDialog(null, "Product name is already used!");
+                    JOptionPane.showMessageDialog(null, "Order name is already used!");
                    
                     
                 }
@@ -128,13 +144,16 @@ public class Createorder extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         order = new javax.swing.JButton();
-        dte = new javax.swing.JTextField();
+        opa = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         op = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        dte = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         back = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         set = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -173,8 +192,8 @@ public class Createorder extends javax.swing.JFrame {
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        jLabel9.setText("Order Date:");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
+        jLabel9.setText("Payment Amount:");
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
 
         order.setBackground(new java.awt.Color(184, 167, 95));
         order.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
@@ -189,15 +208,20 @@ public class Createorder extends javax.swing.JFrame {
                 orderActionPerformed(evt);
             }
         });
-        jPanel3.add(order, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 200, -1));
-        jPanel3.add(dte, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 200, 30));
+        jPanel3.add(order, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 200, -1));
+        jPanel3.add(opa, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 200, 30));
 
         jLabel11.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel11.setText("Order Price:");
         jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, -1));
         jPanel3.add(op, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 200, 30));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 410, 310));
+        jLabel12.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        jLabel12.setText("Order Date:");
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, -1, -1));
+        jPanel3.add(dte, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 200, 30));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 410, 340));
 
         jPanel4.setBackground(new java.awt.Color(184, 167, 95));
 
@@ -218,6 +242,13 @@ public class Createorder extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-tab-35.png"))); // NOI18N
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -225,17 +256,22 @@ public class Createorder extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 515, Short.MAX_VALUE)
-                .addComponent(back)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 470, Short.MAX_VALUE)
+                .addComponent(jLabel5)
                 .addGap(18, 18, 18)
+                .addComponent(back)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(set)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(set, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 50));
@@ -243,7 +279,7 @@ public class Createorder extends javax.swing.JFrame {
         jLabel10.setBackground(new java.awt.Color(255, 204, 204));
         jLabel10.setForeground(new java.awt.Color(255, 204, 204));
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Borcelle (4).png"))); // NOI18N
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, 570));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, 550));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -266,19 +302,22 @@ public class Createorder extends javax.swing.JFrame {
     
     
     private void orderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orderMouseClicked
-      DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-      LocalDate localDate = LocalDate.now();
-        System.out.println(dtf.format(localDate));
-        
-        if (on.getText().isEmpty() || oq.getText().isEmpty() || op.getText().isEmpty() || dte.getText().isEmpty()) {
+     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+     LocalDate localDate = LocalDate.now();
+     System.out.println(dtf.format(localDate));
+
+if (on.getText().isEmpty() || oq.getText().isEmpty() || op.getText().isEmpty() || opa.getText().isEmpty()) {
     JOptionPane.showMessageDialog(null, "All fields are required!");
+} else if (!isProductAvailable(on.getText())) {
+    JOptionPane.showMessageDialog(null, "This product is not available in the product menu!");
 } else if (duplicateCheck()) {
     System.out.println("Duplicate Exist!");
 } else {
     dbConnector dbc = new dbConnector();
 
-    if (dbc.insertData("INSERT INTO tbl_order (order_name, order_type, order_quantity, order_price, order_date) VALUES('"
-            + on.getText() + "','" + ot.getSelectedItem() + "','" + oq.getText() + "','" + op.getText() + "','" + dte.getText() + "')")) {
+   if (dbc.insertData("INSERT INTO tbl_order (order_name, order_type, order_quantity, order_price, order_payamount, order_date) VALUES ('"
+        + on.getText() + "','" + ot.getSelectedItem() + "','" + oq.getText() + "','" + op.getText() + "','" + opa.getText() + "','" + dtf.format(localDate) + "')")) {
+
 
         JOptionPane.showMessageDialog(null, "Inserted Successfully!");
         OrderM lgd = new OrderM();
@@ -288,7 +327,8 @@ public class Createorder extends javax.swing.JFrame {
     } else {
         JOptionPane.showMessageDialog(null, "Connection Error!");
     }
-}   
+}
+
     }//GEN-LAST:event_orderMouseClicked
 
     private void setMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setMouseClicked
@@ -302,6 +342,12 @@ public class Createorder extends javax.swing.JFrame {
         cm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_backMouseClicked
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        ProductM pt = new ProductM();
+        pt.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel5MouseClicked
 
     /**
      * @param args the command line arguments
@@ -351,9 +397,11 @@ public class Createorder extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -362,6 +410,7 @@ public class Createorder extends javax.swing.JFrame {
     public javax.swing.JTextField oid;
     public javax.swing.JTextField on;
     public javax.swing.JTextField op;
+    public javax.swing.JTextField opa;
     public javax.swing.JTextField oq;
     public javax.swing.JButton order;
     public javax.swing.JComboBox<String> ot;

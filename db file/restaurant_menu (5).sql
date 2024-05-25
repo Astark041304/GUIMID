@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 24, 2024 at 01:45 PM
+-- Generation Time: May 25, 2024 at 12:56 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -33,6 +33,7 @@ CREATE TABLE `tbl_order` (
   `order_type` varchar(50) NOT NULL,
   `order_quantity` int(50) NOT NULL,
   `order_price` int(50) NOT NULL,
+  `order_payamount` varchar(50) NOT NULL,
   `order_date` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -40,13 +41,8 @@ CREATE TABLE `tbl_order` (
 -- Dumping data for table `tbl_order`
 --
 
-INSERT INTO `tbl_order` (`order_id`, `order_name`, `order_type`, `order_quantity`, `order_price`, `order_date`) VALUES
-(1, 'spaghetti', 'Meal', 20, 20, ''),
-(2, 'lechon', 'Meal', 30, 30, ''),
-(3, 'leche flan', 'Desserts', 20, 30, '22323'),
-(4, 'cake', 'Desserts', 20, 15, '22323'),
-(5, 'sprite', 'Drinks', 20, 30, '05/24/2024'),
-(6, 'babaoy', 'Meal', 20, 670, '05/24/2024');
+INSERT INTO `tbl_order` (`order_id`, `order_name`, `order_type`, `order_quantity`, `order_price`, `order_payamount`, `order_date`) VALUES
+(11, 'Somai', 'Meal', 4, 25, '100', '05/25/2024');
 
 -- --------------------------------------------------------
 
@@ -69,7 +65,8 @@ CREATE TABLE `tbl_product` (
 
 INSERT INTO `tbl_product` (`product_id`, `product_name`, `product_type`, `product_status`, `product_quantity`, `product_price`) VALUES
 (201, 'Burger Steak', 'Meal', 'Available', 10, 120),
-(202, 'Somai', 'Meals', 'Available', 10, 25);
+(202, 'Somai', 'Meals', 'Available', 10, 25),
+(203, 'Coca cola', 'Drinks', 'Available', 50, 25);
 
 -- --------------------------------------------------------
 
@@ -128,13 +125,13 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_order`
 --
 ALTER TABLE `tbl_order`
-  MODIFY `order_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `order_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tbl_product`
 --
 ALTER TABLE `tbl_product`
-  MODIFY `product_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=203;
+  MODIFY `product_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=204;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`

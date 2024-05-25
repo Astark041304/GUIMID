@@ -239,7 +239,7 @@ public class Productreg extends javax.swing.JFrame {
          if (dbc.executeUpdate(query) > 0) {
         JOptionPane.showMessageDialog(null, "Product added successfully!");
        
-        ProductTab adb = new ProductTab();
+        ProductM adb = new ProductM();
         adb.setVisible(true);
         this.dispose(); 
        } else {

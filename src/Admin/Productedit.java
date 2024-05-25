@@ -388,7 +388,7 @@ public class Productedit extends javax.swing.JFrame {
         if (dbc.executeUpdate(query) > 0) {
         JOptionPane.showMessageDialog(null, "Product updated successfully!");
        
-          ProductTab adf = new ProductTab();
+          ProductM adf = new ProductM();
           adf.setVisible(true);
           this.dispose(); 
       } else {
@@ -418,7 +418,7 @@ public class Productedit extends javax.swing.JFrame {
           
         
           JOptionPane.showMessageDialog(null, "Inserted Successfully!");
-          ProductTab lgd = new ProductTab();
+          ProductM lgd = new ProductM();
           lgd.setVisible(true);
           this.dispose();
           

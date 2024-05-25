@@ -122,7 +122,6 @@ public class Receipt extends javax.swing.JFrame {
         ot = new javax.swing.JComboBox<>();
         on = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
-        Editbg = new javax.swing.JPanel();
         oq = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -131,7 +130,7 @@ public class Receipt extends javax.swing.JFrame {
         cancel = new javax.swing.JButton();
         rec = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        pa = new javax.swing.JTextField();
+        opa = new javax.swing.JTextField();
         dte = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         op = new javax.swing.JTextField();
@@ -178,22 +177,6 @@ public class Receipt extends javax.swing.JFrame {
         jSeparator2.setBackground(new java.awt.Color(130, 202, 255));
         jSeparator2.setForeground(new java.awt.Color(204, 204, 255));
         jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 410, 10));
-
-        Editbg.setBackground(new java.awt.Color(215, 220, 224));
-        Editbg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 110, 208)));
-
-        javax.swing.GroupLayout EditbgLayout = new javax.swing.GroupLayout(Editbg);
-        Editbg.setLayout(EditbgLayout);
-        EditbgLayout.setHorizontalGroup(
-            EditbgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 408, Short.MAX_VALUE)
-        );
-        EditbgLayout.setVerticalGroup(
-            EditbgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 28, Short.MAX_VALUE)
-        );
-
-        jPanel3.add(Editbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 30));
         jPanel3.add(oq, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 200, 30));
 
         jLabel6.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
@@ -239,7 +222,9 @@ public class Receipt extends javax.swing.JFrame {
             }
         });
 
+        rec.setBackground(new java.awt.Color(184, 167, 95));
         rec.setText("Receipt");
+        rec.setPreferredSize(new java.awt.Dimension(71, 23));
         rec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 recActionPerformed(evt);
@@ -251,15 +236,15 @@ public class Receipt extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(add)
+                .addGap(27, 27, 27)
+                .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(delete)
-                .addGap(26, 26, 26)
-                .addComponent(cancel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addComponent(rec)
-                .addContainerGap())
+                .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(rec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,12 +258,12 @@ public class Receipt extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 330, 40));
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 410, 40));
 
         jLabel9.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel9.setText("Order Date:");
         jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, -1));
-        jPanel3.add(pa, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 200, 30));
+        jPanel3.add(opa, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 200, 30));
         jPanel3.add(dte, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 200, 30));
 
         jLabel7.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
@@ -290,7 +275,7 @@ public class Receipt extends javax.swing.JFrame {
         jLabel12.setText("Payment Amount:");
         jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 410, 370));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 410, 340));
 
         jPanel5.setBackground(new java.awt.Color(184, 167, 95));
 
@@ -344,7 +329,7 @@ public class Receipt extends javax.swing.JFrame {
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
 
-        jPanel4.setBackground(new java.awt.Color(215, 220, 224));
+        jPanel4.setBackground(new java.awt.Color(184, 167, 95));
 
         txtReceipt.setColumns(20);
         txtReceipt.setRows(5);
@@ -414,7 +399,7 @@ public class Receipt extends javax.swing.JFrame {
         ot.setSelectedItem("");
         oq.setText("");
         op.setText("");        
-        pa.setText("");
+        opa.setText("");
 
         dte.setText("");
                             
@@ -422,7 +407,7 @@ public class Receipt extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteActionPerformed
 
     private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
-        if (on.getText().isEmpty() || oq.getText().isEmpty() || pa.getText().isEmpty()) {
+        if (on.getText().isEmpty() || oq.getText().isEmpty() || opa.getText().isEmpty()) {
     JOptionPane.showMessageDialog(null, "All fields are required!");
 } else if (duplicateCheck()) {
     System.out.println("Duplicate Exist!");
@@ -433,13 +418,13 @@ public class Receipt extends javax.swing.JFrame {
     double priceFromDatabase = Double.parseDouble(op.getText());
     
     
-    double paymentAmount = Double.parseDouble(pa.getText());
+    double paymentAmount = Double.parseDouble(opa.getText());
     
     
     double change = priceFromDatabase - paymentAmount;
 
-    if (dbc.insertData("INSERT INTO tbl_order (order_name, order_type, order_quantity, order_payment_amount, order_date) VALUES('"
-            + on.getText() + "','" + ot.getSelectedItem() + "','" + oq.getText() + "','" + pa.getText() + "','" + dte.getText() + "')")) {
+    if (dbc.insertData("INSERT INTO tbl_order (order_name, order_type, order_quantity, order_payamount, order_date) VALUES('"
+            + on.getText() + "','" + ot.getSelectedItem() + "','" + oq.getText() + "','" + opa.getText() + "','" + dte.getText() + "')")) {
 
         JOptionPane.showMessageDialog(null, "Inserted Successfully!");
         System.out.println("Balance: " + change); 
@@ -468,7 +453,7 @@ public class Receipt extends javax.swing.JFrame {
 
     private void recActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recActionPerformed
                 double priceFromDatabase = Double.parseDouble(op.getText());
-                 double paymentAmount = Double.parseDouble(pa.getText());
+                 double paymentAmount = Double.parseDouble(opa.getText());
                  double change;
 
            if (paymentAmount < priceFromDatabase) {
@@ -488,7 +473,7 @@ public class Receipt extends javax.swing.JFrame {
                       txtReceipt.setText(txtReceipt.getText() + "Order Type: " + ot.getSelectedItem() + "\n\n");
                       txtReceipt.setText(txtReceipt.getText() + "Order Quantity: " + oq.getText() + "\n\n");
                       txtReceipt.setText(txtReceipt.getText() + "Order price: " + op.getText() + "\n\n");
-                      txtReceipt.setText(txtReceipt.getText() + "Order Payment: " + pa.getText() + "\n\n");
+                      txtReceipt.setText(txtReceipt.getText() + "Order Payment Amount: " + opa.getText() + "\n\n");
                       txtReceipt.setText(txtReceipt.getText() + "Change: " + change + "\n\n");
                       txtReceipt.setText(txtReceipt.getText() + "Order Date: " + dte.getText() + "\n\n");
                    
@@ -550,7 +535,6 @@ public class Receipt extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel Adname1;
-    private javax.swing.JPanel Editbg;
     public javax.swing.JButton add;
     private javax.swing.JButton cancel;
     private javax.swing.JButton delete;
@@ -575,9 +559,9 @@ public class Receipt extends javax.swing.JFrame {
     public javax.swing.JTextField oid;
     public javax.swing.JTextField on;
     public javax.swing.JTextField op;
+    public javax.swing.JTextField opa;
     public javax.swing.JTextField oq;
     public javax.swing.JComboBox<String> ot;
-    public javax.swing.JTextField pa;
     private javax.swing.JButton rec;
     private javax.swing.JLabel set;
     private javax.swing.JTextArea txtReceipt;

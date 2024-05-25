@@ -50,7 +50,7 @@ public class OrderM extends javax.swing.JFrame {
      public void displayData(){
            try{
             dbConnector dbc = new dbConnector();
-            ResultSet rs = dbc.getData("SELECT order_id, order_name, order_type, order_quantity, order_price, order_date FROM tbl_order");
+            ResultSet rs = dbc.getData("SELECT order_id, order_name, order_type, order_quantity, order_price, order_payamount, order_date FROM tbl_order");
             CustomerTable.setModel(DbUtils.resultSetToTableModel(rs));
              rs.close();
         }catch(SQLException ex){
@@ -87,9 +87,9 @@ public class OrderM extends javax.swing.JFrame {
         Id = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         delete = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         edit = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         p_add = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         p_add2 = new javax.swing.JPanel();
@@ -172,24 +172,22 @@ public class OrderM extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-delete-35.png"))); // NOI18N
-        jLabel10.setText("Delete");
+        jLabel1.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-delete-35.png"))); // NOI18N
+        jLabel1.setText("Delete");
 
         javax.swing.GroupLayout deleteLayout = new javax.swing.GroupLayout(delete);
         delete.setLayout(deleteLayout);
         deleteLayout.setHorizontalGroup(
             deleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(deleteLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jLabel10)
+                .addGap(49, 49, 49)
+                .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         deleteLayout.setVerticalGroup(
             deleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, deleteLayout.createSequentialGroup()
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
         edit.setBackground(new java.awt.Color(184, 167, 95));
@@ -205,24 +203,27 @@ public class OrderM extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-edit-35.png"))); // NOI18N
-        jLabel8.setText("Update");
+        jLabel9.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-edit-35.png"))); // NOI18N
+        jLabel9.setText("Update");
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout editLayout = new javax.swing.GroupLayout(edit);
         edit.setLayout(editLayout);
         editLayout.setHorizontalGroup(
             editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(editLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jLabel8)
+                .addGap(44, 44, 44)
+                .addComponent(jLabel9)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         editLayout.setVerticalGroup(
             editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editLayout.createSequentialGroup()
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
         );
 
         p_add.setBackground(new java.awt.Color(184, 167, 95));
@@ -238,8 +239,8 @@ public class OrderM extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-add-35.png"))); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-add-35 (2).png"))); // NOI18N
         jLabel7.setText("Add");
 
         javax.swing.GroupLayout p_addLayout = new javax.swing.GroupLayout(p_add);
@@ -247,7 +248,7 @@ public class OrderM extends javax.swing.JFrame {
         p_addLayout.setHorizontalGroup(
             p_addLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(p_addLayout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addGap(53, 53, 53)
                 .addComponent(jLabel7)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -269,18 +270,18 @@ public class OrderM extends javax.swing.JFrame {
             }
         });
 
-        jLabel13.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-checkout-35.png"))); // NOI18N
-        jLabel13.setText("CheckOut");
+        jLabel13.setText("Checkout");
 
         javax.swing.GroupLayout p_add2Layout = new javax.swing.GroupLayout(p_add2);
         p_add2.setLayout(p_add2Layout);
         p_add2Layout.setHorizontalGroup(
             p_add2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(p_add2Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, p_add2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel13)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGap(32, 32, 32))
         );
         p_add2Layout.setVerticalGroup(
             p_add2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -338,15 +339,15 @@ public class OrderM extends javax.swing.JFrame {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(67, 67, 67)
                 .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(p_add, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(p_add2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
         );
@@ -529,7 +530,7 @@ public class OrderM extends javax.swing.JFrame {
                    od.ot.setSelectedItem(""+rs.getString("order_type"));                
                    od.oq.setText(""+rs.getString("order_quantity"));
                    od.op.setText(""+rs.getString("order_price"));
-             
+                   od.op.setText(""+rs.getString("order_payamount"));
                    od.dte.setText(""+rs.getString("order_date"));       
                    od.add.setEnabled(false);
                    od.update.setEnabled(true);
@@ -623,11 +624,12 @@ public class OrderM extends javax.swing.JFrame {
                 if(rs.next()){
                
                Receipt res = new Receipt();
-                    res.oid.setText(""+rs.getString("order_id"));
+                   res.oid.setText(""+rs.getString("order_id"));
                    res.on.setText(""+rs.getString("order_name"));
                    res.ot.setSelectedItem(""+rs.getString("order_type"));                
                    res.oq.setText(""+rs.getString("order_quantity"));
-                    res.op.setText(""+rs.getString("order_price"));              
+                   res.op.setText(""+rs.getString("order_price"));
+                   res.opa.setText(""+rs.getString("order_payamount"));
                    res.dte.setText(""+rs.getString("order_date"));       
                   
                    
@@ -687,6 +689,10 @@ public class OrderM extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_backMouseClicked
 
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+
+    }//GEN-LAST:event_jLabel9MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -733,14 +739,14 @@ public class OrderM extends javax.swing.JFrame {
     private javax.swing.JPanel delete;
     private javax.swing.JPanel edit;
     private javax.swing.JLabel home;
-    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
