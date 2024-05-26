@@ -8,17 +8,19 @@ package Admin;
 
 
 import Cashier.Createorder;
-import Cashier.OrderM;
+
 import Config.Session;
 import Config.dbConnector;
 import Passwordsettings.AccountSettings;
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashSet;
-import java.util.Set;
+
+
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
+
 import javax.swing.table.TableModel;
 
 import net.proteanit.sql.DbUtils;
@@ -57,7 +59,7 @@ public class ProductM extends javax.swing.JFrame {
     
     }
     
-    
+   
     
      
     

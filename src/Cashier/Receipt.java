@@ -415,13 +415,14 @@ public class Receipt extends javax.swing.JFrame {
     dbConnector dbc = new dbConnector();
     
     
-    double priceFromDatabase = Double.parseDouble(op.getText());
+    double priceAmount = Double.parseDouble(op.getText());
     
     
     double paymentAmount = Double.parseDouble(opa.getText());
     
-    
-    double change = priceFromDatabase - paymentAmount;
+     double quantityAmount = Double.parseDouble(oq.getText());
+     
+    double change = quantityAmount * priceAmount - paymentAmount;
 
     if (dbc.insertData("INSERT INTO tbl_order (order_name, order_type, order_quantity, order_payamount, order_date) VALUES('"
             + on.getText() + "','" + ot.getSelectedItem() + "','" + oq.getText() + "','" + opa.getText() + "','" + dte.getText() + "')")) {
@@ -452,30 +453,33 @@ public class Receipt extends javax.swing.JFrame {
     }//GEN-LAST:event_setMouseClicked
 
     private void recActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recActionPerformed
-                double priceFromDatabase = Double.parseDouble(op.getText());
-                 double paymentAmount = Double.parseDouble(opa.getText());
-                 double change;
+                double priceAmount = Double.parseDouble(op.getText());
+                double paymentAmount = Double.parseDouble(opa.getText());
+                double quantityAmount = Double.parseDouble(oq.getText());
+              double change;
+       
 
-           if (paymentAmount < priceFromDatabase) {
-         JOptionPane.showMessageDialog(null, "Payment amount is not enough!");
+              if (paymentAmount < priceAmount * quantityAmount) {
+               JOptionPane.showMessageDialog(null, "Payment amount is not enough!");
                   return;
-              } else {
-            change = priceFromDatabase - paymentAmount;
+                  } else {
+                 
+                 change =  quantityAmount * priceAmount - paymentAmount;
             }
 
-                         change = Math.abs(change);
+                       change = Math.abs(change);
 
-                      txtReceipt.setText("-----------------------------------------------------------------\n");
-                      txtReceipt.setText(txtReceipt.getText() + "                               Order Receipt   \n");
-                      txtReceipt.setText(txtReceipt.getText() + "-----------------------------------------------------------------\n"); 
-                      txtReceipt.setText(txtReceipt.getText() + "Order Id: " + oid.getText() + "\n\n");
-                      txtReceipt.setText(txtReceipt.getText() + "Order Name: " + on.getText() + "\n\n");
-                      txtReceipt.setText(txtReceipt.getText() + "Order Type: " + ot.getSelectedItem() + "\n\n");
-                      txtReceipt.setText(txtReceipt.getText() + "Order Quantity: " + oq.getText() + "\n\n");
-                      txtReceipt.setText(txtReceipt.getText() + "Order price: " + op.getText() + "\n\n");
-                      txtReceipt.setText(txtReceipt.getText() + "Order Payment Amount: " + opa.getText() + "\n\n");
-                      txtReceipt.setText(txtReceipt.getText() + "Change: " + change + "\n\n");
-                      txtReceipt.setText(txtReceipt.getText() + "Order Date: " + dte.getText() + "\n\n");
+                     txtReceipt.setText("-----------------------------------------------------------------\n");
+                     txtReceipt.setText(txtReceipt.getText() + "                               Order Receipt   \n");
+                     txtReceipt.setText(txtReceipt.getText() + "-----------------------------------------------------------------\n"); 
+                     txtReceipt.setText(txtReceipt.getText() + "Order Id: " + oid.getText() + "\n\n");
+                     txtReceipt.setText(txtReceipt.getText() + "Order Name: " + on.getText() + "\n\n");
+                     txtReceipt.setText(txtReceipt.getText() + "Order Type: " + ot.getSelectedItem() + "\n\n");
+                     txtReceipt.setText(txtReceipt.getText() + "Order Quantity: " + oq.getText() + "\n\n");
+                     txtReceipt.setText(txtReceipt.getText() + "Order price: " + op.getText() + "\n\n");
+                     txtReceipt.setText(txtReceipt.getText() + "Order Payment Amount: " + opa.getText() + "\n\n");
+                     txtReceipt.setText(txtReceipt.getText() + "Change: " + change + "\n\n");
+                     txtReceipt.setText(txtReceipt.getText() + "Order Date: " + dte.getText() + "\n\n");
                    
     }//GEN-LAST:event_recActionPerformed
 
