@@ -233,7 +233,7 @@ public class ProductM extends javax.swing.JFrame {
         });
 
         jLabel11.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Admin/icons8-add-35 (2).png"))); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-add-35 (2).png"))); // NOI18N
         jLabel11.setText("Add");
 
         javax.swing.GroupLayout p_add1Layout = new javax.swing.GroupLayout(p_add1);
