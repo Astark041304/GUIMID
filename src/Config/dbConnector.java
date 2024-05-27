@@ -91,6 +91,18 @@ public class dbConnector {
             return 0;
         }
     }
+    
+    
+  public ResultSet executeQuery(String query) {
+        try {
+            Statement statement = connect.createStatement();
+            return statement.executeQuery(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 
     public int setProductInfo(String query) {
         try (Statement statement = connect.createStatement()) {

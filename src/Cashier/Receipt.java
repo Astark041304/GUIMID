@@ -459,13 +459,10 @@ public class Receipt extends javax.swing.JFrame {
               double change;
        
 
-              if (paymentAmount < priceAmount * quantityAmount) {
-               JOptionPane.showMessageDialog(null, "Payment amount is not enough!");
-                  return;
-                  } else {
+             
                  
                  change =  quantityAmount * priceAmount - paymentAmount;
-            }
+            
 
                        change = Math.abs(change);
 

@@ -35,6 +35,26 @@ public class Createorder extends javax.swing.JFrame {
     }
     
     
+    private int getProductQuantity(String productName) {
+    dbConnector dbc = new dbConnector();
+    String query = "SELECT product_quantity FROM tbl_product WHERE product_name = '" + productName + "'";
+    ResultSet rs = dbc.executeQuery(query);
+    try {
+        if (rs.next()) {
+            return rs.getInt("product_quantity");
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return 0;
+}
+    
+    
+    private boolean updateProductQuantity(String productName, int orderedQuantity) {
+    dbConnector dbc = new dbConnector();
+    String updateQuery = "UPDATE tbl_product SET product_quantity = product_quantity - " + orderedQuantity + " WHERE product_name = '" + productName + "'";
+    return dbc.executeUpdate(updateQuery) > 0;
+}
     
     
    public boolean isProductAvailable(String productName) {
@@ -310,25 +330,45 @@ if (on.getText().isEmpty() || oq.getText().isEmpty() || op.getText().isEmpty() |
     JOptionPane.showMessageDialog(null, "All fields are required!");
 } else if (!isProductAvailable(on.getText())) {
     JOptionPane.showMessageDialog(null, "This product is not available in the product menu!");
-} else if (duplicateCheck()) {
-    System.out.println("Duplicate Exist!");
 } else {
     dbConnector dbc = new dbConnector();
-
-   if (dbc.insertData("INSERT INTO tbl_order (order_name, order_type, order_quantity, order_price, order_payamount, order_date) VALUES ('"
-        + on.getText() + "','" + ot.getSelectedItem() + "','" + oq.getText() + "','" + op.getText() + "','" + opa.getText() + "','" + dtf.format(localDate) + "')")) {
-
-
-        JOptionPane.showMessageDialog(null, "Inserted Successfully!");
-        OrderM lgd = new OrderM();
-        lgd.setVisible(true);
-        this.dispose();
-
+    
+    int orderedQuantity = Integer.parseInt(oq.getText());
+    if (orderedQuantity <= 0) {
+        JOptionPane.showMessageDialog(null, "Order quantity must be greater than zero!");
     } else {
-        JOptionPane.showMessageDialog(null, "Connection Error!");
+        String productName = on.getText();
+        int productQuantity = getProductQuantity(productName); 
+        if (productQuantity <= 0) {
+            JOptionPane.showMessageDialog(null, "Sorry, but " + productName + " is out of stock!");
+        } else {
+            double priceAmount = Double.parseDouble(op.getText());
+            double quantityAmount = Double.parseDouble(oq.getText());
+            double paymentAmount = Double.parseDouble(opa.getText());
+
+            if (paymentAmount < priceAmount * quantityAmount) {
+                JOptionPane.showMessageDialog(null, "Payment amount is not enough!");
+                return;
+            }
+
+            if (dbc.insertData("INSERT INTO tbl_order (order_name, order_type, order_quantity, order_price, order_payamount, order_date) VALUES ('"
+                + on.getText() + "','" + ot.getSelectedItem() + "','" + oq.getText() + "','" + op.getText() + "','" + opa.getText() + "','" + dtf.format(localDate) + "')")) {
+                
+                if (updateProductQuantity(productName, orderedQuantity)) {
+                    JOptionPane.showMessageDialog(null, "Order placed successfully!");
+                    OrderM lgd = new OrderM();
+                    lgd.setVisible(true);
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Failed to update product quantity!");
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Connection Error!");
+            }
+        }
     }
 }
-
     }//GEN-LAST:event_orderMouseClicked
 
     private void setMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setMouseClicked

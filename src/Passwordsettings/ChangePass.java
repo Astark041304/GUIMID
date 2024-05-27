@@ -255,50 +255,51 @@ public class ChangePass extends javax.swing.JFrame {
     Session sess = Session.getInstance();
         
         uid.setText("USER ID:"+sess.getUid());
-        oldp.setText(""+sess.getFname());
-        newp.setText(""+sess.getLname());
-        cp.setText(""+sess.getEmail());
-//         usn.setText(""+sess.getUsername());
+      
            
       
     }//GEN-LAST:event_formWindowActivated
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        AccountSettings as = new  AccountSettings();
-        as.setVisible(true);
-        this.dispose();
+       
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-  try{
-       dbConnector dbc = new dbConnector();
-        Session sess = Session.getInstance();
+try {
+    dbConnector dbc = new dbConnector();
+    Session sess = Session.getInstance();
        
-       String query = "SELECT * FROM tbl_user WHERE user_id = '"+sess.getUid()+"'";
-       ResultSet rs = dbc.getData(query);
-       if(rs.next()){
-           String oldpass = rs.getString("user_pass");
-           String oldhash = Passwordhasher.hashPassword(oldp.getText());
+    String query = "SELECT * FROM tbl_user WHERE user_id = '"+sess.getUid()+"'";
+    ResultSet rs = dbc.getData(query);
+    if(rs.next()) {
+        String oldpass = rs.getString("user_pass");
+        String oldhash = Passwordhasher.hashPassword(oldp.getText()); 
            
-           if(oldpass.equals(oldhash)){
-            String npass = Passwordhasher.hashPassword(newp.getText());    
-           dbc.updateData("UPDATE tbl_user SET user_pass = '"+npass+"'");
-            String conpass = Passwordhasher.hashPassword(cp.getText());    
-           dbc.updateData("UPDATE tbl_user SET  user_pass = '"+conpass+"'");
-       
-           JOptionPane.showMessageDialog(null, "SUCCESSFULLY UPDATE");
-           LoginDashboard lf = new LoginDashboard();
-           lf.setVisible(true);
-           this.dispose();
-       
-           }else{
-               JOptionPane.showMessageDialog(null, "OLD PASSWORD IS INCORRECT");
-           }
-       }
-        }catch(SQLException | NoSuchAlgorithmException ex){
-            System.out.println(""+ex);
-        }     
+        if(oldpass.equals(oldhash)) {
+            String npass = Passwordhasher.hashPassword(newp.getText()); 
+            String confirmPassHash = Passwordhasher.hashPassword(cp.getText());
+            
+            if (npass.equals(confirmPassHash)) { 
+                int rowsUpdated = dbc.executeUpdate("UPDATE tbl_user SET user_pass = '"+npass+"' WHERE user_id = '"+sess.getUid()+"'");
+                if (rowsUpdated > 0) {
+                    JOptionPane.showMessageDialog(null, "Password successfully updated");
+                    LoginDashboard lf = new LoginDashboard();
+                    lf.setVisible(true);
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Failed to update password");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Passwords do not match");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Old password is incorrect");
+        }
+    }
+} catch(SQLException | NoSuchAlgorithmException ex) {
+    System.out.println(""+ex);
+}
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked

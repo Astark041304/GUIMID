@@ -138,6 +138,8 @@ public class Order_edit extends javax.swing.JFrame {
         dte = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         op = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        opa = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
@@ -210,8 +212,8 @@ public class Order_edit extends javax.swing.JFrame {
         jPanel3.add(oq, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 200, 30));
 
         jLabel6.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        jLabel6.setText("Order price:");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
+        jLabel6.setText("Order Payment:");
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(215, 220, 224));
 
@@ -293,13 +295,18 @@ public class Order_edit extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel9.setText("Order Date:");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, -1));
-        jPanel3.add(dte, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 200, 30));
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, -1, -1));
+        jPanel3.add(dte, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 200, 30));
 
         jLabel12.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel12.setText("Order quantity:");
         jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
         jPanel3.add(op, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 200, 30));
+
+        jLabel11.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        jLabel11.setText("Order price:");
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
+        jPanel3.add(opa, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 200, 30));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 410, 430));
 
@@ -375,38 +382,29 @@ public class Order_edit extends javax.swing.JFrame {
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
      
-            
-         if (oid.getText().isEmpty() || on.getText().isEmpty() || oq.getText().isEmpty() ) {
-       JOptionPane.showMessageDialog(null, "All fields are required!");   
-       } else if (updateCheck()) {
-   
-        System.out.println("Duplicate exists");
-        } else {
+        if (oid.getText().isEmpty() || on.getText().isEmpty() || oq.getText().isEmpty() ) {
+    JOptionPane.showMessageDialog(null, "All fields are required!");   
+} else {
+    dbConnector dbc = new dbConnector();
     
-        dbConnector dbc = new dbConnector();
-    
-    
-         String query = "UPDATE tbl_order SET order_name = '" + on.getText() +
+    String query = "UPDATE tbl_order SET order_name = '" + on.getText() +
                    "', order_type = '" + ot.getSelectedItem() +                 
                    "', order_quantity = '" + oq.getText() +           
-                  "', order_price = '" + op.getText() +
-              
-                  "', order_dte = '" + dte.getText() +
-                
+                   "', order_price = '" + op.getText() +
+                   "', order_payamount = '" + opa.getText() +
+                   "', order_date = '" + dte.getText() +
                    "' WHERE order_id = '" + oid.getText() + "'"; 
     
-   
-        if (dbc.executeUpdate(query) > 0) {
+    if (dbc.executeUpdate(query) > 0) {
         JOptionPane.showMessageDialog(null, "Order Edit Successfully!");
        
-          OrderM adf = new OrderM();
-          adf.setVisible(true);
-          this.dispose(); 
-      } else {
+        OrderM adf = new OrderM();
+        adf.setVisible(true);
+        this.dispose(); 
+    } else {
         JOptionPane.showMessageDialog(null, "Failed to Edit Order. Please try again.");
-        }
-     }
-     
+    }
+}
     }//GEN-LAST:event_updateActionPerformed
     
     
@@ -497,6 +495,7 @@ public class Order_edit extends javax.swing.JFrame {
     public javax.swing.JTextField dte;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel22;
@@ -514,6 +513,7 @@ public class Order_edit extends javax.swing.JFrame {
     public javax.swing.JTextField oid;
     public javax.swing.JTextField on;
     public javax.swing.JTextField op;
+    public javax.swing.JTextField opa;
     public javax.swing.JTextField oq;
     public javax.swing.JComboBox<String> ot;
     private javax.swing.JLabel set;
