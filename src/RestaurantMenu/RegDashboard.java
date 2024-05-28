@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package gymreg;
+package RestaurantMenu;
 
 import Config.Passwordhasher;
 import Config.dbConnector;
@@ -171,7 +171,7 @@ public class RegDashboard extends javax.swing.JFrame {
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-registration-65.png"))); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Yu Gothic Medium", 3, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Yu Gothic Medium", 1, 24)); // NOI18N
         jLabel3.setText("Registration Form");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -199,12 +199,12 @@ public class RegDashboard extends javax.swing.JFrame {
         jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 70));
         jPanel3.add(ln1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 187, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, -1, 410));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, -1, 410));
 
         jLabel10.setBackground(new java.awt.Color(255, 204, 204));
         jLabel10.setForeground(new java.awt.Color(255, 204, 204));
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Borcelle (4).png"))); // NOI18N
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, 570));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 800, 560));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -214,7 +214,7 @@ public class RegDashboard extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();

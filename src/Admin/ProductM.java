@@ -105,10 +105,11 @@ public class ProductM extends javax.swing.JFrame {
         settings = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jLabel19 = new javax.swing.JLabel();
+        back = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         set = new javax.swing.JLabel();
         home = new javax.swing.JLabel();
+        create = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -384,10 +385,10 @@ public class ProductM extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(184, 167, 95));
 
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-back-35.png"))); // NOI18N
-        jLabel19.addMouseListener(new java.awt.event.MouseAdapter() {
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-back-35.png"))); // NOI18N
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel19MouseClicked(evt);
+                backMouseClicked(evt);
             }
         });
 
@@ -408,6 +409,13 @@ public class ProductM extends javax.swing.JFrame {
             }
         });
 
+        create.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-create-35.png"))); // NOI18N
+        create.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                createMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -415,11 +423,13 @@ public class ProductM extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 271, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
                 .addComponent(home)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel19)
-                .addGap(18, 18, 18)
+                .addComponent(back)
+                .addGap(10, 10, 10)
+                .addComponent(create)
+                .addGap(14, 14, 14)
                 .addComponent(set)
                 .addContainerGap())
         );
@@ -427,8 +437,9 @@ public class ProductM extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
             .addComponent(home, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(set, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(create, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 620, 50));
@@ -569,11 +580,13 @@ public class ProductM extends javax.swing.JFrame {
         logout.setBackground(navcolor);
     }//GEN-LAST:event_logoutMouseExited
 
-    private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
-       Createorder cor = new Createorder();
-        cor.setVisible(true);
+    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
+        AdminDashboard as = new  AdminDashboard();
+        as.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jLabel19MouseClicked
+        
+       
+    }//GEN-LAST:event_backMouseClicked
 
     private void setMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setMouseClicked
         AccountSettings as = new  AccountSettings();
@@ -586,6 +599,12 @@ public class ProductM extends javax.swing.JFrame {
         as.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_homeMouseClicked
+
+    private void createMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createMouseClicked
+        Createorder cor = new Createorder();
+        cor.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_createMouseClicked
 
     /**
      * @param args the command line arguments
@@ -691,12 +710,13 @@ public class ProductM extends javax.swing.JFrame {
     public javax.swing.JLabel Id;
     public javax.swing.JLabel Lname;
     private javax.swing.JTable ProductTable;
+    private javax.swing.JLabel back;
+    private javax.swing.JLabel create;
     private javax.swing.JLabel home;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;

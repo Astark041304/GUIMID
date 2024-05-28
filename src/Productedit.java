@@ -7,9 +7,9 @@
 
 import Admin.*;
 import Config.dbConnector;
-import gymreg.LoginDashboard;
-import static gymreg.RegDashboard.email;
-import static gymreg.RegDashboard.usname;
+import RestaurantMenu.LoginDashboard;
+import static RestaurantMenu.RegDashboard.email;
+import static RestaurantMenu.RegDashboard.usname;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -406,7 +406,7 @@ public class Productedit extends javax.swing.JFrame {
         }else{
             
         
-          AdminForm adf = new AdminForm();
+          UsersTab adf = new UsersTab();
           adf.setVisible(true);
           this.dispose();
         
@@ -461,13 +461,13 @@ public class Productedit extends javax.swing.JFrame {
     }//GEN-LAST:event_refreshMouseClicked
 
     private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
-       AdminForm adf = new  AdminForm();
+       UsersTab adf = new  UsersTab();
        adf.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_cancelMouseClicked
 
     private void BackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackMouseClicked
-        AdminForm af = new AdminForm();
+        UsersTab af = new UsersTab();
         af.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackMouseClicked

@@ -8,7 +8,7 @@ package Admin;
 
 import Config.Session;
 import Passwordsettings.AccountSettings;
-import gymreg.LoginDashboard;
+import RestaurantMenu.LoginDashboard;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
@@ -440,7 +440,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void userspMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userspMouseClicked
-        AdminForm afs = new AdminForm();
+        UsersTab afs = new UsersTab();
          afs.setVisible(true);
          this.dispose();
     }//GEN-LAST:event_userspMouseClicked

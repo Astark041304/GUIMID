@@ -7,7 +7,7 @@ package Admin;
 
 import Config.dbConnector;
 import Passwordsettings.AccountSettings;
-import gymreg.LoginDashboard;
+import RestaurantMenu.LoginDashboard;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -152,7 +152,7 @@ public class Productedit extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic Medium", 1, 11)); // NOI18N
         jLabel5.setText("product price:");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic Medium", 1, 11)); // NOI18N
         jLabel3.setText("product Id:");
@@ -264,15 +264,15 @@ public class Productedit extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(29, 29, 29)
                 .addComponent(add)
                 .addGap(18, 18, 18)
                 .addComponent(delete)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addComponent(update)
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addComponent(cancel)
-                .addGap(24, 24, 24))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,9 +286,9 @@ public class Productedit extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 360, 40));
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 370, 40));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 410, 450));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 410, 340));
 
         jPanel4.setBackground(new java.awt.Color(184, 167, 95));
 
@@ -431,7 +431,7 @@ public class Productedit extends javax.swing.JFrame {
     }//GEN-LAST:event_addMouseClicked
 
     private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
-       AdminForm adf = new  AdminForm();
+       UsersTab adf = new  UsersTab();
        adf.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_cancelMouseClicked

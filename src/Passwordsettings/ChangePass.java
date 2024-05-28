@@ -10,7 +10,7 @@ package Passwordsettings;
 import Config.Passwordhasher;
 import Config.Session;
 import Config.dbConnector;
-import gymreg.LoginDashboard;
+import RestaurantMenu.LoginDashboard;
 import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;

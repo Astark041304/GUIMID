@@ -8,7 +8,7 @@ package Cashier;
 import Admin.*;
 import Config.dbConnector;
 import Passwordsettings.AccountSettings;
-import gymreg.LoginDashboard;
+import RestaurantMenu.LoginDashboard;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -288,10 +288,10 @@ public class Order_edit extends javax.swing.JFrame {
                     .addComponent(delete)
                     .addComponent(cancel)
                     .addComponent(update))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 350, 50));
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 350, 40));
 
         jLabel9.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel9.setText("Order Date:");
@@ -308,7 +308,7 @@ public class Order_edit extends javax.swing.JFrame {
         jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
         jPanel3.add(opa, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 200, 30));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 410, 430));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 410, 340));
 
         jPanel5.setBackground(new java.awt.Color(184, 167, 95));
 
@@ -437,7 +437,7 @@ public class Order_edit extends javax.swing.JFrame {
     }//GEN-LAST:event_addMouseClicked
 
     private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
-       AdminForm adf = new  AdminForm();
+       UsersTab adf = new  UsersTab();
        adf.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_cancelMouseClicked

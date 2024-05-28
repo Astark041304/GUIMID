@@ -8,7 +8,7 @@ package Cashier;
 import Admin.*;
 import Config.dbConnector;
 import Passwordsettings.AccountSettings;
-import gymreg.LoginDashboard;
+import RestaurantMenu.LoginDashboard;
 import java.awt.print.PrinterException;
 
 import java.sql.ResultSet;
@@ -441,7 +441,7 @@ public class Receipt extends javax.swing.JFrame {
     }//GEN-LAST:event_addMouseClicked
 
     private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
-       AdminForm adf = new  AdminForm();
+       UsersTab adf = new  UsersTab();
        adf.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_cancelMouseClicked

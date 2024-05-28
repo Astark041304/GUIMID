@@ -9,8 +9,8 @@ import Config.Passwordhasher;
 import Config.dbConnector;
 import Passwordsettings.AccountSettings;
 
-import static gymreg.RegDashboard.email;
-import static gymreg.RegDashboard.usname;
+import static RestaurantMenu.RegDashboard.email;
+import static RestaurantMenu.RegDashboard.usname;
 import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,12 +20,12 @@ import javax.swing.JOptionPane;
  *
  * @author John William
  */
-public class createUserForm extends javax.swing.JFrame {
+public class editUserinfo extends javax.swing.JFrame {
 
     /**
      * Creates new form createUserForm
      */
-    public createUserForm() {
+    public editUserinfo() {
         initComponents();
     }
 
@@ -428,7 +428,7 @@ public class createUserForm extends javax.swing.JFrame {
     if (dbc.executeUpdate(query) > 0) {
         JOptionPane.showMessageDialog(null, "Users information updated successfully!");
         
-        AdminForm adf = new AdminForm();
+        UsersTab adf = new UsersTab();
         adf.setVisible(true);
         this.dispose(); 
     } else {
@@ -464,7 +464,7 @@ public class createUserForm extends javax.swing.JFrame {
           
         
           JOptionPane.showMessageDialog(null, "Inserted Successfully!");
-          AdminForm af = new AdminForm();
+          UsersTab af = new UsersTab();
           af.setVisible(true);
           this.dispose();
           
@@ -480,7 +480,7 @@ public class createUserForm extends javax.swing.JFrame {
     }//GEN-LAST:event_addMouseClicked
 
     private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
-       AdminForm adf = new  AdminForm();
+       UsersTab adf = new  UsersTab();
        adf.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_cancelMouseClicked
@@ -492,7 +492,7 @@ public class createUserForm extends javax.swing.JFrame {
     }//GEN-LAST:event_setMouseClicked
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
-        AdminForm af = new AdminForm();
+        UsersTab af = new UsersTab();
         af.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_backMouseClicked
@@ -520,20 +520,21 @@ public class createUserForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(createUserForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(editUserinfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(createUserForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(editUserinfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(createUserForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(editUserinfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(createUserForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(editUserinfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new createUserForm().setVisible(true);
+                new editUserinfo().setVisible(true);
             }
         });
     }

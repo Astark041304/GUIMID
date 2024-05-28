@@ -9,7 +9,7 @@ package Cashier;
 
 import Config.Session;
 import Passwordsettings.AccountSettings;
-import gymreg.LoginDashboard;
+import RestaurantMenu.LoginDashboard;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
