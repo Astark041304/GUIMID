@@ -31,8 +31,8 @@ public class Reports extends javax.swing.JFrame {
      public void displayData(){
            try{
             dbConnector dbc = new dbConnector();
-            ResultSet rs = dbc.getData("SELECT order_id, order_name, order_type, order_quantity, order_price FROM tbl_order");
-            TableReceipt.setModel(DbUtils.resultSetToTableModel(rs));
+            ResultSet rs = dbc.getData("SELECT order_id, product_id, order_name, order_type, order_quantity, order_price, order_payamount, order_date FROM tbl_order");
+            ReportsTable.setModel(DbUtils.resultSetToTableModel(rs));
              rs.close();
         }catch(SQLException ex){
             System.out.println("Errors: "+ex.getMessage());
@@ -56,9 +56,8 @@ public class Reports extends javax.swing.JFrame {
         Adname1 = new javax.swing.JLabel();
         set = new javax.swing.JLabel();
         home = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txtReceipt = new javax.swing.JTextArea();
+        ReportsTable = new javax.swing.JTable();
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -118,30 +117,19 @@ public class Reports extends javax.swing.JFrame {
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 50));
 
-        jPanel4.setBackground(new java.awt.Color(184, 167, 95));
+        ReportsTable.setAutoCreateRowSorter(true);
+        ReportsTable.setBackground(new java.awt.Color(51, 51, 51));
+        ReportsTable.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(204, 255, 255), new java.awt.Color(204, 204, 255)));
+        ReportsTable.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        ReportsTable.setForeground(new java.awt.Color(255, 255, 255));
+        ReportsTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ReportsTableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(ReportsTable);
 
-        txtReceipt.setColumns(20);
-        txtReceipt.setRows(5);
-        jScrollPane1.setViewportView(txtReceipt);
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
-        );
-
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 310, 430));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 620, 490));
 
         jLabel9.setBackground(new java.awt.Color(255, 204, 204));
         jLabel9.setForeground(new java.awt.Color(255, 204, 204));
@@ -181,6 +169,10 @@ public class Reports extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_backMouseClicked
 
+    private void ReportsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ReportsTableMouseClicked
+
+    }//GEN-LAST:event_ReportsTableMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -219,14 +211,13 @@ public class Reports extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel Adname1;
+    private javax.swing.JTable ReportsTable;
     private javax.swing.JLabel back;
     private javax.swing.JLabel home;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel set;
-    private javax.swing.JTextArea txtReceipt;
     // End of variables declaration//GEN-END:variables
 }

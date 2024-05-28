@@ -7,10 +7,14 @@ package Admin;
 
 
 import Config.Session;
+import Config.dbConnector;
 import Passwordsettings.AccountSettings;
 import RestaurantMenu.LoginDashboard;
 import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -67,7 +71,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        product = new javax.swing.JPanel();
+        report = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -304,35 +308,35 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         jPanel6.add(addp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 180, 60));
 
-        product.setBackground(new java.awt.Color(184, 167, 95));
-        product.addMouseListener(new java.awt.event.MouseAdapter() {
+        report.setBackground(new java.awt.Color(184, 167, 95));
+        report.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                productMouseClicked(evt);
+                reportMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                productMouseEntered(evt);
+                reportMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                productMouseExited(evt);
+                reportMouseExited(evt);
             }
         });
-        product.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        product.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 87, -1, -1));
+        report.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        report.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 87, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         jLabel13.setText("Users");
-        product.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, -1, -1));
+        report.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("Reports");
-        product.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 180, -1));
+        report.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 180, -1));
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-reports-35.png"))); // NOI18N
-        product.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 180, 30));
+        report.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 180, 30));
 
-        jPanel6.add(product, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 180, 60));
+        jPanel6.add(report, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 180, 60));
 
         logout.setBackground(new java.awt.Color(184, 167, 95));
         logout.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -451,11 +455,46 @@ public class AdminDashboard extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_addpMouseClicked
 
-    private void productMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productMouseClicked
-      Reports ot = new Reports();
-        ot.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_productMouseClicked
+    private void reportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportMouseClicked
+ int rowIndex = ReportsTable.getSelectedRow();
+
+        if(rowIndex < 0){
+            JOptionPane.showMessageDialog(null, "Please select a Product!");
+        }else{
+
+            try{
+                dbConnector dbc = new dbConnector();
+
+                TableModel tbl = ReportsTable.getModel();
+
+                ResultSet rs = dbc.getData("SELECT * FROM tbl_product Where product_id = '"+tbl.getValueAt(rowIndex, 0)+"'");
+                if(rs.next()){
+                    Productedit pe = new  Productedit();
+                    pe.setVisible(true);
+                    this.dispose();
+
+                    pe.pid.setText(""+rs.getString("product_id"));
+                    pe.pn.setText(""+rs.getString("product_name"));
+                    pe.pt.setSelectedItem(""+rs.getString("product_type"));
+                    pe.ps.setSelectedItem(""+rs.getString("product_status"));
+                    pe.pq.setText(""+rs.getString("product_quantity"));
+                    pe.pp.setText(""+rs.getString("product_price"));
+                    pe.add.setEnabled(false);
+                    pe.update.setEnabled(true);
+                    pe.setVisible(true);
+                    this.dispose();
+
+                }
+
+            }catch(SQLException ex){
+                System.out.println(""+ex);
+            }
+        }       
+        
+        
+        
+       
+    }//GEN-LAST:event_reportMouseClicked
 
     private void settingsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsMouseEntered
         settings.setBackground(hovercolor);
@@ -487,13 +526,13 @@ public class AdminDashboard extends javax.swing.JFrame {
        addp.setBackground(navcolor);
     }//GEN-LAST:event_addpMouseExited
 
-    private void productMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productMouseEntered
-        product.setBackground(hovercolor);
-    }//GEN-LAST:event_productMouseEntered
+    private void reportMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportMouseEntered
+        report.setBackground(hovercolor);
+    }//GEN-LAST:event_reportMouseEntered
 
-    private void productMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productMouseExited
-       product.setBackground(navcolor);
-    }//GEN-LAST:event_productMouseExited
+    private void reportMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportMouseExited
+       report.setBackground(navcolor);
+    }//GEN-LAST:event_reportMouseExited
 
     private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
         JOptionPane.showMessageDialog(null,"Logout Success!");
@@ -602,8 +641,8 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JPanel logout;
-    private javax.swing.JPanel product;
     private javax.swing.JPanel product1;
+    private javax.swing.JPanel report;
     private javax.swing.JLabel set;
     private javax.swing.JPanel settings;
     public javax.swing.JLabel uid;
