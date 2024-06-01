@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2024 at 12:56 PM
+-- Generation Time: Jun 01, 2024 at 10:46 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -29,11 +29,13 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tbl_order` (
   `order_id` int(50) NOT NULL,
+  `user_id` int(50) NOT NULL,
+  `product_id` int(50) NOT NULL,
   `order_name` varchar(50) NOT NULL,
   `order_type` varchar(50) NOT NULL,
   `order_quantity` int(50) NOT NULL,
   `order_price` int(50) NOT NULL,
-  `order_payamount` varchar(50) NOT NULL,
+  `order_payamount` int(50) NOT NULL,
   `order_date` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -41,8 +43,8 @@ CREATE TABLE `tbl_order` (
 -- Dumping data for table `tbl_order`
 --
 
-INSERT INTO `tbl_order` (`order_id`, `order_name`, `order_type`, `order_quantity`, `order_price`, `order_payamount`, `order_date`) VALUES
-(11, 'Somai', 'Meal', 4, 25, '100', '05/25/2024');
+INSERT INTO `tbl_order` (`order_id`, `user_id`, `product_id`, `order_name`, `order_type`, `order_quantity`, `order_price`, `order_payamount`, `order_date`) VALUES
+(1, 1, 201, 'Burger Steak', 'Meal', 10, 10, 500, '06/01/2024');
 
 -- --------------------------------------------------------
 
@@ -66,7 +68,7 @@ CREATE TABLE `tbl_product` (
 INSERT INTO `tbl_product` (`product_id`, `product_name`, `product_type`, `product_status`, `product_quantity`, `product_price`) VALUES
 (201, 'Burger Steak', 'Meal', 'Available', 10, 120),
 (202, 'Somai', 'Meals', 'Available', 10, 25),
-(203, 'Coca cola', 'Drinks', 'Available', 50, 25);
+(203, 'Coca cola', 'Drinks', 'Available', 40, 25);
 
 -- --------------------------------------------------------
 
@@ -103,7 +105,9 @@ INSERT INTO `tbl_user` (`user_id`, `user_fname`, `user_lname`, `user_email`, `us
 -- Indexes for table `tbl_order`
 --
 ALTER TABLE `tbl_order`
-  ADD PRIMARY KEY (`order_id`);
+  ADD PRIMARY KEY (`order_id`),
+  ADD KEY `uid` (`user_id`),
+  ADD KEY `pid` (`product_id`);
 
 --
 -- Indexes for table `tbl_product`
@@ -125,7 +129,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_order`
 --
 ALTER TABLE `tbl_order`
-  MODIFY `order_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `order_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_product`
@@ -138,6 +142,17 @@ ALTER TABLE `tbl_product`
 --
 ALTER TABLE `tbl_user`
   MODIFY `user_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `tbl_order`
+--
+ALTER TABLE `tbl_order`
+  ADD CONSTRAINT `pid` FOREIGN KEY (`product_id`) REFERENCES `tbl_product` (`product_id`),
+  ADD CONSTRAINT `uid` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`user_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
