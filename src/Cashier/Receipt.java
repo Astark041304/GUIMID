@@ -13,6 +13,8 @@ import java.awt.print.PrinterException;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -172,6 +174,12 @@ public class Receipt extends javax.swing.JFrame {
         ot.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         ot.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Meal", "Drinks", "Desserts" }));
         jPanel3.add(ot, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 200, 30));
+
+        on.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                onActionPerformed(evt);
+            }
+        });
         jPanel3.add(on, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 200, 30));
 
         jSeparator2.setBackground(new java.awt.Color(130, 202, 255));
@@ -453,31 +461,40 @@ public class Receipt extends javax.swing.JFrame {
     }//GEN-LAST:event_setMouseClicked
 
     private void recActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recActionPerformed
-                double priceAmount = Double.parseDouble(op.getText());
-                double paymentAmount = Double.parseDouble(opa.getText());
-                double quantityAmount = Double.parseDouble(oq.getText());
-              double change;
-       
+              DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+LocalDate localDate = LocalDate.now();
+System.out.println(dtf.format(localDate));
 
-             
-                 
-                 change =  quantityAmount * priceAmount - paymentAmount;
-            
+double priceAmount = Double.parseDouble(op.getText());
+double paymentAmount = Double.parseDouble(opa.getText());
+double quantityAmount = Double.parseDouble(oq.getText());
+double change;
 
-                       change = Math.abs(change);
+change = quantityAmount * priceAmount - paymentAmount;
 
-                     txtReceipt.setText("-----------------------------------------------------------------\n");
-                     txtReceipt.setText(txtReceipt.getText() + "                               Order Receipt   \n");
-                     txtReceipt.setText(txtReceipt.getText() + "-----------------------------------------------------------------\n"); 
-                     txtReceipt.setText(txtReceipt.getText() + "Order Id: " + oid.getText() + "\n\n");
-                     txtReceipt.setText(txtReceipt.getText() + "Order Name: " + on.getText() + "\n\n");
-                     txtReceipt.setText(txtReceipt.getText() + "Order Type: " + ot.getSelectedItem() + "\n\n");
-                     txtReceipt.setText(txtReceipt.getText() + "Order Quantity: " + oq.getText() + "\n\n");
-                     txtReceipt.setText(txtReceipt.getText() + "Order price: " + op.getText() + "\n\n");
-                     txtReceipt.setText(txtReceipt.getText() + "Order Payment Amount: " + opa.getText() + "\n\n");
-                     txtReceipt.setText(txtReceipt.getText() + "Change: " + change + "\n\n");
-                     txtReceipt.setText(txtReceipt.getText() + "Order Date: " + dte.getText() + "\n\n");
-                   
+dbConnector dbc = new dbConnector();
+if (dbc.insertData("INSERT INTO tbl_receipt_record (order_id, order_name, order_type, order_quantity, order_price, order_payamount, order_date) VALUES ('"
+        + oid.getText() + "','" + on.getText() + "','" + ot.getSelectedItem() + "','" + oq.getText() + "','" + op.getText() + "','" + opa.getText() + "','" + dtf.format(localDate) + "')")) {
+    JOptionPane.showMessageDialog(null, "Inserted successfully into reportstable!");
+    OrderM lgd = new OrderM();
+    lgd.setVisible(true);
+    this.dispose();
+
+
+change = Math.abs(change);
+
+txtReceipt.setText("-----------------------------------------------------------------\n");
+txtReceipt.append("                               Order Receipt   \n");
+txtReceipt.append("-----------------------------------------------------------------\n"); 
+txtReceipt.append("Order Id: " + oid.getText() + "\n\n");
+txtReceipt.append("Order Name: " + on.getText() + "\n\n");
+txtReceipt.append("Order Type: " + ot.getSelectedItem() + "\n\n");
+txtReceipt.append("Order Quantity: " + oq.getText() + "\n\n");
+txtReceipt.append("Order price: " + op.getText() + "\n\n");
+txtReceipt.append("Order Payment Amount: " + opa.getText() + "\n\n");
+txtReceipt.append("Change: " + change + "\n\n");
+txtReceipt.append("Order Date: " + dtf.format(localDate) + "\n\n");
+      }             
     }//GEN-LAST:event_recActionPerformed
 
     private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
@@ -491,6 +508,10 @@ public class Receipt extends javax.swing.JFrame {
        od.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_jLabel23MouseClicked
+
+    private void onActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_onActionPerformed
 
     /**
      * @param args the command line arguments

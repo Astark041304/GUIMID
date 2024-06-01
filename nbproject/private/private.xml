@@ -3,23 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/John%20William/OneDrive/Documents/GUIMID/src/Admin/AdminForm.java</file>
             <file>file:/C:/Users/John%20William/OneDrive/Documents/GUIMID/src/Cashier/Order_edit.java</file>
             <file>file:/C:/Users/John%20William/OneDrive/Documents/GUIMID/src/Config/Passwordhasher.java</file>
-            <file>file:/C:/Users/John%20William/OneDrive/Documents/GUIMID/src/Cashier/OrderTab.java</file>
-            <file>file:/C:/Users/John%20William/OneDrive/Documents/GUIMID/src/Customer/CustomerDashboard.java</file>
+            <file>file:/C:/Users/John%20William/OneDrive/Documents/GUIMID/src/RestaurantMenu/RegDashboard.java</file>
             <file>file:/C:/Users/John%20William/OneDrive/Documents/GUIMID/src/Admin/Productedit.java</file>
             <file>file:/C:/Users/John%20William/OneDrive/Documents/GUIMID/src/Admin/Productreg.java</file>
-            <file>file:/C:/Users/John%20William/OneDrive/Documents/GUIMID/src/Cashier/Resibo.java</file>
             <file>file:/C:/Users/John%20William/OneDrive/Documents/GUIMID/src/Config/Session.java</file>
+            <file>file:/C:/Users/John%20William/OneDrive/Documents/GUIMID/src/RestaurantMenu/GymReg.java</file>
             <file>file:/C:/Users/John%20William/OneDrive/Documents/GUIMID/src/Admin/AdminDashboard.java</file>
-            <file>file:/C:/Users/John%20William/OneDrive/Documents/GUIMID/src/gymreg/LoginDashboard.java</file>
-            <file>file:/C:/Users/John%20William/OneDrive/Documents/GUIMID/src/gymreg/RegDashboard.java</file>
             <file>file:/C:/Users/John%20William/OneDrive/Documents/GUIMID/src/Admin/Adminpin.java</file>
-            <file>file:/C:/Users/John%20William/OneDrive/Documents/GUIMID/src/Admin/ProductTab.java</file>
             <file>file:/C:/Users/John%20William/OneDrive/Documents/GUIMID/src/Passwordsettings/AccountSettings.java</file>
             <file>file:/C:/Users/John%20William/OneDrive/Documents/GUIMID/src/Config/dbConnector.java</file>
-            <file>file:/C:/Users/John%20William/OneDrive/Documents/GUIMID/src/Admin/createUserForm.java</file>
+            <file>file:/C:/Users/John%20William/OneDrive/Documents/GUIMID/src/RestaurantMenu/LoginDashboard.java</file>
             <file>file:/C:/Users/John%20William/OneDrive/Documents/GUIMID/src/Passwordsettings/ChangePass.java</file>
         </group>
     </open-files>
