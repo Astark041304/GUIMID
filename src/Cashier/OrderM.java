@@ -46,26 +46,18 @@ public class OrderM extends javax.swing.JFrame {
     
 
      
-     
     public void displayData(){
-    try {
-        dbConnector dbc = new dbConnector();
-        ResultSet rs = dbc.getData(
-            "SELECT tbl_order.order_id, tbl_user.user_id, tbl_product.product_id, " +
-            "tbl_order.order_name, tbl_order.order_type, tbl_order.order_quantity, " +
-            "tbl_order.order_price, tbl_order.order_payamount, tbl_order.order_date " +
-            "FROM tbl_order " +
-            "INNER JOIN tbl_user ON tbl_order.user_id = tbl_user.user_id " +
-            "INNER JOIN tbl_product ON tbl_order.product_id = tbl_product.product_id"
-        );
-        CustomerTable.setModel(DbUtils.resultSetToTableModel(rs));
-        rs.close();
-    } catch(SQLException ex) {
-        System.out.println("Errors: " + ex.getMessage());
+           try{
+            dbConnector dbc = new dbConnector();
+            ResultSet rs = dbc.getData("SELECT order_id, order_name, order_type, order_quantity, order_price, order_payamount, order_date FROM tbl_order");
+            CustomerTable.setModel(DbUtils.resultSetToTableModel(rs));
+             rs.close();
+        }catch(SQLException ex){
+            System.out.println("Errors: "+ex.getMessage());
+        
+        }    
+    
     }
-}
-
-     
      
      
     
