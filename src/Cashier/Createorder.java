@@ -170,49 +170,48 @@ public class Createorder extends javax.swing.JFrame {
         dte = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        back = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         set = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        back = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(184, 167, 95));
+        jPanel1.setBackground(new java.awt.Color(39, 105, 139));
         jPanel1.setToolTipText("");
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel3.setBackground(new java.awt.Color(151, 96, 9));
-        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(204, 255, 255), new java.awt.Color(204, 204, 255)));
+        jPanel3.setBackground(new java.awt.Color(122, 141, 218));
+        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(248, 246, 246), null));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
         jLabel1.setText("Order name:");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
         jLabel2.setText("Order  type:");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 80, -1));
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 70, -1));
 
         oid.setEnabled(false);
         jPanel3.add(oid, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 200, 30));
 
-        ot.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        ot.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
         ot.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Meal", "Drinks", "Desserts" }));
         jPanel3.add(ot, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 200, 30));
         jPanel3.add(on, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 200, 30));
         jPanel3.add(oq, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 200, 30));
 
-        jLabel6.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
         jLabel6.setText("Order quantity:");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
         jLabel9.setText("Payment Amount:");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, -1));
 
-        order.setBackground(new java.awt.Color(184, 167, 95));
-        order.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        order.setBackground(new java.awt.Color(196, 160, 220));
+        order.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
         order.setText("Order");
         order.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -227,30 +226,23 @@ public class Createorder extends javax.swing.JFrame {
         jPanel3.add(order, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 200, -1));
         jPanel3.add(opa, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 200, 30));
 
-        jLabel11.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
         jLabel11.setText("Order Price:");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
         jPanel3.add(op, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 200, 30));
 
-        jLabel12.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
         jLabel12.setText("Order Date:");
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, -1, -1));
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
         jPanel3.add(dte, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 200, 30));
 
-        jLabel13.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
         jLabel13.setText("Order Id:");
-        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, -1, 10));
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, 10));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 410, 360));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 410, 360));
 
-        jPanel4.setBackground(new java.awt.Color(184, 167, 95));
-
-        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-back-35.png"))); // NOI18N
-        back.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                backMouseClicked(evt);
-            }
-        });
+        jPanel4.setBackground(new java.awt.Color(122, 141, 218));
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic Medium", 1, 24)); // NOI18N
         jLabel4.setText("Order Info");
@@ -274,13 +266,11 @@ public class Createorder extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(65, 65, 65)
+                .addGap(34, 34, 34)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 470, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 496, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
-                .addComponent(back)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(set)
                 .addContainerGap())
         );
@@ -289,17 +279,19 @@ public class Createorder extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(set, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 50));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 50));
 
-        jLabel10.setBackground(new java.awt.Color(255, 204, 204));
-        jLabel10.setForeground(new java.awt.Color(255, 204, 204));
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Borcelle (4).png"))); // NOI18N
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, 550));
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-back-35.png"))); // NOI18N
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backMouseClicked(evt);
+            }
+        });
+        jPanel1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 50, -1, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -309,7 +301,7 @@ public class Createorder extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE)
         );
 
         pack();
@@ -438,7 +430,6 @@ if (on.getText().isEmpty() || oq.getText().isEmpty() || op.getText().isEmpty() |
     private javax.swing.JLabel back;
     public javax.swing.JTextField dte;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;

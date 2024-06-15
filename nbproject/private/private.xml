@@ -3,15 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/SCC11/Documents/GUIMID/src/Cashier/Createorder.java</file>
-            <file>file:/C:/Users/SCC11/Documents/GUIMID/src/Admin/ProductM.java</file>
-            <file>file:/C:/Users/SCC11/Documents/GUIMID/src/Admin/Reports.java</file>
-            <file>file:/C:/Users/SCC11/Documents/GUIMID/src/Cashier/Order_edit.java</file>
-            <file>file:/C:/Users/SCC11/Documents/GUIMID/src/Passwordsettings/ChangePass.java</file>
-            <file>file:/C:/Users/SCC11/Documents/GUIMID/src/Config/dbConnector.java</file>
-            <file>file:/C:/Users/SCC11/Documents/GUIMID/src/Cashier/Receipt.java</file>
-            <file>file:/C:/Users/SCC11/Documents/GUIMID/src/Cashier/OrderM.java</file>
-            <file>file:/C:/Users/SCC11/Documents/GUIMID/src/Admin/AdminDashboard.java</file>
+            <file>file:/C:/Users/Admin/Documents/GUIMID/src/Admin/Productreg.java</file>
+            <file>file:/C:/Users/Admin/Documents/GUIMID/src/Admin/editUserinfo.java</file>
+            <file>file:/C:/Users/Admin/Documents/GUIMID/src/Cashier/Createorder.java</file>
+            <file>file:/C:/Users/Admin/Documents/GUIMID/src/RestaurantMenu/LoginDashboard.java</file>
+            <file>file:/C:/Users/Admin/Documents/GUIMID/src/Admin/ProductM.java</file>
+            <file>file:/C:/Users/Admin/Documents/GUIMID/src/Admin/Adminpin.java</file>
+            <file>file:/C:/Users/Admin/Documents/GUIMID/src/Cashier/OrderM.java</file>
+            <file>file:/C:/Users/Admin/Documents/GUIMID/src/Admin/Productedit.java</file>
+            <file>file:/C:/Users/Admin/Documents/GUIMID/src/RestaurantMenu/GymReg.java</file>
+            <file>file:/C:/Users/Admin/Documents/GUIMID/src/Admin/Reports.java</file>
+            <file>file:/C:/Users/Admin/Documents/GUIMID/src/Cashier/CashierM.java</file>
+            <file>file:/C:/Users/Admin/Documents/GUIMID/src/Admin/AdminDashboard.java</file>
+            <file>file:/C:/Users/Admin/Documents/GUIMID/src/Admin/UsersTab.java</file>
         </group>
     </open-files>
 </project-private>
