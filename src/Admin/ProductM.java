@@ -12,6 +12,7 @@ import Cashier.Createorder;
 import Config.Session;
 import Config.dbConnector;
 import Passwordsettings.AccountSettings;
+import RestaurantMenu.LoginDashboard;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -471,12 +472,18 @@ public class ProductM extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
       Session sess = Session.getInstance();
-      
+            if(sess.getUid() == 0){
+           JOptionPane.showMessageDialog(null,"No Account Login First!");
+           LoginDashboard ld = new LoginDashboard();
+           ld.setVisible(true);
+           this.dispose();
+           
+            }else{
            Adname.setText(""+sess.getFname());
            Lname.setText(""+sess.getLname());
            uid.setText(""+sess.getUid());
            Em.setText(""+sess.getEmail());
-           
+            }
            
            
                                         

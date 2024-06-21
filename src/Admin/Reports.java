@@ -8,8 +8,11 @@ package Admin;
 import Cashier.*;
 import Config.dbConnector;
 import Passwordsettings.AccountSettings;
+import java.awt.print.PrinterException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -250,7 +253,11 @@ displayData();
     }//GEN-LAST:event_addMouseClicked
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-
+try{
+               ReportsTable.print();
+           } catch (PrinterException e) {
+            Logger.getLogger(Receipt.class.getName()).log(Level.SEVERE, null, e);
+        }
 
     }//GEN-LAST:event_addActionPerformed
 

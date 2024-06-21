@@ -489,7 +489,9 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_reportMouseEntered
 
     private void reportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportMouseClicked
-
+        Reports rp = new Reports();
+        rp.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_reportMouseClicked
 
     private void product1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_product1MouseExited

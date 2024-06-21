@@ -375,7 +375,9 @@ public class Order_edit extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelActionPerformed
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
-     
+
+       
+        
         if (oid.getText().isEmpty() || on.getText().isEmpty() || oq.getText().isEmpty() ) {
     JOptionPane.showMessageDialog(null, "All fields are required!");   
 } else {
@@ -390,7 +392,7 @@ public class Order_edit extends javax.swing.JFrame {
                    "' WHERE order_id = '" + oid.getText() + "'"; 
     
     if (dbc.executeUpdate(query) > 0) {
-        JOptionPane.showMessageDialog(null, "Order Edit Successfully!");
+        JOptionPane.showMessageDialog(null, "Order update Successfully!");
        
         OrderM adf = new OrderM();
         adf.setVisible(true);

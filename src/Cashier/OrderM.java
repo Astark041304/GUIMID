@@ -6,16 +6,16 @@
 package Cashier;
 
 
-import Admin.Adminpin;
 import Config.Session;
 
-
 import Config.dbConnector;
-import Passwordsettings.AccountSettings;    
+import Passwordsettings.AccountSettings;
+import RestaurantMenu.LoginDashboard;
 
 import java.awt.Color;
+import java.sql.PreparedStatement;
 
-import java.sql.ResultSet; 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
@@ -26,11 +26,6 @@ import net.proteanit.sql.DbUtils;
  * @author User
  */
 public class OrderM extends javax.swing.JFrame {
-    
-    
-    
-  
-    
 
     /**
      * Creates new form OrderTab
@@ -39,31 +34,24 @@ public class OrderM extends javax.swing.JFrame {
         initComponents();
         displayData();
     }
-    
-    Color navcolor = new Color(122,141,218);
-    Color hovercolor = new Color(240,240,240);
-    Color solocolor = new Color(122,141,218);
-    
 
-     
-    public void displayData(){
-           try{
+    Color navcolor = new Color(122, 141, 218);
+    Color hovercolor = new Color(240, 240, 240);
+    Color solocolor = new Color(122, 141, 218);
+
+    public void displayData() {
+        try {
             dbConnector dbc = new dbConnector();
             ResultSet rs = dbc.getData("SELECT order_id, order_name, order_type, order_quantity, order_price, order_payamount, order_date FROM tbl_order");
             CustomerTable.setModel(DbUtils.resultSetToTableModel(rs));
-             rs.close();
-        }catch(SQLException ex){
-            System.out.println("Errors: "+ex.getMessage());
-        
-        }    
-    
+            rs.close();
+        } catch (SQLException ex) {
+            System.out.println("Errors: " + ex.getMessage());
+
+        }
+
     }
-     
-     
-    
-     
-     
-     
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -508,45 +496,50 @@ public class OrderM extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CustomerTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CustomerTableMouseClicked
-               
+
     }//GEN-LAST:event_CustomerTableMouseClicked
 
     private void editMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseClicked
-      int rowIndex = CustomerTable.getSelectedRow();
+     
 
-        if(rowIndex < 0){
-            JOptionPane.showMessageDialog(null, "Please select a Order!");
-        }else{
+        int rowIndex = CustomerTable.getSelectedRow();
 
-            try{
+        if (rowIndex < 0) {
+
+            JOptionPane.showMessageDialog(null, "Please select a Order!", "Error", JOptionPane.ERROR_MESSAGE);
+
+        } else {
+            
+
+            try {
                 dbConnector dbc = new dbConnector();
 
                 TableModel tbl = CustomerTable.getModel();
 
-                ResultSet rs = dbc.getData("SELECT * FROM tbl_order Where order_id = '"+tbl.getValueAt(rowIndex, 0)+"'");
-                if(rs.next()){
+                ResultSet rs = dbc.getData("SELECT * FROM tbl_order Where order_id = '" + tbl.getValueAt(rowIndex, 0) + "'");
+
+                if (rs.next()) {
                     Order_edit od = new Order_edit();
                     od.setVisible(true);
                     this.dispose();
 
-                   od.oid.setText(""+rs.getString("order_id"));
-                   od.on.setText(""+rs.getString("order_name"));
-                   od.ot.setSelectedItem(""+rs.getString("order_type"));                
-                   od.oq.setText(""+rs.getString("order_quantity"));
-                   od.op.setText(""+rs.getString("order_price"));
-                   od.op.setText(""+rs.getString("order_payamount"));
-                   od.dte.setText(""+rs.getString("order_date"));       
-                   od.add.setEnabled(false);
-                   od.update.setEnabled(true);
-                   od.setVisible(true);
-                    this.dispose();
+                    od.oid.setText("" + rs.getString("order_id"));
+                    od.on.setText("" + rs.getString("order_name"));
+                    od.ot.setSelectedItem("" + rs.getString("order_type"));
+                    od.oq.setText("" + rs.getString("order_quantity"));
+                    od.op.setText("" + rs.getString("order_price"));
+                    od.opa.setText("" + rs.getString("order_payamount"));
+                    od.dte.setText("" + rs.getString("order_date"));
+                    od.add.setEnabled(false);
+                    od.update.setEnabled(true);
+                } else {
 
                 }
 
-            }catch(SQLException ex){
-                System.out.println(""+ex);
+            } catch (SQLException ex) {
+                System.out.println("" + ex);
             }
-        }       
+        }
     }//GEN-LAST:event_editMouseClicked
 
     private void editMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseEntered
@@ -558,10 +551,10 @@ public class OrderM extends javax.swing.JFrame {
     }//GEN-LAST:event_editMouseExited
 
     private void p_addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_addMouseClicked
-       
-                    Createorder cuf = new Createorder();
-                    cuf.setVisible(true);
-                    this.dispose();
+
+        Createorder cuf = new Createorder();
+        cuf.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_p_addMouseClicked
 
     private void p_addMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_addMouseEntered
@@ -574,12 +567,10 @@ public class OrderM extends javax.swing.JFrame {
 
     private void deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseClicked
 
-            JOptionPane.showMessageDialog(null, "Wait For Admin Pin to Delete!");
-            Adminpin pin = new Adminpin();
-            pin.setVisible(true);
-            this.dispose();
-       
-        
+     
+
+
+
     }//GEN-LAST:event_deleteMouseClicked
 
     private void deleteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseEntered
@@ -591,8 +582,8 @@ public class OrderM extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteMouseExited
 
     private void settingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsMouseClicked
-        AccountSettings as = new  AccountSettings();
-        as.setVisible(true);
+        AccountSettings as = new AccountSettings();
+        as.setVisible(true); 
         this.dispose();
     }//GEN-LAST:event_settingsMouseClicked
 
@@ -605,64 +596,58 @@ public class OrderM extends javax.swing.JFrame {
     }//GEN-LAST:event_settingsMouseExited
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        Session sess = Session.getInstance();
-      
-           Adname.setText(""+sess.getFname());
-           Lname.setText(""+sess.getLname());
-           uid.setText(""+sess.getUid());
-           Em.setText(""+sess.getEmail());
+     
            
     }//GEN-LAST:event_formWindowActivated
 
     private void p_add2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add2MouseClicked
-                   int rowIndex = CustomerTable.getSelectedRow();
+        int rowIndex = CustomerTable.getSelectedRow();
 
-           if(rowIndex < 0){
-          JOptionPane.showMessageDialog(null, "Please select Order to Checkout!");
-          
-        }else{
-               try{
-                  dbConnector dbc = new dbConnector();
-                      TableModel tbl = CustomerTable.getModel();
-                 ResultSet rs = dbc.getData("SELECT * FROM tbl_order Where order_id = '"+tbl.getValueAt(rowIndex, 0)+"'");
-                if(rs.next()){
-               
-               Receipt res = new Receipt();
-                   res.oid.setText(""+rs.getString("order_id"));
-                   res.on.setText(""+rs.getString("order_name"));
-                   res.ot.setSelectedItem(""+rs.getString("order_type"));                
-                   res.oq.setText(""+rs.getString("order_quantity"));
-                   res.op.setText(""+rs.getString("order_price"));
-                   res.opa.setText(""+rs.getString("order_payamount"));
-                   res.dte.setText(""+rs.getString("order_date"));       
-                  
-                   
-                   res.setVisible(true);
+        if (rowIndex < 0) {
+            JOptionPane.showMessageDialog(null, "Please select Order to Checkout!");
+
+        } else {
+            try {
+                dbConnector dbc = new dbConnector();
+                TableModel tbl = CustomerTable.getModel();
+                ResultSet rs = dbc.getData("SELECT * FROM tbl_order Where order_id = '" + tbl.getValueAt(rowIndex, 0) + "'");
+                if (rs.next()) {
+
+                    Receipt res = new Receipt();
+                    res.oid.setText("" + rs.getString("order_id"));
+                    res.on.setText("" + rs.getString("order_name"));
+                    res.ot.setSelectedItem("" + rs.getString("order_type"));
+                    res.oq.setText("" + rs.getString("order_quantity"));
+                    res.op.setText("" + rs.getString("order_price"));
+                    res.opa.setText("" + rs.getString("order_payamount"));
+                    res.dte.setText("" + rs.getString("order_date"));
+
+                    res.setVisible(true);
                     this.dispose();
-             res.setVisible(true);
-               this.dispose();
-               System.out.println("");
-               
+                    res.setVisible(true);
+                    this.dispose();
+                    System.out.println("");
+
                 }
-                
-                }catch(SQLException ex){
-                System.out.println(""+ex);
+
+            } catch (SQLException ex) {
+                System.out.println("" + ex);
             }
-               
-}    
-           
+
+        }
+
     }//GEN-LAST:event_p_add2MouseClicked
-           
+
     private void p_add2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add2MouseEntered
-       p_add2.setBackground(hovercolor);
+        p_add2.setBackground(hovercolor);
     }//GEN-LAST:event_p_add2MouseEntered
 
     private void p_add2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add2MouseExited
-       p_add2.setBackground(navcolor);
+        p_add2.setBackground(navcolor);
     }//GEN-LAST:event_p_add2MouseExited
 
     private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
-        JOptionPane.showMessageDialog(null,"Logout Success!");
+        JOptionPane.showMessageDialog(null, "Logout Success!");
         setVisible(false);
         this.dispose();
     }//GEN-LAST:event_logoutMouseClicked
@@ -676,7 +661,7 @@ public class OrderM extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutMouseExited
 
     private void setMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setMouseClicked
-        AccountSettings as = new  AccountSettings();
+        AccountSettings as = new AccountSettings();
         as.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_setMouseClicked
@@ -769,7 +754,4 @@ public class OrderM extends javax.swing.JFrame {
     public javax.swing.JLabel uid;
     // End of variables declaration//GEN-END:variables
 
-    
-
-    
 }

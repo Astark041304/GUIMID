@@ -68,7 +68,7 @@ public class editUserinfo extends javax.swing.JFrame {
         
     }
 
-    
+   
      public boolean updateCheck(){
         
         dbConnector dbc = new dbConnector();
@@ -202,6 +202,11 @@ public class editUserinfo extends javax.swing.JFrame {
 
         us.setFont(new java.awt.Font("Yu Gothic Medium", 0, 11)); // NOI18N
         us.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Pending" }));
+        us.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usActionPerformed(evt);
+            }
+        });
         jPanel3.add(us, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 187, -1));
         jPanel3.add(fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 200, 30));
 
@@ -494,6 +499,10 @@ public class editUserinfo extends javax.swing.JFrame {
         as.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_homeMouseClicked
+
+    private void usActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usActionPerformed
 
     /**
      * @param args the command line arguments

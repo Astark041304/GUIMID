@@ -6,6 +6,7 @@
 package Cashier;
 
 import Admin.*;
+import Config.PanelPrinter;
 import Config.dbConnector;
 import Passwordsettings.AccountSettings;
 import RestaurantMenu.LoginDashboard;
@@ -18,6 +19,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 
 /**
@@ -31,6 +34,10 @@ public class Receipt extends javax.swing.JFrame {
      */
     public Receipt() {
         initComponents();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+      LocalDate localDate = LocalDate.now();
+        System.out.println(dtf.format(localDate));
+        dte.setText(""+dtf.format(localDate));
     }
     
     
@@ -377,14 +384,13 @@ public class Receipt extends javax.swing.JFrame {
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
              
-        
-        try {
-            txtReceipt.print();
-        } catch (PrinterException ex) {
-            Logger.getLogger(Receipt.class.getName()).log(Level.SEVERE, null, ex);
+           try{
+               txtReceipt.print();
+           } catch (PrinterException e) {
+            Logger.getLogger(Receipt.class.getName()).log(Level.SEVERE, null, e);
         }
-   
-
+       
+           
     }//GEN-LAST:event_addActionPerformed
 
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
@@ -394,7 +400,7 @@ public class Receipt extends javax.swing.JFrame {
     
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
         
-        txtReceipt.setText("");
+       txtReceipt.setText("");
         oid.setText("");
         on.setText("");
         ot.setSelectedItem("");
@@ -465,29 +471,34 @@ double change;
 
 change = quantityAmount * priceAmount - paymentAmount;
 
+ 
+   
 dbConnector dbc = new dbConnector();
-if (dbc.insertData("INSERT INTO tbl_transaction (order_id, order_name, order_type, order_quantity, order_price, order_payamount, order_date) VALUES ('"
-        + oid.getText() + "','" + on.getText() + "','" + ot.getSelectedItem() + "','" + oq.getText() + "','" + op.getText() + "','" + opa.getText() + "','" + dtf.format(localDate) + "')")) {
-    JOptionPane.showMessageDialog(null, "Inserted successfully into reportstable!");
-    OrderM lgd = new OrderM();
-    lgd.setVisible(true);
-    this.dispose();
+String receipt = "-----------------------------------------------------------------\n";
+    receipt += "                               Order Receipt   \n";
+    receipt += "-----------------------------------------------------------------\n"; 
+    receipt += "Order Id: " + oid.getText() + "\n\n";
+    receipt += "Order Name: " + on.getText() + "\n\n";
+    receipt += "Order Type: " + ot.getSelectedItem() + "\n\n";
+    receipt += "Order Quantity: " + oq.getText() + "\n\n";
+    receipt += "Order price: " + op.getText() + "\n\n";
+    receipt += "Order Payment Amount: " + opa.getText() + "\n\n";
+    receipt += "Change: " + change + "\n\n";
+    receipt += "Order Date: " + dte.getText() + "\n\n";
+    
+    txtReceipt.setText(receipt);
+ 
+  
+
+    if (dbc.insertData("INSERT INTO tbl_transaction (order_id, order_name, order_type, order_quantity, order_price, order_payamount, order_date) VALUES ('"
+            + oid.getText() + "','" + on.getText() + "','" + ot.getSelectedItem() + "','" + oq.getText() + "','" + op.getText() + "','" + opa.getText() + "','" + dte.getText() + "')")) {
+        JOptionPane.showMessageDialog(null, "Inserted Successfully!");
+        change = Math.abs(change);
+    } else {
+        JOptionPane.showMessageDialog(null, "Error inserting into tbl_transaction!");
+    }
 
 
-change = Math.abs(change);
-
-txtReceipt.setText("-----------------------------------------------------------------\n");
-txtReceipt.append("                               Order Receipt   \n");
-txtReceipt.append("-----------------------------------------------------------------\n"); 
-txtReceipt.append("Order Id: " + oid.getText() + "\n\n");
-txtReceipt.append("Order Name: " + on.getText() + "\n\n");
-txtReceipt.append("Order Type: " + ot.getSelectedItem() + "\n\n");
-txtReceipt.append("Order Quantity: " + oq.getText() + "\n\n");
-txtReceipt.append("Order price: " + op.getText() + "\n\n");
-txtReceipt.append("Order Payment Amount: " + opa.getText() + "\n\n");
-txtReceipt.append("Change: " + change + "\n\n");
-txtReceipt.append("Order Date: " + dtf.format(localDate) + "\n\n");
-      }             
     }//GEN-LAST:event_recActionPerformed
 
     private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
