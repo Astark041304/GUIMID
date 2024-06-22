@@ -6,7 +6,6 @@
 package Cashier;
 
 import Admin.*;
-import Config.PanelPrinter;
 import Config.dbConnector;
 import Passwordsettings.AccountSettings;
 import RestaurantMenu.LoginDashboard;
@@ -19,8 +18,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
+
 
 
 /**
@@ -39,12 +37,6 @@ public class Receipt extends javax.swing.JFrame {
         System.out.println(dtf.format(localDate));
         dte.setText(""+dtf.format(localDate));
     }
-    
-    
-    
-    
-    
-    
     
     
 
@@ -134,7 +126,7 @@ public class Receipt extends javax.swing.JFrame {
         oq = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        add = new javax.swing.JButton();
+        print = new javax.swing.JButton();
         delete = new javax.swing.JButton();
         cancel = new javax.swing.JButton();
         rec = new javax.swing.JButton();
@@ -198,17 +190,17 @@ public class Receipt extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(215, 220, 224));
 
-        add.setBackground(new java.awt.Color(196, 160, 220));
-        add.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        add.setText("Print");
-        add.addMouseListener(new java.awt.event.MouseAdapter() {
+        print.setBackground(new java.awt.Color(196, 160, 220));
+        print.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        print.setText("Print");
+        print.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                addMouseClicked(evt);
+                printMouseClicked(evt);
             }
         });
-        add.addActionListener(new java.awt.event.ActionListener() {
+        print.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addActionPerformed(evt);
+                printActionPerformed(evt);
             }
         });
 
@@ -250,7 +242,7 @@ public class Receipt extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(print, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -264,7 +256,7 @@ public class Receipt extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(add)
+                    .addComponent(print)
                     .addComponent(delete)
                     .addComponent(cancel)
                     .addComponent(rec, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -382,8 +374,8 @@ public class Receipt extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-             
+    private void printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printActionPerformed
+   
            try{
                txtReceipt.print();
            } catch (PrinterException e) {
@@ -391,7 +383,7 @@ public class Receipt extends javax.swing.JFrame {
         }
        
            
-    }//GEN-LAST:event_addActionPerformed
+    }//GEN-LAST:event_printActionPerformed
 
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
         // TODO add your handling code here:
@@ -413,7 +405,7 @@ public class Receipt extends javax.swing.JFrame {
         
     }//GEN-LAST:event_deleteActionPerformed
 
-    private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
+    private void printMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_printMouseClicked
         if (on.getText().isEmpty() || oq.getText().isEmpty() || opa.getText().isEmpty()) {
     JOptionPane.showMessageDialog(null, "All fields are required!");
 } else if (duplicateCheck()) {
@@ -445,7 +437,7 @@ public class Receipt extends javax.swing.JFrame {
     }
 }
            
-    }//GEN-LAST:event_addMouseClicked
+    }//GEN-LAST:event_printMouseClicked
 
     private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
        UsersTab adf = new  UsersTab();
@@ -460,16 +452,16 @@ public class Receipt extends javax.swing.JFrame {
     }//GEN-LAST:event_setMouseClicked
 
     private void recActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recActionPerformed
-              DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-LocalDate localDate = LocalDate.now();
-System.out.println(dtf.format(localDate));
+     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+     LocalDate localDate = LocalDate.now();
+      System.out.println(dtf.format(localDate));
 
-double priceAmount = Double.parseDouble(op.getText());
-double paymentAmount = Double.parseDouble(opa.getText());
-double quantityAmount = Double.parseDouble(oq.getText());
-double change;
+   double priceAmount = Double.parseDouble(op.getText());
+   double paymentAmount = Double.parseDouble(opa.getText());
+   double quantityAmount = Double.parseDouble(oq.getText());
+   double change;
 
-change = quantityAmount * priceAmount - paymentAmount;
+  change = quantityAmount * priceAmount - paymentAmount;
 
  
    
@@ -561,7 +553,6 @@ String receipt = "--------------------------------------------------------------
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel Adname1;
-    public javax.swing.JButton add;
     private javax.swing.JButton cancel;
     private javax.swing.JButton delete;
     public javax.swing.JTextField dte;
@@ -587,6 +578,7 @@ String receipt = "--------------------------------------------------------------
     public javax.swing.JTextField opa;
     public javax.swing.JTextField oq;
     public javax.swing.JComboBox<String> ot;
+    public javax.swing.JButton print;
     private javax.swing.JButton rec;
     private javax.swing.JLabel set;
     private javax.swing.JTextArea txtReceipt;

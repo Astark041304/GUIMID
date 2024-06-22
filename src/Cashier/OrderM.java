@@ -7,11 +7,9 @@ package Cashier;
 
 
 import Config.Session;
-
 import Config.dbConnector;
 import Passwordsettings.AccountSettings;
 import RestaurantMenu.LoginDashboard;
-
 import java.awt.Color;
 import java.sql.PreparedStatement;
 
