@@ -8,8 +8,12 @@ package Admin;
 import Cashier.*;
 import Config.dbConnector;
 import Passwordsettings.AccountSettings;
+import java.awt.print.PrinterException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.MessageFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -42,9 +46,9 @@ displayData();
 
     private void updateSalesReportUI(int totalProductQuantity, int totalOrderQuantity, double totalSales) {
 
-        tpq.setText("Total Product Quantity: " + totalProductQuantity);
-        toq.setText("Total Order Quantity: " + totalOrderQuantity);
-        tps.setText("Total Sales: " + totalSales);
+        tpq.setText("" + totalProductQuantity);
+        toq.setText("" + totalOrderQuantity);
+        tps.setText("" + totalSales);
     }
 
     /**
@@ -73,6 +77,8 @@ displayData();
         Adname1 = new javax.swing.JLabel();
         set = new javax.swing.JLabel();
         home = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        reports = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,13 +88,10 @@ displayData();
         Totalp.setBackground(new java.awt.Color(122, 141, 218));
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
-        jLabel1.setText("Total Product Quantity:");
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
-        jLabel2.setText("Total Order Quantity:");
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
-        jLabel3.setText("Total Price Sales:");
 
         jButton1.setBackground(new java.awt.Color(196, 160, 220));
         jButton1.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
@@ -96,6 +99,12 @@ displayData();
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        tpq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tpqActionPerformed(evt);
             }
         });
 
@@ -120,24 +129,26 @@ displayData();
             .addGroup(TotalpLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(TotalpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TotalpLayout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(TotalpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(TotalpLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(TotalpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tps)
-                            .addComponent(toq)
-                            .addComponent(tpq))
-                        .addContainerGap())
-                    .addGroup(TotalpLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
                         .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(36, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TotalpLayout.createSequentialGroup()
+                        .addGroup(TotalpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(TotalpLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(95, 95, 95)
+                                .addComponent(tpq, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, TotalpLayout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(95, 95, 95)
+                                .addGroup(TotalpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tps, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(toq))))
+                        .addGap(83, 83, 83))))
         );
         TotalpLayout.setVerticalGroup(
             TotalpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,19 +157,22 @@ displayData();
                 .addGroup(TotalpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(tpq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(TotalpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(toq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(TotalpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(TotalpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(TotalpLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2))
+                    .addGroup(TotalpLayout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(toq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tps, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
+                .addGroup(TotalpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(tps, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addGroup(TotalpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(add))
-                .addContainerGap())
+                    .addGroup(TotalpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton1)
+                        .addComponent(add)))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         jPanel1.add(Totalp, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, 370, 200));
@@ -175,7 +189,7 @@ displayData();
         });
         jScrollPane1.setViewportView(ReportsTable);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 620, 280));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 420, 280));
 
         back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-back-35.png"))); // NOI18N
         back.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -210,6 +224,12 @@ displayData();
         jPanel5.add(home, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 0, -1, 60));
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, -1));
+
+        reports.setColumns(20);
+        reports.setRows(5);
+        jScrollPane2.setViewportView(reports);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, 260, 280));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -250,13 +270,19 @@ displayData();
     }//GEN-LAST:event_addMouseClicked
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-       
+          
+          try{
+               reports.print();
+           } catch (PrinterException e) {
+            Logger.getLogger(Receipt.class.getName()).log(Level.SEVERE, null, e);
+        }
+        
     }//GEN-LAST:event_addActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             dbConnector dbc = new dbConnector();
-
+            
             ResultSet rsProductQty = dbc.getData("SELECT SUM(product_quantity) AS total_product_quantity FROM tbl_product");
             int totalProductQuantity = 0;
             if (rsProductQty.next()) {
@@ -279,7 +305,14 @@ displayData();
             rsTotalSales.close();
 
             updateSalesReportUI(totalProductQuantity, totalOrderQuantity, totalSales);
-
+           String receipt = "-----------------------------------------------------------------\n";
+            receipt += "                               Sales Report   \n";
+            receipt += "-----------------------------------------------------------------\n"; 
+            receipt += "Total Product Quantity: " + tpq.getText() + "\n\n";
+            receipt += "Total Order Quantity: " + toq.getText() + "\n\n";
+            receipt += "Total Price Sales: " + tps.getText() + "\n\n";
+            reports.setText(receipt);
+            
         } catch (SQLException ex) {
             System.out.println("Errors: " + ex.getMessage());
         }
@@ -288,6 +321,10 @@ displayData();
     private void ReportsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ReportsTableMouseClicked
 
     }//GEN-LAST:event_ReportsTableMouseClicked
+
+    private void tpqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tpqActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tpqActionPerformed
 
     /**
      * @param args the command line arguments
@@ -339,6 +376,8 @@ displayData();
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea reports;
     private javax.swing.JLabel set;
     private javax.swing.JTextField toq;
     private javax.swing.JTextField tpq;

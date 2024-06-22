@@ -6,15 +6,15 @@
 package Cashier;
 
 
-import Config.Session;
+
+
 import Config.dbConnector;
 import Passwordsettings.AccountSettings;
-import RestaurantMenu.LoginDashboard;
 import java.awt.Color;
 import java.sql.PreparedStatement;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
 import net.proteanit.sql.DbUtils;
@@ -565,9 +565,42 @@ public class OrderM extends javax.swing.JFrame {
 
     private void deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseClicked
 
+      int rowIndex = CustomerTable.getSelectedRow();
+
+     if (rowIndex < 0) {
+    JOptionPane.showMessageDialog(null, "Please select Order to delete!");
+     } else {
+    String pin = JOptionPane.showInputDialog("Enter PIN to delete order:");
+    if (pin.equals("1234")) {
+        try {
+            dbConnector dbc = new dbConnector();
+            TableModel tbl = CustomerTable.getModel();
+            String orderName = (String) tbl.getValueAt(rowIndex, 1); 
+
      
+            String query1 = "DELETE FROM tbl_transaction WHERE order_name = ?";
+            PreparedStatement pstmt1 = dbc.getConnection().prepareStatement(query1);
+            pstmt1.setString(1, orderName);
+            pstmt1.executeUpdate();
 
-
+      
+            String query2 = "DELETE FROM tbl_order WHERE order_name = ?";
+            PreparedStatement pstmt2 = dbc.getConnection().prepareStatement(query2);
+            pstmt2.setString(1, orderName);
+            int rowsAffected = pstmt2.executeUpdate();
+            if (rowsAffected > 0) {
+                JOptionPane.showMessageDialog(null, "Order deleted successfully!");
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "Failed to delete order.");
+            }
+        } catch (SQLException ex) {
+            System.out.println("" + ex);
+        }
+    } else {
+        JOptionPane.showMessageDialog(null, "Invalid PIN.");
+    }
+}
 
     }//GEN-LAST:event_deleteMouseClicked
 

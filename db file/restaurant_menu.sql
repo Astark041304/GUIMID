@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2024 at 05:01 AM
+-- Generation Time: Jun 22, 2024 at 09:59 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -38,13 +38,6 @@ CREATE TABLE `tbl_order` (
   `order_date` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `tbl_order`
---
-
-INSERT INTO `tbl_order` (`order_id`, `user_id`, `order_name`, `order_type`, `order_quantity`, `order_price`, `order_payamount`, `order_date`) VALUES
-(1, NULL, 'Coca cola', 'Drinks', 10, 25, 500, '06/22/2024');
-
 -- --------------------------------------------------------
 
 --
@@ -65,9 +58,9 @@ CREATE TABLE `tbl_product` (
 --
 
 INSERT INTO `tbl_product` (`product_id`, `product_name`, `product_type`, `product_status`, `product_quantity`, `product_price`) VALUES
-(201, 'Burger Steak', 'Meal', 'Available', 5, 120),
+(201, 'Burger Steak', 'Meal', 'Available', 0, 120),
 (202, 'Somai', 'Meals', 'Available', 0, 25),
-(203, 'Coca cola', 'Drinks', 'Available', 5, 25);
+(203, 'Coca cola', 'Drinks', 'Available', 0, 25);
 
 -- --------------------------------------------------------
 
@@ -86,13 +79,6 @@ CREATE TABLE `tbl_transaction` (
   `order_payamount` int(50) NOT NULL,
   `order_date` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_transaction`
---
-
-INSERT INTO `tbl_transaction` (`transaction_id`, `order_id`, `product_id`, `order_name`, `order_type`, `order_quantity`, `order_price`, `order_payamount`, `order_date`) VALUES
-(1, 1, NULL, 'Coca cola', 'Drinks', 10, 25, 500, '06/22/2024');
 
 -- --------------------------------------------------------
 
@@ -161,7 +147,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_order`
 --
 ALTER TABLE `tbl_order`
-  MODIFY `order_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `order_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_product`
@@ -173,7 +159,7 @@ ALTER TABLE `tbl_product`
 -- AUTO_INCREMENT for table `tbl_transaction`
 --
 ALTER TABLE `tbl_transaction`
-  MODIFY `transaction_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `transaction_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
