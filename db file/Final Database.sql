@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2024 at 09:59 AM
+-- Generation Time: Jun 22, 2024 at 11:57 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `restaurant_menu`
+-- Database: `restaurant menu`
 --
 
 -- --------------------------------------------------------
@@ -37,6 +37,13 @@ CREATE TABLE `tbl_order` (
   `order_payamount` int(50) NOT NULL,
   `order_date` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_order`
+--
+
+INSERT INTO `tbl_order` (`order_id`, `user_id`, `order_name`, `order_type`, `order_quantity`, `order_price`, `order_payamount`, `order_date`) VALUES
+(8, NULL, 'Somai', 'Meal', 10, 25, 300, '06/22/2024');
 
 -- --------------------------------------------------------
 
@@ -58,9 +65,10 @@ CREATE TABLE `tbl_product` (
 --
 
 INSERT INTO `tbl_product` (`product_id`, `product_name`, `product_type`, `product_status`, `product_quantity`, `product_price`) VALUES
-(201, 'Burger Steak', 'Meal', 'Available', 0, 120),
-(202, 'Somai', 'Meals', 'Available', 0, 25),
-(203, 'Coca cola', 'Drinks', 'Available', 0, 25);
+(201, 'Burger Steak', 'Meal', 'Available', 28, 120),
+(202, 'Somai', 'Meals', 'Available', 30, 25),
+(203, 'Coca cola', 'Drinks', 'Available', 90, 25),
+(204, 'Chiken Nuggets', 'Meal', 'Available', 55, 100);
 
 -- --------------------------------------------------------
 
@@ -79,6 +87,13 @@ CREATE TABLE `tbl_transaction` (
   `order_payamount` int(50) NOT NULL,
   `order_date` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_transaction`
+--
+
+INSERT INTO `tbl_transaction` (`transaction_id`, `order_id`, `product_id`, `order_name`, `order_type`, `order_quantity`, `order_price`, `order_payamount`, `order_date`) VALUES
+(5, 8, NULL, 'Somai', 'Meal', 10, 25, 300, '06/22/2024');
 
 -- --------------------------------------------------------
 
@@ -147,19 +162,19 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_order`
 --
 ALTER TABLE `tbl_order`
-  MODIFY `order_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `order_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tbl_product`
 --
 ALTER TABLE `tbl_product`
-  MODIFY `product_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=204;
+  MODIFY `product_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=205;
 
 --
 -- AUTO_INCREMENT for table `tbl_transaction`
 --
 ALTER TABLE `tbl_transaction`
-  MODIFY `transaction_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `transaction_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
