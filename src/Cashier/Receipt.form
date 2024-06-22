@@ -207,7 +207,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="delete" min="-2" pref="71" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="cancel" min="-2" pref="71" max="-2" attributes="0"/>
+                          <Component id="exit" min="-2" pref="71" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="rec" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="14" max="32767" attributes="0"/>
@@ -221,7 +221,7 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="print" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="delete" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cancel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="exit" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="rec" alignment="3" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
@@ -262,7 +262,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="cancel">
+                <Component class="javax.swing.JButton" name="exit">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="dc" green="a0" red="c4" type="rgb"/>
@@ -273,8 +273,8 @@
                     <Property name="text" type="java.lang.String" value="Exit"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cancelMouseClicked"/>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelActionPerformed"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="exitMouseClicked"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="rec">

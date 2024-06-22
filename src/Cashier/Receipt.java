@@ -128,7 +128,7 @@ public class Receipt extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         print = new javax.swing.JButton();
         delete = new javax.swing.JButton();
-        cancel = new javax.swing.JButton();
+        exit = new javax.swing.JButton();
         rec = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         opa = new javax.swing.JTextField();
@@ -213,17 +213,17 @@ public class Receipt extends javax.swing.JFrame {
             }
         });
 
-        cancel.setBackground(new java.awt.Color(196, 160, 220));
-        cancel.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
-        cancel.setText("Exit");
-        cancel.addMouseListener(new java.awt.event.MouseAdapter() {
+        exit.setBackground(new java.awt.Color(196, 160, 220));
+        exit.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        exit.setText("Exit");
+        exit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cancelMouseClicked(evt);
+                exitMouseClicked(evt);
             }
         });
-        cancel.addActionListener(new java.awt.event.ActionListener() {
+        exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelActionPerformed(evt);
+                exitActionPerformed(evt);
             }
         });
 
@@ -246,7 +246,7 @@ public class Receipt extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(rec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(14, Short.MAX_VALUE))
@@ -258,7 +258,7 @@ public class Receipt extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(print)
                     .addComponent(delete)
-                    .addComponent(cancel)
+                    .addComponent(exit)
                     .addComponent(rec, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -385,9 +385,9 @@ public class Receipt extends javax.swing.JFrame {
            
     }//GEN-LAST:event_printActionPerformed
 
-    private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
+    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cancelActionPerformed
+    }//GEN-LAST:event_exitActionPerformed
     
     
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
@@ -439,11 +439,11 @@ public class Receipt extends javax.swing.JFrame {
            
     }//GEN-LAST:event_printMouseClicked
 
-    private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
-       UsersTab adf = new  UsersTab();
-       adf.setVisible(true);
-       this.dispose();
-    }//GEN-LAST:event_cancelMouseClicked
+    private void exitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMouseClicked
+      JOptionPane.showMessageDialog(null,"Logout Success!");
+        setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_exitMouseClicked
 
     private void setMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setMouseClicked
         AccountSettings as = new  AccountSettings();
@@ -553,9 +553,9 @@ String receipt = "--------------------------------------------------------------
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel Adname1;
-    private javax.swing.JButton cancel;
     private javax.swing.JButton delete;
     public javax.swing.JTextField dte;
+    private javax.swing.JButton exit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;

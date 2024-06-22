@@ -16,6 +16,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import net.proteanit.sql.DbUtils;
 
@@ -499,45 +500,42 @@ public class OrderM extends javax.swing.JFrame {
 
     private void editMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseClicked
      
+int rowIndex = CustomerTable.getSelectedRow();
 
-        int rowIndex = CustomerTable.getSelectedRow();
 
-        if (rowIndex < 0) {
+if (rowIndex < 0) {
+    JOptionPane.showMessageDialog(null, "Please select an order to delete!");
+} else {
+    String pin = JOptionPane.showInputDialog("Enter PIN to delete order:");
+    if (pin.equals("1234")) {
+        try {
+            dbConnector dbc = new dbConnector();
+            TableModel tbl = CustomerTable.getModel();
+            String orderName = (String) tbl.getValueAt(rowIndex, 1);
 
-            JOptionPane.showMessageDialog(null, "Please select a Order!", "Error", JOptionPane.ERROR_MESSAGE);
+            // Delete from tbl_order
+            String query = "DELETE FROM tbl_order WHERE order_name = ?";
+            PreparedStatement pstmt = dbc.getConnection().prepareStatement(query);
+            pstmt.setString(1, orderName);
+            int rowsAffected = pstmt.executeUpdate();
 
-        } else {
-            
-
-            try {
-                dbConnector dbc = new dbConnector();
-
-                TableModel tbl = CustomerTable.getModel();
-
-                ResultSet rs = dbc.getData("SELECT * FROM tbl_order Where order_id = '" + tbl.getValueAt(rowIndex, 0) + "'");
-
-                if (rs.next()) {
-                    Order_edit od = new Order_edit();
-                    od.setVisible(true);
-                    this.dispose();
-
-                    od.oid.setText("" + rs.getString("order_id"));
-                    od.on.setText("" + rs.getString("order_name"));
-                    od.ot.setSelectedItem("" + rs.getString("order_type"));
-                    od.oq.setText("" + rs.getString("order_quantity"));
-                    od.op.setText("" + rs.getString("order_price"));
-                    od.opa.setText("" + rs.getString("order_payamount"));
-                    od.dte.setText("" + rs.getString("order_date"));
-                    od.add.setEnabled(false);
-                    od.update.setEnabled(true);
-                } else {
-
-                }
-
-            } catch (SQLException ex) {
-                System.out.println("" + ex);
+            if (rowsAffected > 0) {
+                // Remove the deleted row from the table model
+                DefaultTableModel model = (DefaultTableModel) CustomerTable.getModel();
+                model.removeRow(rowIndex);
+                JOptionPane.showMessageDialog(null, "Order deleted successfully!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Failed to delete order.");
             }
+        } catch (SQLException ex) {
+            System.out.println(ex);
         }
+    } else {
+        JOptionPane.showMessageDialog(null, "Invalid PIN.");
+    }
+}
+
+
     }//GEN-LAST:event_editMouseClicked
 
     private void editMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseEntered
@@ -566,23 +564,25 @@ public class OrderM extends javax.swing.JFrame {
     private void deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseClicked
 
       int rowIndex = CustomerTable.getSelectedRow();
-
+ 
+      
      if (rowIndex < 0) {
     JOptionPane.showMessageDialog(null, "Please select Order to delete!");
      } else {
-    String pin = JOptionPane.showInputDialog("Enter PIN to delete order:");
+    String pin = JOptionPane.showInputDialog("Enter PIN to delete order:");   
     if (pin.equals("1234")) {
         try {
             dbConnector dbc = new dbConnector();
             TableModel tbl = CustomerTable.getModel();
-            String orderName = (String) tbl.getValueAt(rowIndex, 1); 
+            String orderName = (String) tbl.getValueAt(rowIndex, 1);        
 
      
             String query1 = "DELETE FROM tbl_transaction WHERE order_name = ?";
             PreparedStatement pstmt1 = dbc.getConnection().prepareStatement(query1);
             pstmt1.setString(1, orderName);
             pstmt1.executeUpdate();
-
+            
+           
       
             String query2 = "DELETE FROM tbl_order WHERE order_name = ?";
             PreparedStatement pstmt2 = dbc.getConnection().prepareStatement(query2);
